@@ -107,10 +107,16 @@ foreach ($chapters as $ch) {
     $text = "<!--markdown-->\n\n";
     if (!empty($ch['image'])) {
         $text .= "![](/usr/uploads/homer/{$ch['image']})\n\n<!--more-->\n\n";
+        $text .= $ch['_body'];
     } else {
-        $text .= "<!--more-->\n\n";
+        // 无图章节：摘要切在第一段之后，保证首页可读
+        $pos = strpos($ch['_body'], "\n\n");
+        if ($pos !== false) {
+            $text .= substr($ch['_body'], 0, $pos) . "\n\n<!--more-->\n\n" . substr($ch['_body'], $pos + 2);
+        } else {
+            $text .= $ch['_body'];
+        }
     }
-    $text .= $ch['_body'];
 
     $insert->execute([
         $ch['title'], $ch['slug'], $created, $created, $text,
