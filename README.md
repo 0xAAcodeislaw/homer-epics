@@ -29,19 +29,12 @@
 ## 重新部署
 
 ```bash
-# Typecho 容器版（需 Workers Paid）
-npx wrangler deploy
+# 静态镜像版（免费，当前线上方案）——一键脚本
+./scripts/deploy-pages.sh
 
-# 静态镜像版（免费）
-docker build -t homer-final --build-arg SITE_URL=https://homer-epics.pages.dev .
-docker rm -f homer-final; docker run -d --name homer-final -p 8088:80 homer-final
-cd /tmp && rm -rf homer-mirror && mkdir homer-mirror && cd homer-mirror
-wget -q -r -np -N --convert-links --adjust-extension --page-requisites -e robots=off --no-host-directories http://localhost:8088/
-# 主题 CSS 为绝对链接需手动补齐：
-for f in grid.css normalize.css style.css; do mkdir -p usr/themes/default; curl -s -o usr/themes/default/$f http://localhost:8088/usr/themes/default/$f; done
-rm -rf admin action
-find . -type f \( -name "*.html" -o -name "*.xml" \) -exec sed -i '' 's|http://localhost:8088|https://homer-epics.pages.dev|g; s|https://homer-epics.0xaa-codeislaw.workers.dev|https://homer-epics.pages.dev|g' {} +
-npx wrangler pages deploy . --project-name homer-epics --branch main
+# Typecho 容器版（需 Workers Paid，开通后两条命令）
+docker build --build-arg SITE_URL=https://homer-epics.0xaa-codeislaw.workers.dev -t homer-final .
+npx wrangler deploy
 ```
 
 ## 说明
