@@ -1,0 +1,20 @@
+{
+  "name": "homer-epics",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-06-01",
+  "containers": [
+    {
+      "class_name": "TypechoContainer",
+      "image": "Dockerfile",
+      "instance_type": "basic",
+      "max_instances": 1
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      { "name": "TYPECHO_CONTAINER", "class_name": "TypechoContainer" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["TypechoContainer"] }],
+  "observability": { "enabled": true }
+}
