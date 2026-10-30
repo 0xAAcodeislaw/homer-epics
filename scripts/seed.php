@@ -46,7 +46,10 @@ $odysseyMid = (int)$pdo->lastInsertId();
 $pdo->prepare("INSERT INTO {$P}metas (name, slug, type, description, count) VALUES (?, ?, 'category', ?, 0)")
     ->execute(['解读', 'analysis', '读懂史诗：主题、结构与两千年回声']);
 $analysisMid = (int)$pdo->lastInsertId();
-$midMap = ['iliad' => 1, 'odyssey' => $odysseyMid, 'analysis' => $analysisMid];
+$pdo->prepare("INSERT INTO {$P}metas (name, slug, type, description, count) VALUES (?, ?, 'category', ?, 0)")
+    ->execute(['知识点', 'knowledge', '人物、神谱、地名、名物、术语、年表与名句速查']);
+$knowledgeMid = (int)$pdo->lastInsertId();
+$midMap = ['iliad' => 1, 'odyssey' => $odysseyMid, 'analysis' => $analysisMid, 'knowledge' => $knowledgeMid];
 
 /* ---------- 清理默认内容 ---------- */
 $pdo->exec("DELETE FROM {$P}comments WHERE cid = 1");
@@ -58,7 +61,7 @@ $aboutText = "<!--markdown-->\n\n"
     . "本站收录荷马史诗《伊利亚特》与《奥德赛》的经典故事，全部篇章配以仿七十年代中国连环画（小人书）风格的插图。\n\n"
     . "- 《伊利亚特》讲述特洛伊战争最后一年的故事，围绕希腊第一勇士阿喀琉斯的愤怒展开。\n"
     . "- 《奥德赛》讲述伊萨卡国王奥德修斯战后历经十年漂泊、智斗妖魔、终于归乡团圆的旅程。\n"
-    . "- 「解读」板块收录关于史诗的背景与赏析文章：作者之谜、特洛伊考古、主题分析、叙事艺术与两千年接受史。\n\n"
+    . "- 「解读」板块收录赏析文章：作者之谜、特洛伊考古、主题分析、叙事艺术与两千年接受史；「知识点」板块提供速查工具：人物谱、神谱、地名志、名物志、术语表、大事年表与名句选。\n\n"
     . "站点基于 Typecho 构建，部署于 Cloudflare。\n";
 $pdo->prepare("UPDATE {$P}contents SET title = ?, slug = ?, text = ?, modified = ? WHERE cid = 2 AND type = 'page'")
     ->execute(['关于本站', 'about', $aboutText, time()]);
@@ -86,7 +89,7 @@ function parseChapter(string $file): ?array
 }
 
 $chapters = [];
-foreach (['content/iliad' => 'iliad', 'content/odyssey' => 'odyssey', 'content/analysis' => 'analysis'] as $dir => $cat) {
+foreach (['content/iliad' => 'iliad', 'content/odyssey' => 'odyssey', 'content/analysis' => 'analysis', 'content/knowledge' => 'knowledge'] as $dir => $cat) {
     foreach (glob($root . '/' . $dir . '/*.md') ?: [] as $file) {
         $meta = parseChapter($file);
         if ($meta && isset($meta['title'], $meta['slug'], $meta['order'])) {
