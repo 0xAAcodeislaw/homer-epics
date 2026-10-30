@@ -86,7 +86,7 @@ function parseChapter(string $file): ?array
 }
 
 $chapters = [];
-foreach (['content/iliad' => 'iliad', 'content/odyssey' => 'odyssey'] as $dir => $cat) {
+foreach (['content/iliad' => 'iliad', 'content/odyssey' => 'odyssey', 'content/analysis' => 'analysis'] as $dir => $cat) {
     foreach (glob($root . '/' . $dir . '/*.md') ?: [] as $file) {
         $meta = parseChapter($file);
         if ($meta && isset($meta['title'], $meta['slug'], $meta['order'])) {
