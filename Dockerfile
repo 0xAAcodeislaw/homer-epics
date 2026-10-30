@@ -4,7 +4,7 @@ RUN a2enmod rewrite && echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 COPY . /var/www/html
 
-ARG SITE_URL="https://homer-epics.TBD.workers.dev"
+ARG SITE_URL="https://homer-epics.0xaa-codeislaw.workers.dev"
 
 RUN cd /var/www/html && \
     TYPECHO_SITE_URL=${SITE_URL} \

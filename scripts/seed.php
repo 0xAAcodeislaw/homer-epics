@@ -5,7 +5,7 @@
  */
 
 $root = '/var/www/html';
-$siteUrl = getenv('SITE_URL') ?: 'https://homer-epics.TBD.workers.dev';
+$siteUrl = getenv('SITE_URL') ?: 'https://homer-epics.0xaa-codeislaw.workers.dev';
 
 $dbFile = getenv('TYPECHO_DB_FILE');
 if (!$dbFile || !file_exists($dbFile)) {
@@ -106,7 +106,9 @@ foreach ($chapters as $ch) {
     $created = $base - (int)$ch['order'] * 86400; // 越靠前章节时间越新，首页即阅读顺序
     $text = "<!--markdown-->\n\n";
     if (!empty($ch['image'])) {
-        $text .= "![](/usr/uploads/homer/{$ch['image']})\n\n";
+        $text .= "![](/usr/uploads/homer/{$ch['image']})\n\n<!--more-->\n\n";
+    } else {
+        $text .= "<!--more-->\n\n";
     }
     $text .= $ch['_body'];
 
