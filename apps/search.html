@@ -73,7 +73,7 @@
     if (!n) { box.innerHTML = '<div class="empty">没有找到与「' + esc(q) + '」相关的内容</div>'; return; }
     var html = '';
     for (var c in groups) {
-      var cu = CATURL[groups[c][0]._c] || '#';
+      var cu = CATURL[groups[c]._c] || '#';
       html += '<div class="cat"><a href="' + cu + '">' + c + '（' + groups[c].length + '）</a></div><ul>' +
               groups[c].join('') + '</ul>';
     }

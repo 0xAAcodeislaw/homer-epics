@@ -29,7 +29,6 @@
     marks.forEach(function (a) {
       var n = norm(a.getAttribute('href'));
       if (!n) return;
-      total++;
       if (visited[n]) {
         done++;
         if (a.getAttribute('data-tracked') !== '1') {
@@ -41,6 +40,14 @@
     });
     var title = document.title || '';
     if (title.indexOf('全站目录') >= 0) {
+      /* 进度只统计目录主列表，排除侧栏「最新文章」等重复链接 */
+      var scoped = document.querySelectorAll('#main a[href*="archives/"]');
+      total = scoped.length;
+      done = 0;
+      scoped.forEach(function (a) {
+        var n = norm(a.getAttribute('href'));
+        if (n && visited[n]) done++;
+      });
       var info = document.createElement('p');
       info.style.cssText = 'color:#999;font-size:13px;margin:6px 0 18px;';
       info.textContent = '你的阅读进度：已读 ' + done + ' 篇 / 共 ' + total +
