@@ -34,6 +34,18 @@ $stmt = $pdo->prepare("UPDATE {$P}options SET value = ? WHERE user = 0 AND name 
 foreach ($optionUpdates as $name => $value) {
     $stmt->execute([$value, $name]);
 }
+/* 侧栏关闭「最近回复」：全站禁评，空盒子观感差。
+   注意侧栏配置存在 theme:default 的 JSON 主题配置里（不是独立 sidebarBlock 行） */
+$pdo->exec("DELETE FROM {$P}options WHERE name = 'sidebarBlock'");
+$themeCfg = $pdo->query("SELECT value FROM {$P}options WHERE name = 'theme:default'")->fetchColumn();
+if ($themeCfg) {
+    $cfg = json_decode($themeCfg, true);
+    if (isset($cfg['sidebarBlock']) && is_array($cfg['sidebarBlock'])) {
+        $cfg['sidebarBlock'] = array_values(array_diff($cfg['sidebarBlock'], ['ShowRecentComments']));
+        $pdo->prepare("UPDATE {$P}options SET value = ? WHERE name = 'theme:default'")
+            ->execute([json_encode($cfg)]);
+    }
+}
 
 $pdo->prepare("UPDATE {$P}users SET url = ? WHERE uid = 1")->execute([$siteUrl]);
 
