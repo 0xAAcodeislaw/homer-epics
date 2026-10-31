@@ -31,6 +31,12 @@ done
 find . -type f \( -name "*.html" -o -name "*.xml" \) -exec sed -i '' \
   "s|http://localhost:$PORT|$PROD_URL|g; s|homer-epics\.0xaa-codeislaw\.workers\.dev|$PROD_URL|g; s|https://homer-epics\.pages\.dev|$PROD_URL|g" {} +
 
+echo "==> 4a/5 内链去 index.html 化（消除 308 永久重定向一跳，浏览器不会缓存到旧跳转）"
+find . -type f -name "*.html" -not -path "./apps/*" -exec sed -i '' -E \
+  -e 's|href="([^"]*)/index\.html"|href="\1/"|g' \
+  -e 's|href="index\.html"|href="./"|g' {} +
+printf '/index.php/*\n  Cache-Control: no-cache\n' > _headers
+
 echo "==> 4b/5 拷贝工具页数据与阅读追踪脚本，并注入全站"
 mkdir -p apps
 curl -sf -o apps/search-data.json  "http://localhost:$PORT/apps/search-data.json"
