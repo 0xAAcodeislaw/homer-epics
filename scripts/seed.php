@@ -138,4 +138,41 @@ foreach ($midMap as $mid) {
         ->execute([$mid, $mid]);
 }
 
-echo "seed: 已写入 {$count} 章、2 个分类，站点 URL: {$siteUrl}\n";
+/* ---------- 全站目录页（随内容自动生成） ---------- */
+$catalog = "<!--markdown-->\n\n"
+    . "全站共 {$count} 篇，按阅读顺序排列。点击标题即可进入对应章节。\n\n";
+foreach ($midMap as $catSlug => $mid) {
+    $catName = $pdo->prepare("SELECT name, description FROM {$P}metas WHERE mid = ?");
+    $catName->execute([$mid]);
+    $cat = $catName->fetch(PDO::FETCH_ASSOC);
+    $catalog .= "## {$cat['name']}\n\n{$cat['description']}\n\n";
+    $list = $pdo->prepare(
+        "SELECT c.cid, c.title FROM {$P}contents c
+         JOIN {$P}relationships r ON r.cid = c.cid
+         WHERE r.mid = ? AND c.type = 'post' AND c.status = 'publish'
+         ORDER BY c.created DESC" // created 越大序号越靠前 = 阅读顺序
+    );
+    $list->execute([$mid]);
+    $n = 0;
+    while ($row = $list->fetch(PDO::FETCH_ASSOC)) {
+        $n++;
+        $catalog .= "{$n}. [{$row['title']}](/index.php/archives/{$row['cid']}/)\n";
+    }
+    $catalog .= "\n";
+}
+
+$stmt = $pdo->query("SELECT cid FROM {$P}contents WHERE slug = 'catalog' AND type = 'page'");
+if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $pdo->prepare("UPDATE {$P}contents SET title = ?, text = ?, modified = ? WHERE cid = ?")
+        ->execute(['全站目录', $catalog, time(), $row['cid']]);
+} else {
+    $pdo->prepare(
+        "INSERT INTO {$P}contents (title, slug, created, modified, text, authorId, type, status,
+         commentsNum, allowComment, allowPing, allowFeed, parent, `order`)
+         VALUES ('全站目录', 'catalog', ?, ?, ?, 1, 'page', 'publish', 0, 0, 1, 1, 0, 1)"
+    )->execute([time(), time(), $catalog]);
+}
+// 关于本站排到目录之后
+$pdo->prepare("UPDATE {$P}contents SET `order` = 2 WHERE cid = 2 AND type = 'page'")->execute();
+
+echo "seed: 已写入 {$count} 章、目录页 1 页，站点 URL: {$siteUrl}\n";
