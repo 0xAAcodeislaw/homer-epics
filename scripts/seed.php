@@ -225,6 +225,9 @@ if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     )->execute([time(), time(), $hub]);
 }
 
+// 关于本站排到导航最后
+$pdo->prepare("UPDATE {$P}contents SET `order` = 3 WHERE cid = 2 AND type = 'page'")->execute();
+
 /* ---------- 搜索索引与画廊数据（供 /apps/ 工具页使用） ---------- */
 @mkdir(__DIR__ . '/../apps', 0755, true);
 $idx = [];
