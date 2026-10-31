@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>朗读版 · 荷马史诗</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+         max-width: 680px; margin: 0 auto; padding: 28px 18px 60px; color: #333; line-height: 1.8; }
+  a { color: #2a5db0; text-decoration: none; }
+  h1 { font-size: 22px; margin: 0 0 4px; } .back { font-size: 13px; color: #999; margin-bottom: 14px; }
+  select { width: 100%; font-size: 15px; padding: 9px; border: 1px solid #ddd; border-radius: 6px;
+           box-sizing: border-box; margin-bottom: 10px; }
+  .btns button { font-size: 15px; padding: 9px 22px; margin-right: 10px; border-radius: 6px;
+                 border: 1px solid #ddd; background: #fff; cursor: pointer; }
+  .btns .play { background: #2a5db0; color: #fff; border-color: #2a5db0; }
+  .btns button:disabled { opacity: .45; cursor: default; }
+  .status { color: #999; font-size: 13px; margin: 10px 0 18px; min-height: 20px; }
+  #text { border-top: 1px solid #eee; padding-top: 16px; white-space: pre-wrap; color: #444; }
+  .tip { font-size: 13px; color: #999; }
+</style>
+</head>
+<body>
+<h1>朗读版</h1>
+<div class="back"><a href="/">← 返回首页</a> · 使用浏览器自带的中文语音合成，无需下载音频</div>
+<select id="pick"><option value="">正在载入目录…</option></select>
+<div class="btns">
+  <button class="play" id="play" disabled>▶ 开始朗读</button>
+  <button id="stop" disabled>■ 停止</button>
+</div>
+<div class="status" id="status"></div>
+<div id="text">选择一章，点击开始朗读。可以在做家务时"听书"——荷马时代，史诗本来就是唱给人听的。</div>
+<p class="tip">说明：语音由你的浏览器本地合成，不同设备的音色取决于系统内置的中文语音包（建议在系统设置里检查是否有中文语音）。iPad/iPhone 的 Safari、桌面 Chrome/Edge 效果较好。</p>
+<script>
+(function () {
+  var pick = document.getElementById('pick'), play = document.getElementById('play'),
+      stop = document.getElementById('stop'), statusEl = document.getElementById('status'),
+      textEl = document.getElementById('text');
+  var DATA = null, current = '';
+
+  fetch('/apps/search-data.json').then(function (r) { return r.json(); }).then(function (d) {
+    DATA = d;
+    var html = '';
+    DATA.forEach(function (it) {
+      html += '<option value="' + it.u + '">' + it.t + '</option>';
+    });
+    pick.innerHTML = html;
+    play.disabled = false;
+  });
+
+  function plainText(html) {
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var el = doc.querySelector('.post-content') || doc.body;
+    var t = el.innerText || el.textContent || '';
+    return t.replace(/\n{3,}/g, '\n\n').trim();
+  }
+  function speak() {
+    if (!('speechSynthesis' in window)) {
+      statusEl.textContent = '你的浏览器不支持语音合成，请换用 Chrome / Edge / Safari。';
+      return;
+    }
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(current);
+    var voices = speechSynthesis.getVoices();
+    var zh = voices.filter(function (v) { return /zh|Chinese|中文/i.test(v.lang + v.name); });
+    if (zh.length) u.voice = zh[0];
+    u.lang = 'zh-CN';
+    u.rate = 0.95;
+    u.onend = function () { statusEl.textContent = '朗读完毕。'; play.disabled = false; stop.disabled = true; };
+    statusEl.textContent = '正在朗读…（可随时停止）';
+    speechSynthesis.speak(u);
+    play.disabled = true; stop.disabled = false;
+  }
+  pick.addEventListener('change', function () {
+    if (!pick.value) return;
+    statusEl.textContent = '正在载入正文…';
+    play.disabled = true;
+    fetch(pick.value).then(function (r) { return r.text(); }).then(function (html) {
+      current = plainText(html);
+      textEl.textContent = current.slice(0, 4000) + (current.length > 4000 ? '\n\n…（朗读与预览截取前四千字）' : '');
+      statusEl.textContent = '载入完成，共约 ' + current.length + ' 字。点击开始朗读。';
+      play.disabled = false;
+    }).catch(function () { statusEl.textContent = '载入失败，请重试。'; });
+  });
+  play.addEventListener('click', speak);
+  stop.addEventListener('click', function () {
+    speechSynthesis.cancel();
+    statusEl.textContent = '已停止。';
+    play.disabled = false; stop.disabled = true;
+  });
+  if ('speechSynthesis' in window) {
+    speechSynthesis.onvoiceschanged = function () {};
+  }
+})();
+</script>
+</body>
+</html>

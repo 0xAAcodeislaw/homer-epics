@@ -31,6 +31,14 @@ done
 find . -type f \( -name "*.html" -o -name "*.xml" \) -exec sed -i '' \
   "s|http://localhost:$PORT|$PROD_URL|g; s|homer-epics\.0xaa-codeislaw\.workers\.dev|$PROD_URL|g; s|https://homer-epics\.pages\.dev|$PROD_URL|g" {} +
 
+echo "==> 4b/5 拷贝工具页数据与阅读追踪脚本，并注入全站"
+mkdir -p apps
+curl -sf -o apps/search-data.json  "http://localhost:$PORT/apps/search-data.json"
+curl -sf -o apps/gallery-data.json "http://localhost:$PORT/apps/gallery-data.json"
+curl -sf -o apps/tracker.js        "http://localhost:$PORT/apps/tracker.js"
+find . -name "*.html" -not -path "./apps/*" -exec sed -i '' \
+  "s|</body>|<script src=\"/apps/tracker.js\"></script></body>|" {} +
+
 echo "==> 5/5 部署到 Cloudflare Pages"
 npx wrangler@4.156.0 pages deploy . --project-name homer-epics --branch main
 echo "完成: $PROD_URL"

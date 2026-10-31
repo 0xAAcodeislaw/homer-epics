@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>航海地图 · 荷马史诗</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+         max-width: 980px; margin: 0 auto; padding: 24px 14px 50px; color: #333; line-height: 1.65; }
+  h1 { font-size: 22px; margin: 0 0 4px; } .back { font-size: 13px; color: #999; margin-bottom: 12px; }
+  a { color: #2a5db0; text-decoration: none; } a:hover { text-decoration: underline; }
+  .note { font-size: 13px; color: #888; margin-bottom: 10px; }
+  svg { width: 100%; height: auto; display: block; }
+  svg a:hover circle { stroke: #fff; stroke-width: 3; }
+  svg a:hover text { fill: #000; }
+  .stops { font-size: 14px; }
+  .stops li { margin: 5px 0; }
+  .stops b { color: #555; }
+</style>
+</head>
+<body>
+<h1>奥德修斯航海图</h1>
+<div class="back"><a href="/">← 返回首页</a> · 示意图（非精确地理），点击站点跳转对应卷</div>
+<div class="note">航线按《奥德赛》卷九至卷十三的自述顺序：特洛伊启航（右上）→ 十站历险 → 归抵伊萨卡（左下）。卡吕普索之岛在时间线上居于中段，因全诗以倒叙展开。</div>
+<svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, PingFang SC, sans-serif">
+  <rect width="960" height="620" fill="#eef5f8"/>
+  <!-- 简化海岸线装饰 -->
+  <path d="M 770 20 Q 830 80 820 150 Q 880 210 850 300 L 960 300 L 960 20 Z" fill="#efe9dd" stroke="#d8cdb4"/>
+  <path d="M 0 520 Q 90 480 160 520 Q 240 560 330 540 L 330 620 L 0 620 Z" fill="#efe9dd" stroke="#d8cdb4"/>
+  <text x="800" y="60" font-size="13" fill="#9a8f77">特洛伊（出发）</text>
+  <text x="40"  y="600" font-size="13" fill="#9a8f77">希腊 / 伊萨卡（终点）</text>
+  <!-- 航线 -->
+  <path d="M 815 118 C 740 160, 700 190, 660 210 C 600 240, 590 270, 560 290
+           C 520 318, 470 300, 430 330 C 390 360, 410 400, 360 420
+           C 300 445, 260 420, 220 450 C 180 480, 220 520, 180 545 C 150 563, 120 560, 95 555"
+        fill="none" stroke="#4a7fae" stroke-width="2.5" stroke-dasharray="1,7" stroke-linecap="round"/>
+  <!-- 站点 -->
+  <g font-size="12.5" text-anchor="middle">
+    <a href="/index.php/archives/37/"><circle cx="815" cy="118" r="14" fill="#2a5db0"/><text x="815" y="122" fill="#fff" font-size="11">1</text><text x="815" y="100" fill="#555">伊斯马鲁斯</text></a>
+    <a href="/index.php/archives/37/"><circle cx="660" cy="210" r="14" fill="#2a5db0"/><text x="660" y="214" fill="#fff" font-size="11">2</text><text x="700" y="200" fill="#555">忘忧果之地</text></a>
+    <a href="/index.php/archives/37/"><circle cx="560" cy="290" r="14" fill="#c0392b"/><text x="560" y="294" fill="#fff" font-size="11">3</text><text x="612" y="286" fill="#555">独眼巨人之岛</text></a>
+    <a href="/index.php/archives/38/"><circle cx="430" cy="330" r="14" fill="#2a5db0"/><text x="430" y="334" fill="#fff" font-size="11">4</text><text x="470" y="322" fill="#555">风神浮岛</text></a>
+    <a href="/index.php/archives/38/"><circle cx="360" cy="420" r="14" fill="#c0392b"/><text x="360" y="424" fill="#fff" font-size="11">5</text><text x="404" y="440" fill="#555">食人国</text></a>
+    <a href="/index.php/archives/38/"><circle cx="220" cy="450" r="14" fill="#2a5db0"/><text x="220" y="454" fill="#fff" font-size="11">6</text><text x="255" y="443" fill="#555">喀耳刻之岛</text></a>
+    <a href="/index.php/archives/39/"><circle cx="180" cy="545" r="14" fill="#555"/><text x="180" y="549" fill="#fff" font-size="11">7</text><text x="222" y="560" fill="#555">冥府</text></a>
+    <a href="/index.php/archives/40/"><circle cx="95"  cy="555" r="14" fill="#2a5db0"/><text x="95"  y="559" fill="#fff" font-size="11">8</text><text x="95"  y="585" fill="#555">塞壬与窄峡</text></a>
+    <a href="/index.php/archives/40/"><circle cx="740" cy="420" r="14" fill="#c0392b"/><text x="740" y="424" fill="#fff" font-size="11">9</text><text x="784" y="415" fill="#555">太阳神的岛</text></a>
+    <a href="/index.php/archives/33/"><circle cx="700" cy="520" r="14" fill="#2a5db0"/><text x="700" y="524" fill="#fff" font-size="11">10</text><text x="744" y="528" fill="#555">俄古癸亚</text></a>
+    <a href="/index.php/archives/34/"><circle cx="480" cy="520" r="14" fill="#2a5db0"/><text x="480" y="524" fill="#fff" font-size="11">11</text><text x="524" y="516" fill="#555">斯刻里亚</text></a>
+    <a href="/index.php/archives/41/"><circle cx="60"  cy="470" r="16" fill="#1f6b3a"/><text x="60"  y="475" fill="#fff" font-size="11">家</text><text x="60" y="448" fill="#1f6b3a">伊萨卡</text></a>
+  </g>
+  <!-- 附注 -->
+  <g font-size="12" fill="#8a7f6a">
+    <text x="700" y="452">风暴漂泊九天</text>
+    <text x="500" y="556">费埃克斯人的神船，一夜送归</text>
+    <text x="620" y="560" fill="#c0392b">波塞冬在此击碎他的木筏</text>
+  </g>
+</svg>
+<ul class="stops">
+  <li><b>1-3</b>：劫掠伊斯马鲁斯失利、忘忧果的温柔陷阱、独眼巨人的洞穴（「无人」计）——见 <a href="/index.php/archives/37/">卷九</a></li>
+  <li><b>4-6</b>：风神逆风袋被打开、食人国折损十船、喀耳刻的魔法与挽留——见 <a href="/index.php/archives/38/">卷十</a></li>
+  <li><b>7</b>：冥府问路：先知的总纲、亡母与旧英雄——见 <a href="/index.php/archives/39/">卷十一</a></li>
+  <li><b>8-9</b>：缚桅过塞壬、窄峡失六人、圣牛与雷霆——见 <a href="/index.php/archives/40/">卷十二</a></li>
+  <li><b>10-11</b>：卡吕普索的七年与放行、斯刻里亚的救援——见 <a href="/index.php/archives/33/">卷五</a> 与 <a href="/index.php/archives/34/">卷六至八</a></li>
+  <li><b>家</b>：归抵伊萨卡，复仇与团圆开场——见 <a href="/index.php/archives/41/">卷十三</a> 起</li>
+</ul>
+</body>
+</html>

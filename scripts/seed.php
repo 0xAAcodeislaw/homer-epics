@@ -49,7 +49,10 @@ $analysisMid = (int)$pdo->lastInsertId();
 $pdo->prepare("INSERT INTO {$P}metas (name, slug, type, description, count) VALUES (?, ?, 'category', ?, 0)")
     ->execute(['知识点', 'knowledge', '人物、神谱、地名、名物、术语、年表与名句速查']);
 $knowledgeMid = (int)$pdo->lastInsertId();
-$midMap = ['iliad' => 1, 'odyssey' => $odysseyMid, 'analysis' => $analysisMid, 'knowledge' => $knowledgeMid];
+$pdo->prepare("INSERT INTO {$P}metas (name, slug, type, description, count) VALUES (?, ?, 'category', ?, 0)")
+    ->execute(['扩展阅读', 'extended', '失传史诗、后世回声、名场面细读与条漫试笔']);
+$extendedMid = (int)$pdo->lastInsertId();
+$midMap = ['iliad' => 1, 'odyssey' => $odysseyMid, 'analysis' => $analysisMid, 'knowledge' => $knowledgeMid, 'extended' => $extendedMid];
 
 /* ---------- 清理默认内容 ---------- */
 $pdo->exec("DELETE FROM {$P}comments WHERE cid = 1");
@@ -89,7 +92,7 @@ function parseChapter(string $file): ?array
 }
 
 $chapters = [];
-foreach (['content/iliad' => 'iliad', 'content/odyssey' => 'odyssey', 'content/analysis' => 'analysis', 'content/knowledge' => 'knowledge'] as $dir => $cat) {
+foreach (['content/iliad' => 'iliad', 'content/odyssey' => 'odyssey', 'content/analysis' => 'analysis', 'content/knowledge' => 'knowledge', 'content/extended' => 'extended'] as $dir => $cat) {
     foreach (glob($root . '/' . $dir . '/*.md') ?: [] as $file) {
         $meta = parseChapter($file);
         if ($meta && isset($meta['title'], $meta['slug'], $meta['order'])) {
@@ -169,10 +172,76 @@ if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $pdo->prepare(
         "INSERT INTO {$P}contents (title, slug, created, modified, text, authorId, type, status,
          commentsNum, allowComment, allowPing, allowFeed, parent, `order`)
-         VALUES ('全站目录', 'catalog', ?, ?, ?, 1, 'page', 'publish', 0, 0, 1, 1, 0, 1)"
+         VALUES ('全站目录', 'catalog', ?, ?, ?, 1, 'page', 'publish', 0, 0, 1, 1, 0, 2)"
     )->execute([time(), time(), $catalog]);
 }
-// 关于本站排到目录之后
-$pdo->prepare("UPDATE {$P}contents SET `order` = 2 WHERE cid = 2 AND type = 'page'")->execute();
+// 「扩展阅读」聚合页（导航第二项）：内容三辑 + 工具箱
+$extList = $pdo->prepare(
+    "SELECT c.cid, c.title FROM {$P}contents c
+     JOIN {$P}relationships r ON r.cid = c.cid
+     WHERE r.mid = ? AND c.type = 'post' AND c.status = 'publish'
+     ORDER BY c.created DESC"
+);
+$extList->execute([$extendedMid]);
+$extItems = [];
+while ($row = $extList->fetch(PDO::FETCH_ASSOC)) {
+    $extItems[] = $row;
+}
+$hub = "<!--markdown-->\n\n"
+    . "这里是故事的延伸书架与工具箱，与正文互相成全。\n\n"
+    . "### 第一辑 · 循环史诗\n\n"
+    . "荷马之外，古代还流传着六部同题材史诗，如今仅存梗概。本辑以白话复原它们，补全特洛伊战争的来龙去脉：\n\n";
+$n = 0;
+foreach ($extItems as $row) {
+    if ($n >= 6) break;
+    $n++;
+    $hub .= "{$n}. [{$row['title']}](/index.php/archives/{$row['cid']}/)\n";
+}
+$hub .= "\n### 第二辑 · 后世回声\n\n从维吉尔、但丁到乔伊斯与流行文化，看两千年里荷马被怎样一次次重写：\n\n";
+foreach (array_slice($extItems, 6, 5) as $i => $row) {
+    $hub .= ($i + 1) . ". [{$row['title']}](/index.php/archives/{$row['cid']}/)\n";
+}
+$hub .= "\n### 第三辑 · 名场面细读与条漫\n\n逐句拆解荷马的笔法，并试写四格连环画：\n\n";
+foreach (array_slice($extItems, 11) as $i => $row) {
+    $hub .= ($i + 1) . ". [{$row['title']}](/index.php/archives/{$row['cid']}/)\n";
+}
+$hub .= "\n### 工具箱\n\n"
+    . "- [人物关系图](/apps/relations.html) —— 三大阵营一张图，点击人物直达词条\n"
+    . "- [航海地图](/apps/map.html) —— 奥德修斯十年漂泊的十二站\n"
+    . "- [全文搜索](/apps/search.html) —— 站内 72+ 篇一键检索\n"
+    . "- [名场面画廊](/apps/gallery.html) —— 全部插图按卷排列\n"
+    . "- [知识小测](/apps/quiz.html) —— 二十四道题，试试你像哪位英雄\n"
+    . "- [朗读版](/apps/reader.html) —— 浏览器合成语音，把史诗念给你听\n\n";
 
-echo "seed: 已写入 {$count} 章、目录页 1 页，站点 URL: {$siteUrl}\n";
+$stmt = $pdo->query("SELECT cid FROM {$P}contents WHERE slug = 'extended' AND type = 'page'");
+if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $pdo->prepare("UPDATE {$P}contents SET title = ?, text = ?, modified = ? WHERE cid = ?")
+        ->execute(['扩展阅读', $hub, time(), $row['cid']]);
+} else {
+    $pdo->prepare(
+        "INSERT INTO {$P}contents (title, slug, created, modified, text, authorId, type, status,
+         commentsNum, allowComment, allowPing, allowFeed, parent, `order`)
+         VALUES ('扩展阅读', 'extended', ?, ?, ?, 1, 'page', 'publish', 0, 0, 1, 1, 0, 1)"
+    )->execute([time(), time(), $hub]);
+}
+
+/* ---------- 搜索索引与画廊数据（供 /apps/ 工具页使用） ---------- */
+@mkdir(__DIR__ . '/../apps', 0755, true);
+$idx = [];
+$imgs = [];
+$rows = $pdo->query("SELECT c.cid, c.title, c.slug, c.text, m.slug AS cat FROM {$P}contents c
+    JOIN {$P}relationships r ON r.cid = c.cid JOIN {$P}metas m ON m.mid = r.mid
+    WHERE c.type = 'post' AND c.status = 'publish' ORDER BY c.created DESC");
+while ($row = $rows->fetch(PDO::FETCH_ASSOC)) {
+    $plain = trim(preg_replace('/<[^>]*>/', '', $row['text']));
+    $idx[] = ['t' => $row['title'], 'u' => '/index.php/archives/' . $row['cid'] . '/',
+              'c' => $row['cat'], 'x' => mb_substr($plain, 0, 260)];
+    if (preg_match('/\/usr\/uploads\/homer\/([a-z0-9_]+\.jpg)/', $row['text'], $mm)) {
+        $imgs[] = ['t' => $row['title'], 'u' => '/index.php/archives/' . $row['cid'] . '/',
+                   'img' => '/usr/uploads/homer/' . $mm[1]];
+    }
+}
+file_put_contents(__DIR__ . '/../apps/search-data.json', json_encode($idx, JSON_UNESCAPED_UNICODE));
+file_put_contents(__DIR__ . '/../apps/gallery-data.json', json_encode($imgs, JSON_UNESCAPED_UNICODE));
+
+echo "seed: 已写入 {$count} 章、目录与扩展聚合页、搜索索引 " . count($idx) . " 条、画廊 " . count($imgs) . " 图，站点 URL: {$siteUrl}\n";

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>知识小测 · 荷马史诗</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+         max-width: 680px; margin: 0 auto; padding: 28px 18px 60px; color: #333; line-height: 1.7; }
+  a { color: #2a5db0; text-decoration: none; }
+  h1 { font-size: 22px; margin: 0 0 4px; } .back { font-size: 13px; color: #999; margin-bottom: 16px; }
+  .card { border: 1px solid #e3e3e3; border-radius: 8px; padding: 14px 16px; margin: 14px 0; }
+  .q { font-weight: 600; margin-bottom: 10px; }
+  .opt { display: block; width: 100%; text-align: left; box-sizing: border-box; margin: 6px 0;
+         padding: 8px 12px; border: 1px solid #e0e0e0; border-radius: 6px; background: #fff;
+         cursor: pointer; font-size: 14px; }
+  .opt:hover { border-color: #2a5db0; }
+  .opt.right { border-color: #4a9d5b; background: #f0f9f1; }
+  .opt.wrong { border-color: #d99; background: #fdf1f1; }
+  .opt:disabled { cursor: default; }
+  .exp { display: none; font-size: 13px; color: #777; margin-top: 8px;
+         border-top: 1px dashed #e5e5e5; padding-top: 8px; }
+  .exp.show { display: block; }
+  .score { position: sticky; top: 0; background: #fff; padding: 10px 0; border-bottom: 1px solid #eee;
+           font-size: 14px; color: #666; margin-bottom: 10px; }
+  .result { font-size: 17px; font-weight: 600; margin: 22px 0 6px; }
+  .sub { color: #888; font-size: 14px; }
+</style>
+</head>
+<body>
+<h1>荷马史诗知识小测</h1>
+<div class="back"><a href="/">← 返回首页</a> · 24 题全对者，堪比涅斯托尔</div>
+<div class="score" id="score">已答 0 / 24 · 对 0</div>
+<div id="quiz"></div>
+<div id="result"></div>
+<script>
+(function () {
+  var QS = [
+    ['《伊利亚特》开篇第一个词唱的是什么？', ['瘟疫', '愤怒', '海伦', '木马'], 1, '全诗第一词 menis（愤怒），整部史诗围绕它展开。', 5],
+    ['是谁夺走了布里塞伊斯，引发阿喀琉斯之怒？', ['普里阿摩斯', '墨涅拉俄斯', '阿伽门农', '埃阿斯'], 2, '主帅阿伽门农以"补偿"为名夺走阿喀琉斯的战利品。', 5],
+    ['帕特洛克罗斯出战时披的是谁的盔甲？', ['阿喀琉斯的', '阿伽门农的', '大埃阿斯的', '涅斯托尔的'], 0, '借甲出战正是为了让特洛伊人误以为阿喀琉斯归来。', 18],
+    ['对帕特洛克罗斯致命一击的是谁？', ['帕里斯', '赫克托耳', '萨佩冬', '欧福耳玻斯'], 1, '阿波罗击晕在前，欧福耳玻斯刺伤在后，赫克托耳完成致命一击。', 18],
+    ['为阿喀琉斯重铸甲胄的是哪位神？', ['阿波罗', '赫菲斯托斯', '波塞冬', '赫尔墨斯'], 1, '神匠赫菲斯托斯一夜锻出神甲与那面刻着人间万象的盾。', 20],
+    ['阿喀琉斯拒绝"交还遗体"约定时打的比方是？', ['狼与羊', '狮子与人', '鹰与兔', '风暴与船'], 1, '"狮子与人之间没有契约"——拒绝得斩钉截铁。', 26],
+    ['是谁深夜入营，亲吻仇人的手赎回爱子遗体？', ['安忒诺尔', '赫勒诺斯', '普里阿摩斯', '波吕达玛斯'], 2, '卷二十四：特洛伊老王普里阿摩斯的赎尸之夜。', 28],
+    ['宙斯在战局胶着时用黄金天平称量的是什么？', ['双方的贡品', '英雄的命定', '城墙的高度', '诸神的立场'], 1, '天平称的是双方命运，沉向大地的一端注定败亡。', 12],
+    ['奥德修斯被卡吕普索扣留的岛叫什么？', ['埃亚亚', '俄古癸亚', '特里纳基亚', '斯刻里亚'], 1, '世界尽头的俄古癸亚岛，一留七年。', 33],
+    ['"无人"计骗过了哪个妖怪？', ['斯库拉', '塞壬', '波吕斐摩斯', '喀耳刻'], 2, '独眼巨人喊出"「无人」在害我"，族人一哄而散。', 37],
+    ['过塞壬海域时，奥德修斯如何自保？', ['蜡封自己耳朵', '跳海游泳', '把自己绑在桅杆上', '躲进货舱'], 2, '同伴封耳摇桨，他独享歌声——绑紧，再加绳。', 40],
+    ['太阳神岛上不可触碰的是什么？', ['圣牛', '金苹果', '神马', '橄榄树'], 0, '伙伴饥饿宰牛，宙斯依诺劈碎归船。', 40],
+    ['奥德修斯回乡后最先投奔的是谁？', ['老乳母', '牧猪人欧迈俄斯', '儿子', '岳父'], 1, '忠心二十年的牧猪人，倾其所有款待化装的旧主。', 44],
+    ['活人中第一个认出奥德修斯的是谁？', ['珀涅罗珀', '忒勒马科斯', '欧律克勒娅', '欧迈俄斯'], 2, '老乳母为他洗脚时摸到那道野猪獠牙旧疤。（老狗阿尔戈斯更早认出主人，随即死去。）', 51],
+    ['珀涅罗珀验证丈夫身份的终极道具是？', ['结婚戒指', '婚床', '一面铜镜', '一支箭'], 1, '围绕活橄榄树打造的婚床，秘密只有夫妻二人知晓。', 52],
+    ['按循环史诗《忒勒戈尼亚》，奥德修斯最终死于谁手？', ['帕里斯', '埃癸斯托斯', '他的儿子', '波塞冬'], 2, '喀耳刻之子忒勒戈诺斯以淬毒鱼刺矛误杀生父。', 80],
+    ['英雄文化里"由诗人代代传唱的不朽之名"叫什么？', ['提墨', '克罗斯', '客谊', '归乡'], 1, '克罗斯（kleos）：身体会灭，被歌唱的名字不灭。', 72],
+    ['特洛伊遗址一般认为位于今天的哪个国家？', ['希腊', '土耳其', '埃及', '意大利'], 1, '土耳其希萨利克土丘，谢里曼1871年起发掘。', 73],
+    ['提出口传程式理论的学者是？', ['沃尔夫', '谢里曼', '帕里与洛德', '亚里士多德'], 2, '米尔曼·帕里与阿尔伯特·洛德的南斯拉夫田野研究。', 75],
+    ['罗马史诗《埃涅阿斯纪》的主人公是谁的儿子？', ['维纳斯(阿佛洛狄忒)', '雅典娜', '赫拉', '忒提斯'], 0, '埃涅阿斯是阿佛洛狄忒与凡人安基塞斯之子，罗马人尊为祖先。', 81],
+    ['但丁把尤利西斯放进了地狱的哪一层？', ['愤怒者', '欺诈者', '背信者', '异教徒'], 1, '地狱第八层火焰之中，惩罚他那场"疯狂的飞行"。', 82],
+    ['《埃涅阿斯纪》的结构对应关系是？', ['全写漂泊', '全写战争', '前六卷漂泊+后六卷战争', '无对应'], 2, '一半《奥德赛》，一半《伊利亚特》——向荷马的完整致意。', 81],
+    ['"一切陌生人和乞讨者都来自宙斯"是谁的话？', ['忒勒马科斯', '欧迈俄斯', '瑙西卡', '阿尔基诺奥斯'], 1, '牧猪人的信条，也是客谊法则的神学基础。', 59],
+    ['《伊利亚特》以谁的葬礼收尾？', ['帕特洛克罗斯', '阿喀琉斯', '赫克托耳', '普里阿摩斯'], 2, '全诗末句："他们就这样安葬了驯马的赫克托耳。"', 28]
+  ];
+  var link = {5:'卷一',18:'卷十六',20:'卷十八',26:'卷二十二',28:'卷二十四',12:'卷八',33:'卷五',37:'卷九',38:'卷十',40:'卷十二',44:'卷十六',51:'卷二十三',52:'卷二十四',80:'忒勒戈尼亚',72:'核心术语',73:'大事年表',75:'荷马是谁',81:'埃涅阿斯纪',82:'但丁',59:'客谊法则'};
+  var box = document.getElementById('quiz'), score = document.getElementById('score'),
+      res = document.getElementById('result');
+  var answered = 0, right = 0;
+  QS.forEach(function (item, i) {
+    var card = document.createElement('div');
+    card.className = 'card';
+    var html = '<div class="q">' + (i + 1) + '. ' + item[0] + '</div>';
+    item[1].forEach(function (opt, j) {
+      html += '<button class="opt" data-j="' + j + '">' + opt + '</button>';
+    });
+    html += '<div class="exp" id="exp-' + i + '">' + item[3] +
+            ' · <a href="/index.php/archives/' + item[4] + '/">重读' + (link[item[4]] || '相关章节') + '</a></div>';
+    card.innerHTML = html;
+    box.appendChild(card);
+    card.querySelectorAll('.opt').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (card.getAttribute('data-done')) return;
+        card.setAttribute('data-done', '1');
+        answered++;
+        var pick = +btn.getAttribute('data-j');
+        card.querySelectorAll('.opt').forEach(function (b, j) {
+          b.disabled = true;
+          if (j === item[2]) b.classList.add('right');
+        });
+        if (pick === item[2]) { right++; } else { btn.classList.add('wrong'); }
+        score.textContent = '已答 ' + answered + ' / ' + QS.length + ' · 对 ' + right;
+        document.getElementById('exp-' + i).classList.add('show');
+        if (answered === QS.length) {
+          var who = right >= 22 ? '你的智慧足以主持一场特洛伊和谈——涅斯托尔再世。'
+                  : right >= 17 ? '智勇双全，奥德修斯看了都要请你当军师。'
+                  : right >= 11 ? '稳健的忒勒马科斯：正在成长，前路可期。'
+                  : '刚出港的忒勒马科斯——回目录页再读两卷，回来再战。';
+          res.innerHTML = '<div class="result">最终得分：' + right + ' / ' + QS.length + '</div>' +
+                          '<div class="sub">' + who + '</div>' +
+                          '<div class="sub"><a href="/index.php/catalog.html">→ 回全站目录补课</a></div>';
+        }
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
