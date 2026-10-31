@@ -36,6 +36,11 @@ mkdir -p apps
 curl -sf -o apps/search-data.json  "http://localhost:$PORT/apps/search-data.json"
 curl -sf -o apps/gallery-data.json "http://localhost:$PORT/apps/gallery-data.json"
 curl -sf -o apps/tracker.js        "http://localhost:$PORT/apps/tracker.js"
+# apps 工具页用仓库原件覆盖：wget --convert-links 会把 JS 字符串拼接
+# （如 ' + it.u + '）误当链接改写，注入 &#32; 导致整页脚本解析失败
+for f in relations map search quiz reader gallery; do
+  curl -sf -o "apps/$f.html" "http://localhost:$PORT/apps/$f.html"
+done
 find . -name "*.html" -not -path "./apps/*" -exec sed -i '' \
   "s|</body>|<script src=\"/apps/tracker.js\"></script></body>|" {} +
 

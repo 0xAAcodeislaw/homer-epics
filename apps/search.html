@@ -32,8 +32,13 @@
       input = document.getElementById('q');
   function esc(s) { return s.replace(/[&<>"]/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  fetch('/apps/search-data.json').then(function (r) { return r.json(); }).then(function (d) {
+  fetch('/apps/search-data.json').then(function (r) {
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function (d) {
     DATA = d; tip.textContent = '索引就绪：' + DATA.length + ' 篇。输入即搜。';
+    var qp = new URLSearchParams(location.search).get('q');
+    if (qp) { input.value = qp; render(qp); }
     input.focus();
   }).catch(function () { tip.textContent = '索引载入失败，请刷新重试。'; });
 
@@ -42,17 +47,19 @@
     if (q.length < 1) { box.innerHTML = ''; return; }
     var groups = {}, n = 0;
     DATA.forEach(function (it) {
-      var hayT = it.t, hayX = it.x;
-      var posT = hayT.indexOf(q), posX = hayX.indexOf(q);
-      if (posT < 0 && posX < 0) return;
+      var hayT = it.t, hayX = it.x, hayC = CATS[it.c] || it.c;
+      var posT = hayT.indexOf(q), posX = hayX.indexOf(q), posC = hayC.indexOf(q);
+      if (posT < 0 && posX < 0 && posC < 0) return;
       n++;
       var snip = '';
       if (posX >= 0) {
         var s = Math.max(0, posX - 28);
-        snip = esc(hayX.slice(s, posX)).replace(/</g, '&lt;') + '<mark>' + esc(q) + '</mark>' +
+        snip = '…' + esc(hayX.slice(s, posX)) + '<mark>' + esc(q) + '</mark>' +
                esc(hayX.slice(posX + q.length, posX + q.length + 56)) + '…';
+      } else if (hayX) {
+        snip = '…' + esc(hayX.slice(0, 84)) + '…';
       }
-      var cat = CATS[it.c] || it.c;
+      var cat = hayC;
       (groups[cat] = groups[cat] || []).push(
         '<li><a href="' + it.u + '">' + esc(it.t) + '</a>' +
         (snip ? '<span class="snippet">…' + snip + '</span>' : '') + '</li>');

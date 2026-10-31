@@ -48,9 +48,9 @@
                 <?php endif; ?>
             </div>
             <div class="site-search col-3 kit-hidden-tb">
-                <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
+                <form id="search" method="get" action="/apps/search.html" role="search">
                     <label for="s" class="sr-only"><?php _e('搜索关键字'); ?></label>
-                    <input type="text" id="s" name="s" class="text" placeholder="<?php _e('输入关键字搜索'); ?>"/>
+                    <input type="text" id="s" name="q" class="text" placeholder="<?php _e('输入关键字搜索'); ?>"/>
                     <button type="submit" class="submit"><?php _e('搜索'); ?></button>
                 </form>
             </div>
