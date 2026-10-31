@@ -233,12 +233,44 @@ $rows = $pdo->query("SELECT c.cid, c.title, c.slug, c.text, m.slug AS cat FROM {
     JOIN {$P}relationships r ON r.cid = c.cid JOIN {$P}metas m ON m.mid = r.mid
     WHERE c.type = 'post' AND c.status = 'publish' ORDER BY c.created DESC");
 while ($row = $rows->fetch(PDO::FETCH_ASSOC)) {
-    $plain = trim(preg_replace('/<[^>]*>/', '', $row['text']));
+    $plain = str_replace(['<!--markdown-->', '<!--more-->'], '', $row['text']);
+    $plain = preg_replace('/!\[[^\]]*\]\([^)]*\)/', '', $plain);
+    $plain = preg_replace('/\[([^\]]*)\]\([^)]*\)/', '$1', $plain);
+    $plain = trim(preg_replace('/<[^>]*>/', '', $plain));
     $idx[] = ['t' => $row['title'], 'u' => '/index.php/archives/' . $row['cid'] . '/',
               'c' => $row['cat'], 'x' => mb_substr($plain, 0, 260)];
     if (preg_match('/\/usr\/uploads\/homer\/([a-z0-9_]+\.jpg)/', $row['text'], $mm)) {
         $imgs[] = ['t' => $row['title'], 'u' => '/index.php/archives/' . $row['cid'] . '/',
                    'img' => '/usr/uploads/homer/' . $mm[1]];
+    }
+}
+/* 独立场景图（无正文挂载的画廊补充） */
+$extraImgs = [
+    ['卷二 · 梦兆与全军检阅', 'ext_iliad_02_review.jpg', 6],
+    ['卷三 · 城头看海伦', 'ext_iliad_03_duel_helen.jpg', 7],
+    ['卷五 · 狄俄墨得斯的荣光', 'ext_iliad_05_diomedes.jpg', 9],
+    ['卷六 · 赫克托耳与安德洛玛刻', 'ext_iliad_06_farewell.jpg', 10],
+    ['卷七 · 埃阿斯单挑赫克托耳', 'ext_iliad_07_ajax_duel.jpg', 11],
+    ['卷九 · 使团求和', 'ext_iliad_09_embassy.jpg', 13],
+    ['卷十八 · 神匠铸甲', 'ext_iliad_18_forge.jpg', 22],
+    ['卷二十三 · 葬礼竞技', 'ext_iliad_23_games.jpg', 27],
+    ['奥德赛卷二 · 出走寻父', 'ext_odyssey_02_night_sail.jpg', 32],
+    ['奥德赛卷四 · 斯巴达的老王', 'ext_odyssey_04_sparta_feast.jpg', 34],
+    ['奥德赛卷六 · 瑙西卡公主', 'ext_odyssey_06_nausicaa.jpg', 36],
+    ['奥德赛卷八 · 盲诗人的歌', 'ext_odyssey_08_bard.jpg', 38],
+    ['奥德赛卷十一 · 冥府之旅', 'ext_odyssey_11_underworld.jpg', 41],
+    ['奥德赛卷十三 · 重返伊萨卡', 'ext_odyssey_13_homecoming.jpg', 43],
+    ['奥德赛卷十四 · 牧猪人的棚屋', 'ext_odyssey_14_swineherd.jpg', 44],
+    ['奥德赛卷十七 · 老狗阿尔戈斯', 'ext_odyssey_17_argos.jpg', 47],
+    ['奥德赛卷二十三 · 夫妻相认', 'ext_odyssey_23_reunion.jpg', 53],
+    ['条漫 · 木马计（一）建马', 'comic_01_horse_built.jpg', 90],
+    ['条漫 · 木马计（二）入城', 'comic_02_gate.jpg', 90],
+    ['条漫 · 木马计（三）狂欢', 'comic_03_feast.jpg', 90],
+    ['条漫 · 木马计（四）开门', 'comic_04_night.jpg', 90],
+];
+foreach ($extraImgs as $e) {
+    if (file_exists(__DIR__ . '/../usr/uploads/homer/' . $e[1])) {
+        $imgs[] = ['t' => $e[0], 'u' => '/index.php/archives/' . $e[2] . '/', 'img' => '/usr/uploads/homer/' . $e[1]];
     }
 }
 file_put_contents(__DIR__ . '/../apps/search-data.json', json_encode($idx, JSON_UNESCAPED_UNICODE));
