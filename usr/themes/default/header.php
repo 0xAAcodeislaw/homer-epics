@@ -16,9 +16,21 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('normalize.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('grid.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('appearance.css'); ?>">
+    <script>
+    (function () {
+        var KEY = 'homer-appearance', p;
+        try { p = localStorage.getItem(KEY); } catch (e) { p = null; }
+        if (p !== 'light' && p !== 'dark') {
+            p = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
+        if (p === 'dark') document.documentElement.setAttribute('data-appearance', 'dark');
+    })();
+    </script>
 
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
+    <script src="<?php $this->options->themeUrl('appearance.js'); ?>" defer></script>
 </head>
 <body>
 
@@ -52,6 +64,8 @@
                             href="<?php $pages->permalink(); ?>"
                             title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a>
                     <?php endwhile; ?>
+                        <a id="appearance-toggle" href="javascript:void(0)" role="button"
+                           title="点击切换：跟随系统 → 浅色 → 深色">外观</a>
                 </nav>
             </div>
         </div><!-- end .row -->

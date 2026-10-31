@@ -1,0 +1,88 @@
+/* 外观模式：深色覆盖（由 appearance.js 在 <html> 上设置 data-appearance） */
+
+html[data-appearance="dark"] { color-scheme: dark; }
+
+html[data-appearance="dark"] body {
+  background-color: #17191d;
+  color: #c6cbd2;
+}
+
+html[data-appearance="dark"] a { color: #82a8dd; }
+html[data-appearance="dark"] a:hover, html[data-appearance="dark"] a:active { color: #a8c6ec; }
+
+html[data-appearance="dark"] h1, html[data-appearance="dark"] h2,
+html[data-appearance="dark"] h3, html[data-appearance="dark"] h4,
+html[data-appearance="dark"] h5, html[data-appearance="dark"] h6 { color: #e4e8ee; }
+
+html[data-appearance="dark"] pre, html[data-appearance="dark"] code {
+  background: #202329;
+  color: #c6cbd2;
+}
+html[data-appearance="dark"] code { color: #e08c88; }
+html[data-appearance="dark"] pre code { background: transparent; color: #c6cbd2; }
+
+html[data-appearance="dark"] blockquote {
+  border-left: 3px solid #3a4049;
+  color: #a3aab4;
+}
+
+html[data-appearance="dark"] hr { background: #2b2f36; }
+
+html[data-appearance="dark"] input[type="text"],
+html[data-appearance="dark"] input[type="email"],
+html[data-appearance="dark"] input[type="url"],
+html[data-appearance="dark"] input[type="password"],
+html[data-appearance="dark"] textarea {
+  background: #202329;
+  border: 1px solid #2b2f36;
+  color: #c6cbd2;
+}
+
+/* 头部 */
+html[data-appearance="dark"] #header { border-bottom: 1px solid #2b2f36; }
+html[data-appearance="dark"] #logo { color: #e4e8ee; }
+html[data-appearance="dark"] .description { color: #8b929c; }
+
+html[data-appearance="dark"] #nav-menu a {
+  border: 1px solid #2b2f36;
+  border-bottom: none;
+  color: #a3aab4;
+}
+html[data-appearance="dark"] #nav-menu a:hover,
+html[data-appearance="dark"] #nav-menu .current {
+  background: #24272d;
+  color: #e4e8ee;
+}
+
+html[data-appearance="dark"] #search input { background: #202329; border: 1px solid #2b2f36; color: #c6cbd2; }
+html[data-appearance="dark"] #search button { border-bottom: 1px solid #2b2f36; }
+html[data-appearance="dark"] #search button.submit {
+  background: transparent url(img/icon-search.png) no-repeat center center;
+  filter: invert(1);
+}
+
+/* 文章区 */
+html[data-appearance="dark"] .post-meta { color: #8b929c; }
+html[data-appearance="dark"] .post-meta li { border-left: 1px solid #2b2f36; }
+html[data-appearance="dark"] .post-near { color: #8b929c; }
+html[data-appearance="dark"] .archive-title { color: #8b929c; }
+
+/* 侧栏部件与分页 */
+html[data-appearance="dark"] .widget-list li { border-bottom: 1px solid #262a30; }
+html[data-appearance="dark"] .page-navigator a { border: 1px solid #2b2f36; color: #a3aab4; }
+html[data-appearance="dark"] .page-navigator a:hover { background: #24272d; }
+html[data-appearance="dark"] .page-navigator .current {
+  background: #2a5db0; border-color: #2a5db0; color: #fff;
+}
+
+/* 通知、警示、页脚 */
+html[data-appearance="dark"] .notice {
+  background: #33301f;
+  border: 1px solid #4a4430;
+  color: #d8c88f;
+}
+html[data-appearance="dark"] #footer { border-top: 1px solid #2b2f36; color: #767d87; }
+
+/* 深色下的插图边框（纸面画在暗底上略降亮度边框） */
+html[data-appearance="dark"] .post-content img,
+html[data-appearance="dark"] img { border-color: #2b2f36; }
