@@ -26,7 +26,7 @@ $optionUpdates = [
     'title'                => '荷马史诗',
     'description'          => '《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事',
     'keywords'             => '荷马史诗,伊利亚特,奥德赛,希腊神话,特洛伊战争,连环画',
-    'pageSize'             => '10',
+    'pageSize'             => '30',
     'siteUrl'              => $siteUrl,
     'defaultAllowComment'  => '0',
 ];
@@ -148,7 +148,7 @@ foreach ($midMap as $catSlug => $mid) {
     $catName = $pdo->prepare("SELECT name, description FROM {$P}metas WHERE mid = ?");
     $catName->execute([$mid]);
     $cat = $catName->fetch(PDO::FETCH_ASSOC);
-    $catalog .= "## {$cat['name']}\n\n{$cat['description']}\n\n";
+    $catalog .= "## [{$cat['name']}](/index.php/category/{$catSlug}/)\n\n{$cat['description']}\n\n";
     $list = $pdo->prepare(
         "SELECT c.cid, c.title FROM {$P}contents c
          JOIN {$P}relationships r ON r.cid = c.cid
