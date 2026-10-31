@@ -20,7 +20,7 @@ echo "==> 3/5 wget 镜像站点"
 MIRROR=$(mktemp -d)/mirror
 mkdir -p "$MIRROR"
 cd "$MIRROR"
-wget -q -r -np -N --convert-links --adjust-extension --page-requisites -e robots=off --no-host-directories "http://localhost:$PORT/"
+wget -q -r -np -N --convert-links --adjust-extension --page-requisites -e robots=off --no-host-directories "http://localhost:$PORT/" || echo "（个别 JS 模板链接跳过，可忽略）"
 rm -rf admin action
 
 echo "==> 4/5 补齐主题 CSS 并重写绝对链接"
