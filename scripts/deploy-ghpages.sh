@@ -3,6 +3,8 @@
 # 用法: ./scripts/deploy-ghpages.sh
 # 前提: docker；gh 已 `gh auth login`；仓库 0xAAcodeislaw/homer-epics 需为 public（Pages 要求）
 set -e
+# 防 rehearsal/装站残留：config.inc.php 存在会让 install.php 误判“已安装”而静默退出
+rm -f config.inc.php usr/homer.db usr/installed.lock
 GH_BASE="${GH_BASE:-https://0xaacodeislaw.github.io/homer-epics}"
 SUBPATH="/homer-epics"
 PORT=8089

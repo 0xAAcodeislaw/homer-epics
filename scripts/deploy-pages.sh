@@ -3,6 +3,8 @@
 # 用法: ./scripts/deploy-pages.sh
 # 前提: 本机已安装 docker 与 wrangler，且已 `wrangler login`。
 set -e
+# 防 rehearsal/装站残留：config.inc.php 存在会让 install.php 误判“已安装”而静默退出
+rm -f config.inc.php usr/homer.db usr/installed.lock
 PROD_URL="${PROD_URL:-https://homer-epics.pages.dev}"
 PORT="${PORT:-8088}"
 

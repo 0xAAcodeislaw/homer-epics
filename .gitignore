@@ -5,3 +5,4 @@ node_modules/
 admin-credentials.txt
 usr/homer.db
 usr/installed.lock
+config.inc.php

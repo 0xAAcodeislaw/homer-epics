@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: 清理装站残留（防“已安装”误判）
+        run: rm -f config.inc.php usr/homer.db usr/installed.lock
 
       - name: PHP 8.3 + SQLite + webp
         uses: shivammathur/setup-php@v2
