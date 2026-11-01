@@ -68,7 +68,7 @@ jobs:
         run: |
           REPO=$GITHUB_WORKSPACE
           cd "$MIRROR"
-          for f in grid.css normalize.css style.css appearance.css appearance.js; do
+          for f in grid.css normalize.css style.css appearance.css appearance.js styleswitch.js theme-terminal.css theme-code.css; do
             mkdir -p usr/themes/default
             curl -s -o "usr/themes/default/$f" "http://127.0.0.1:8088/usr/themes/default/$f"
           done

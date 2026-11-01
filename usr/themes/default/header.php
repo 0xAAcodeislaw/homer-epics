@@ -42,12 +42,27 @@
             p = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
         }
         if (p === 'dark') document.documentElement.setAttribute('data-appearance', 'dark');
+        /* 风格变体（终端/代码）尽早注入，避免闪白 */
+        var t = null;
+        try { t = localStorage.getItem('homer-theme'); } catch (e) { t = null; }
+        if (t === 'terminal' || t === 'code') {
+            document.documentElement.setAttribute('data-style', t);
+            var bl = document.querySelector('link[href*="style.css"]');
+            if (bl) {
+                var vl = document.createElement('link');
+                vl.rel = 'stylesheet';
+                vl.href = bl.getAttribute('href').replace(/style\.css.*$/, '') +
+                          (t === 'terminal' ? 'theme-terminal.css' : 'theme-code.css');
+                document.head.appendChild(vl);
+            }
+        }
     })();
     </script>
 
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
     <script src="<?php $this->options->themeUrl('appearance.js'); ?>" defer></script>
+    <script src="<?php $this->options->themeUrl('styleswitch.js'); ?>" defer></script>
 </head>
 <body>
 
@@ -81,6 +96,8 @@
                             href="<?php $pages->permalink(); ?>"
                             title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a>
                     <?php endwhile; ?>
+                        <a id="style-toggle" href="javascript:void(0)" role="button"
+                           title="点击切换：典藏 → 终端 → 代码">风格</a>
                         <a id="appearance-toggle" href="javascript:void(0)" role="button"
                            title="点击切换：跟随系统 → 浅色 → 深色">外观</a>
                 </nav>

@@ -27,7 +27,7 @@ wget -q -r -np -N --convert-links --adjust-extension --page-requisites -e robots
 rm -rf admin action
 
 echo "==> 4/5 补齐主题 CSS 并重写绝对链接"
-for f in grid.css normalize.css style.css appearance.css appearance.js; do
+for f in grid.css normalize.css style.css appearance.css appearance.js styleswitch.js theme-terminal.css theme-code.css; do
   mkdir -p usr/themes/default
   curl -s -o "usr/themes/default/$f" "http://localhost:$PORT/usr/themes/default/$f"
 done

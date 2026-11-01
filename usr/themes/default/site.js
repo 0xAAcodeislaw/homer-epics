@@ -40,9 +40,11 @@
 
   /* ---- 阅读进度条 + 返回顶部 ---- */
   var bar = document.createElement('div');
+  bar.id = 'read-progress';
   bar.style.cssText = 'position:fixed;top:0;left:0;height:3px;width:0;background:#c9a24b;z-index:99;transition:width .15s;';
   document.body.appendChild(bar);
   var toTop = document.createElement('button');
+  toTop.id = 'to-top';
   toTop.textContent = '↑';
   toTop.title = '返回顶部';
   toTop.style.cssText = 'position:fixed;right:18px;bottom:22px;width:40px;height:40px;border-radius:50%;' +
@@ -63,16 +65,19 @@
   toTop.addEventListener('click', function () { scrollTo({ top: 0, behavior: 'smooth' }); });
 
   /* ---- 图片灯箱：点正文插图看原图，Esc / 点击遮罩关闭 ---- */
-  /* ---- giscus 主题跟随站点明暗 ---- */
+  /* ---- giscus 主题跟随站点明暗与风格 ---- */
   function giscusTheme() {
-    var dark = document.documentElement.getAttribute('data-appearance') === 'dark';
+    var st = document.documentElement.getAttribute('data-style');
+    var dark = document.documentElement.getAttribute('data-appearance') === 'dark' ||
+               st === 'terminal' || st === 'code';
+    var theme = dark ? (st === 'classic' ? 'dark' : 'noborder_dark') : 'noborder_light';
     var frame = document.querySelector('iframe.giscus-frame');
     if (frame) frame.contentWindow.postMessage({
-      giscus: { setConfig: { theme: dark ? 'noborder_dark' : 'noborder_light' } }
+      giscus: { setConfig: { theme: theme } }
     }, 'https://giscus.app');
   }
   new MutationObserver(giscusTheme).observe(document.documentElement, {
-    attributes: true, attributeFilter: ['data-appearance']
+    attributes: true, attributeFilter: ['data-appearance', 'data-style']
   });
   setTimeout(giscusTheme, 1500);
   setTimeout(giscusTheme, 3500);
