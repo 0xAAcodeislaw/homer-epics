@@ -46,6 +46,8 @@
     });
     pick.innerHTML = html;
     play.disabled = false;
+  }).catch(function () {
+    pick.innerHTML = '<option value="">目录载入失败，请刷新重试</option>';
   });
 
   function plainText(html) {

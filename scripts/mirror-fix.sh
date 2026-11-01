@@ -41,6 +41,7 @@ find . -type f -name '*.html' -exec sed "${SI[@]}" \
 echo "    [fix] 404 页面"
 cp "$SELF_DIR/../apps/404.html" 404.html
 sed "${SI[@]}" "s~@BASE@~$BASE~g" 404.html
+[ -f apps/404.html ] && sed "${SI[@]}" "s~@BASE@~$BASE~g" apps/404.html
 
 echo "    [fix] giscus 评论"
 if [ -n "$GISCUS_REPO" ] && [ -d index.php/archives ]; then

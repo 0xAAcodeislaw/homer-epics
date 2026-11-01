@@ -48,14 +48,17 @@
   }).catch(function () { tip.textContent = '索引载入失败，请刷新重试。'; });
 
   function render(q) {
-    q = q.trim();
-    if (q.length < 1) { box.innerHTML = ''; return; }
+    var terms = q.trim().split(/\s+/).filter(function (t) { return t.length > 0; });
+    if (terms.length < 1) { box.innerHTML = ''; return; }
     var groups = {}, n = 0;
     DATA.forEach(function (it) {
       var hayT = it.t, hayX = it.x, hayC = CATS[it.c] || it.c;
-      var posT = hayT.indexOf(q), posX = hayX.indexOf(q), posC = hayC.indexOf(q);
-      if (posT < 0 && posX < 0 && posC < 0) return;
+      var hay = hayT + '\n' + hayC + '\n' + hayX;
+      for (var k = 0; k < terms.length; k++) {
+        if (hay.indexOf(terms[k]) < 0) return; // 所有关键词都须命中
+      }
       n++;
+      var q = terms[0];
       var snip = '';
       if (posX >= 0) {
         var s = Math.max(0, posX - 28);

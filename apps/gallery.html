@@ -26,8 +26,9 @@
   fetch('/apps/gallery-data.json').then(function (r) { return r.json(); }).then(function (d) {
     var html = '';
     d.forEach(function (it) {
+      var t = String(it.t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
       html += '<figure><a href="' + it.u + '"><img loading="lazy" src="' + it.img +
-              '" alt="' + it.t + '"></a><figcaption><a href="' + it.u + '">' + it.t +
+              '" alt="' + t + '"></a><figcaption><a href="' + it.u + '">' + t +
               '</a><span>点击进入章节阅读</span></figcaption></figure>';
     });
     document.getElementById('grid').innerHTML = html;

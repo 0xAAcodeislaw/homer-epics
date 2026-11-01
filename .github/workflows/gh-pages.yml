@@ -11,6 +11,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: gh-pages-deploy
+  cancel-in-progress: true
+
 jobs:
   gh-pages:
     runs-on: ubuntu-latest

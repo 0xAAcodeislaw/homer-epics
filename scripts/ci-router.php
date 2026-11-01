@@ -11,9 +11,10 @@ if ($path === '/' || $path === '') {
     require __DIR__ . '/../index.php';
     return true;
 }
-$file = __DIR__ . '/../' . ltrim($path, '/');
-if (!is_dir($file) && file_exists($file)) {
-    return false; // 静态资源（图片/CSS/JS/JSON）直出
+$file = realpath(__DIR__ . '/../' . ltrim($path, '/'));
+$root = realpath(__DIR__ . '/..');
+if ($file && strpos($file, $root . DIRECTORY_SEPARATOR) === 0 && !is_dir($file) && is_file($file)) {
+    return false; // 站内静态资源（图片/CSS/JS/JSON）直出
 }
 $_SERVER['PATH_INFO'] = '/';
 if (preg_match('#^/index\.php(/|$)#', $path)) {

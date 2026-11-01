@@ -63,6 +63,20 @@
   toTop.addEventListener('click', function () { scrollTo({ top: 0, behavior: 'smooth' }); });
 
   /* ---- 图片灯箱：点正文插图看原图，Esc / 点击遮罩关闭 ---- */
+  /* ---- giscus 主题跟随站点明暗 ---- */
+  function giscusTheme() {
+    var dark = document.documentElement.getAttribute('data-appearance') === 'dark';
+    var frame = document.querySelector('iframe.giscus-frame');
+    if (frame) frame.contentWindow.postMessage({
+      giscus: { setConfig: { theme: dark ? 'noborder_dark' : 'noborder_light' } }
+    }, 'https://giscus.app');
+  }
+  new MutationObserver(giscusTheme).observe(document.documentElement, {
+    attributes: true, attributeFilter: ['data-appearance']
+  });
+  setTimeout(giscusTheme, 1500);
+  setTimeout(giscusTheme, 3500);
+
   var box = null;
   document.querySelectorAll('.post-content img, .post img').forEach(function (img) {
     img.style.cursor = 'zoom-in';
