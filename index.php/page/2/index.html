@@ -1,0 +1,855 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>荷马史诗</title>
+
+    <!-- 使用url函数转换相关路径 -->
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/normalize.css">
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/grid.css">
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/style.css">
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/appearance.css">
+        <meta property="og:type" content="website">
+    <meta property="og:site_name" content="荷马史诗">
+    <meta property="og:title" content="荷马史诗">
+    <meta property="og:description" content="《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事">
+    <meta property="og:url" content="https://0xaacodeislaw.github.io/homer-epics/">
+    <meta property="og:image" content="https://0xaacodeislaw.github.io/homer-epics/usr/uploads/homer/iliad_07_trojan_horse.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="荷马史诗">
+    <meta name="twitter:description" content="《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事">
+    <meta name="twitter:image" content="https://0xaacodeislaw.github.io/homer-epics/usr/uploads/homer/iliad_07_trojan_horse.jpg">
+        <script>
+    (function () {
+        var KEY = 'homer-appearance', p;
+        try { p = localStorage.getItem(KEY); } catch (e) { p = null; }
+        if (p !== 'light' && p !== 'dark') {
+            p = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
+        if (p === 'dark') document.documentElement.setAttribute('data-appearance', 'dark');
+        /* 风格变体尽早注入，避免闪白（终端/代码/黑客帝国/霓虹） */
+        var t = null;
+        try { t = localStorage.getItem('homer-theme'); } catch (e) { t = null; }
+        var VARIANTS = { terminal: 'theme-terminal.css', code: 'theme-code.css',
+                         matrix: 'theme-matrix.css', cyber: 'theme-cyber.css' };
+        if (VARIANTS[t]) {
+            document.documentElement.setAttribute('data-style', t);
+            var bl = document.querySelector('link[href*="style.css"]');
+            if (bl) {
+                var vl = document.createElement('link');
+                vl.rel = 'stylesheet';
+                vl.href = bl.getAttribute('href').replace(/style\.css.*$/, '') + VARIANTS[t];
+                document.head.appendChild(vl);
+            }
+        }
+    })();
+    </script>
+
+    <!-- 通过自有函数输出HTML头部信息 -->
+    <link rel="pingback" href="../../action/xmlrpc" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../action/xmlrpc%3Frsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../action/xmlrpc%3Fwlw" />
+<link rel="alternate" type="application/rss+xml" title="荷马史诗 &raquo; RSS 2.0" href="../../feed/" />
+<link rel="alternate" type="application/rdf+xml" title="荷马史诗 &raquo; RSS 1.0" href="../../feed/rss/" />
+<link rel="alternate" type="application/atom+xml" title="荷马史诗 &raquo; ATOM 1.0" href="../../feed/atom/" />
+<meta name="description" content="《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事" />
+<meta name="keywords" content="荷马史诗,伊利亚特,奥德赛,希腊神话,特洛伊战争,连环画" />
+<meta name="generator" content="Typecho 1.3.0" />
+<meta name="template" content="default" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://0xaacodeislaw.github.io/homer-epics/" />
+<meta name="twitter:title" property="og:title" itemprop="name" content="荷马史诗" />
+<meta name="twitter:description" property="og:description" itemprop="description" content="《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事" />
+<meta property="og:site_name" content="荷马史诗" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:domain" content="0xaacodeislaw.github.io" />
+    <script src="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/appearance.js" defer></script>
+    <script src="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/styleswitch.js" defer></script>
+<link rel="canonical" href="https://homer-epics.pages.dev/index.php/page/2/">
+<body>
+
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="site-name col-mb-12 col-9">
+                                    <a id="logo" href="https://0xaacodeislaw.github.io/homer-epics/">荷马史诗</a>
+                    <p class="description">《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事</p>
+                            </div>
+            <div class="site-search col-3 kit-hidden-tb">
+                <form id="search" method="get" action="../../../apps/search.html" role="search">
+                    <label for="s" class="sr-only">搜索关键字</label>
+                    <input type="text" id="s" name="q" class="text" placeholder="输入关键字搜索"/>
+                    <button type="submit" class="submit">搜索</button>
+                </form>
+            </div>
+            <div class="col-mb-12">
+                <nav id="nav-menu" class="clearfix" role="navigation">
+                    <a class="current"                        href="https://0xaacodeislaw.github.io/homer-epics/">首页</a>
+                                                                <a                            href="../../extended.html"
+                            title="扩展阅读">扩展阅读</a>
+                                            <a                            href="../../catalog.html"
+                            title="全站目录">全站目录</a>
+                                            <a                            href="../../about.html"
+                            title="关于本站">关于本站</a>
+                                            <select id="style-toggle" aria-label="选择风格"
+                                title="选择风格：典藏 → 终端 → 代码 → 黑客帝国 → 霓虹">
+                            <option value="classic">风格 · 典藏</option>
+                            <option value="terminal">风格 · 终端</option>
+                            <option value="code">风格 · 代码</option>
+                            <option value="matrix">风格 · 黑客帝国</option>
+                            <option value="cyber">风格 · 霓虹</option>
+                        </select>
+                        <select id="appearance-toggle" aria-label="选择外观"
+                                title="选择外观：跟随系统 / 浅色 / 深色">
+                            <option value="auto">外观 · 跟随系统</option>
+                            <option value="light">外观 · 浅色</option>
+                            <option value="dark">外观 · 深色</option>
+                        </select>
+                </nav>
+            </div>
+        </div><!-- end .row -->
+    </div>
+</header><!-- end #header -->
+<div id="body">
+    <div class="container">
+        <div class="row">
+
+    
+    
+
+<div class="col-mb-12 col-8" id="main" role="main">
+                    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/33/">卷三 · 皮洛斯的传说</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-02T01:35:43+00:00" itemprop="datePublished">2026-10-02</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/33/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>船到皮洛斯，涅斯托尔正在海滩上主持一场盛大的公祭：九排坐席、九十头牛，献与海神。来客受到礼遇，忒勒马科斯道明来意：我想打听父亲的消息。</p><p class="more"><a href="../../archives/33/" title="卷三 · 皮洛斯的传说">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/34/">卷四 · 斯巴达的老王</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-01T01:35:43+00:00" itemprop="datePublished">2026-10-01</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/34/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>斯巴达王宫富丽如神殿，墨涅拉俄斯与海伦正嫁女娶媳。来客入席，海伦亲手为客人调了一味"忘忧酒"——掺着埃及灵草的药酒，饮者一夕忘愁，纵然父母双亡也不落泪。席间她讲起在特洛伊城中，只有奥德修斯能识破她（她曾假扮妇人，刺探希腊细作），言语间往事如烟。</p><p class="more"><a href="../../archives/34/" title="卷四 · 斯巴达的老王">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/35/">卷五 · 卡吕普索与木筏</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-30T01:35:43+00:00" itemprop="datePublished">2026-09-30</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/35/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="../../../usr/uploads/homer/odyssey_06_calypso.webp" alt="" title=""></p><p class="more"><a href="../../archives/35/" title="卷五 · 卡吕普索与木筏">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/36/">卷六 · 瑙西卡公主</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-29T01:35:43+00:00" itemprop="datePublished">2026-09-29</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/36/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>斯刻里亚岛住着费埃克斯人——航海无双、与诸神比邻的乐土之民。国王阿尔基诺奥斯的女儿瑙西卡当夜做了一个梦：雅典娜化作她的闺中密友，催她明晨去河边洗衣服——你嫁期将近，该准备嫁衣了。</p><p class="more"><a href="../../archives/36/" title="卷六 · 瑙西卡公主">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/37/">卷七 · 迷雾中的王宫</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-28T01:35:43+00:00" itemprop="datePublished">2026-09-28</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/37/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>雅典娜裹起奥德修斯，一路无阻地走进王宫，殿中众人都看不见他。费埃克斯人的宫殿富丽堂皇：青铜门楣、金银门犬、织机上的锦缎、墙外的果园——梨、石榴、苹果、无花果与橄榄次第成熟，园中两眼清泉终年不涸。荷马用一整段描述这座"神迹花园"，把费埃克斯人写成介于凡人与神明之间的乐土之民。</p><p class="more"><a href="../../archives/37/" title="卷七 · 迷雾中的王宫">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/38/">卷八 · 盲诗人的歌</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-27T01:35:43+00:00" itemprop="datePublished">2026-09-27</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/38/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>翌日，阿尔基诺奥斯召集全城，备下盛宴与竞技款待贵客。席间盲诗人德摩多科斯弹唱特洛伊的故事——唱到奥德修斯与阿喀琉斯的争吵、木马入城，宾客中那个自称陌生人的人却把斗篷蒙在头上，无声流泪。只有国王看见了。</p><p class="more"><a href="../../archives/38/" title="卷八 · 盲诗人的歌">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/39/">卷九 · 自述一：独眼巨人</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-26T01:35:43+00:00" itemprop="datePublished">2026-09-26</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/39/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="../../../usr/uploads/homer/odyssey_02_cyclops.webp" alt="" title=""></p><p class="more"><a href="../../archives/39/" title="卷九 · 自述一：独眼巨人">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/40/">卷十 · 自述二：风袋与女巫</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-25T01:35:43+00:00" itemprop="datePublished">2026-09-25</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/40/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="../../../usr/uploads/homer/odyssey_03_circe.webp" alt="" title=""></p><p class="more"><a href="../../archives/40/" title="卷十 · 自述二：风袋与女巫">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/41/">卷十一 · 自述三：冥府之旅</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-24T01:35:43+00:00" itemprop="datePublished">2026-09-24</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/41/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>船抵大地尽头，冥河汇入冥府之地。奥德修斯挖坑献祭：黑羊的血混着蜂蜜、酒与水，亡魂闻血而来，但要喝血之前，必须先挥剑拦住，只许回答问题。</p><p class="more"><a href="../../archives/41/" title="卷十一 · 自述三：冥府之旅">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/42/">卷十二 · 自述四：塞壬与窄峡</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-23T01:35:43+00:00" itemprop="datePublished">2026-09-23</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/42/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="../../../usr/uploads/homer/odyssey_04_sirens.webp" alt="" title=""></p><p class="more"><a href="../../archives/42/" title="卷十二 · 自述四：塞壬与窄峡">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/43/">卷十三 · 重返伊萨卡</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-22T01:35:43+00:00" itemprop="datePublished">2026-09-22</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/43/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>奥德修斯讲完了。满殿动容，阿尔基诺奥斯送他三件青铜宝物，贵人们各赠厚礼，一夜置办齐整。费埃克斯人的神船载着熟睡的英雄破浪而行，一夜之间渡过千里——船抵伊萨卡海湾，水手把沉睡的他连人带礼抬上沙滩，悄然返航。</p><p class="more"><a href="../../archives/43/" title="卷十三 · 重返伊萨卡">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/44/">卷十四 · 牧猪人的棚屋</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-21T01:35:43+00:00" itemprop="datePublished">2026-09-21</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/44/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>欧迈俄斯的猪棚建在山岩上，十二个猪圈，四条猛犬。老牧猪人见"乞丐"进来，劈手抢过他披着的旧皮——"狗会咬坏它"——又捧出猪下颚肉、葡萄酒，倾其所有待客。他说：主人若在，我何至于这样苦？可他死在海上回不来了，我只好这样养着猪，替那帮求婚人白供酒肉。</p><p class="more"><a href="../../archives/44/" title="卷十四 · 牧猪人的棚屋">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/45/">卷十五 · 归来的儿子</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-20T01:35:43+00:00" itemprop="datePublished">2026-09-20</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/45/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>雅典娜赶到斯巴达，唤醒熟睡的忒勒马科斯：该回家了——你的家产正被瓜分，母亲或许要改嫁。墨涅拉俄斯赠他双耳银杯作别。临行前一件骇人的事发生了：一只苍鹰俯冲而下，抓走园中白鹅——海伦笑着解梦：这是预告，奥德修斯就要回家复仇了。</p><p class="more"><a href="../../archives/45/" title="卷十五 · 归来的儿子">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/46/">卷十六 · 父子相认</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-19T01:35:43+00:00" itemprop="datePublished">2026-09-19</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/46/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>忒勒马科斯与欧迈俄斯互道别来之事：求婚者设伏未成，家产日渐耗空。他叮嘱牧猪人进城给珀涅罗珀报个平安，自己留下陪客人。欧迈俄斯前脚出门，雅典娜后脚现身——她招手示意奥德修斯出棚，挥杖抹去乞丐的伪装：银发变金发，皮肤重现神采。旧主转瞬成为英挺的国王。</p><p class="more"><a href="../../archives/46/" title="卷十六 · 父子相认">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/47/">卷十七 · 乞丐入城</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-18T01:35:43+00:00" itemprop="datePublished">2026-09-18</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/47/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>翌日，忒勒马科斯先行进城，嘱咐欧迈俄斯带"乞丐"随后跟来。临行前他叮嘱牧猪人：路过城门口那块石碑，别急着念叨主人——雷伊奥斯的狗阿尔戈斯还卧在那里。</p><p class="more"><a href="../../archives/47/" title="卷十七 · 乞丐入城">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/48/">卷十八 · 乞丐斗殴</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-17T01:35:43+00:00" itemprop="datePublished">2026-09-17</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/48/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>翌日，宫里来了个真正的职业乞丐伊洛斯，惯于沿门讨食。他见"老头子"抢生意，出言挑衅。安提诺俄斯等人立马起哄：斗一场，赢家吃烤肠！奥德修斯撩起破衣，露出宽肩厚背——满座倒吸一口凉气。伊洛斯吓得直哆嗦，被众人推着上前。</p><p class="more"><a href="../../archives/48/" title="卷十八 · 乞丐斗殴">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/49/">卷十九 · 洗脚认疤</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-16T01:35:43+00:00" itemprop="datePublished">2026-09-16</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/49/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>夜深人静，珀涅罗珀与"乞丐"长谈。她讲起自己的苦：当年织寿衣骗求婚者三年，夜夜拆掉；如今计穷，弓比试在即，无可再拖。又讲起当年送别丈夫的一幕——他握着她的手说：若我回不来，让忒勒马科斯长大便好；若我归来……那句话像刀子，二十年割着她的心。</p><p class="more"><a href="../../archives/49/" title="卷十九 · 洗脚认疤">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/50/">卷二十 · 复仇前夜</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-15T01:35:43+00:00" itemprop="datePublished">2026-09-15</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/50/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>这一夜，全伊萨卡无人安睡。奥德修斯在院中辗转，亲见女仆们窃笑私通求婚者，怒火中烧；忒勒马科斯从城外赶回，父子各自装作不识；雷声在无云的晴空炸响——宙斯的暗号。珀涅罗珀在楼上哭到力竭，梦见丈夫就在身边。心乱如麻的王后向猎神祷告，乞求当夜给她一个征兆；纺锤脱手的一瞬，晴空再度惊雷——她知道：神应了。</p><p class="more"><a href="../../archives/50/" title="卷二十 · 复仇前夜">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/51/">卷二十一 · 拉弓</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-14T01:35:43+00:00" itemprop="datePublished">2026-09-14</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/51/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="../../../usr/uploads/homer/odyssey_07_bow_contest.webp" alt="" title=""></p><p class="more"><a href="../../archives/51/" title="卷二十一 · 拉弓">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/52/">卷二十二 · 诛杀求婚者</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-13T01:35:43+00:00" itemprop="datePublished">2026-09-13</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/52/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>奥德修斯褪下破衣，纵身跃上门槛，把一壶箭倒在脚边，高声宣布："算不清旧账了！现在开始算新账——为我这二十年的耻辱！"话音未落，一箭正中安提诺俄斯的咽喉——他正举杯狂饮，酒杯翻倒，血从杯口涌出。满殿死寂：他们以为这一箭失手射错了人，直到老人亮出真名："你们豺狼，当我永远回不来了！现在，死路一条！"</p><p class="more"><a href="../../archives/52/" title="卷二十二 · 诛杀求婚者">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/53/">卷二十三 · 夫妻相认</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-12T01:35:43+00:00" itemprop="datePublished">2026-09-12</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/53/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>殿内火光重燃。珀涅罗珀下楼，在火边坐下，久久打量那个陌生男人——既不敢认，也不敢问。忒勒马科斯急了：母亲，我这颗心比石头还硬吗？二十年，坐在这里不哭不问！她答："我有我的道理。"她只吩咐：为客人备床——搬到寝殿门外那张婚床上去。</p><p class="more"><a href="../../archives/53/" title="卷二十三 · 夫妻相认">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/54/">卷二十四 · 和解</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-11T01:35:43+00:00" itemprop="datePublished">2026-09-11</time>
+            </li>
+            <li>分类: <a href="../../category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/54/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>冥府里，阿喀琉斯的亡魂迎着阿伽门农的亡魂而来。两位旧主互诉身后事：一个惊叹阿喀琉斯葬礼的盛大与儿子的荣光，一个细说归乡被弑的冤屈。随后亡魂们望见奥德修斯归家的消息，阿喀琉斯叹道：奥德修斯啊，你还是靠你的贤妻得了善终——愿你回家后一切安好。</p><p class="more"><a href="../../archives/54/" title="卷二十四 · 和解">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/55/">荷马是谁？——史诗的作者之谜</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-10T01:35:43+00:00" itemprop="datePublished">2026-09-10</time>
+            </li>
+            <li>分类: <a href="../../category/analysis/">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/55/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>两部史诗庄严开篇，都唤着一个名字："女神啊，请歌唱珀琉斯之子阿喀琉斯的愤怒"——歌唱者悬请缪斯，而缪斯的代言人，传统上叫荷马。可这位奠定了整个西方文学起点的人物，我们几乎一无所知：他是谁？生活在什么时候？真的存在过吗？</p><p class="more"><a href="../../archives/55/" title="荷马是谁？——史诗的作者之谜">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/56/">特洛伊是真的吗？——神话背后的考古</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-09T01:35:43+00:00" itemprop="datePublished">2026-09-09</time>
+            </li>
+            <li>分类: <a href="../../category/analysis/">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/56/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>两千年来，特洛伊被视为传说。直到十九世纪，一个相信荷马的德国商人真的挖出了一座城。</p><p class="more"><a href="../../archives/56/" title="特洛伊是真的吗？——神话背后的考古">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/57/">口传的机器——六音步、程式与歌者</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-08T01:35:43+00:00" itemprop="datePublished">2026-09-08</time>
+            </li>
+            <li>分类: <a href="../../category/analysis/">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/57/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>《伊利亚特》一万五千多行，《奥德赛》一万两千多行——在没有文字的时代，这样的篇幅如何流传？答案是：不靠背诵，靠"生成"。</p><p class="more"><a href="../../archives/57/" title="口传的机器——六音步、程式与歌者">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/58/">阿喀琉斯的选择——愤怒史诗的核心</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-07T01:35:43+00:00" itemprop="datePublished">2026-09-07</time>
+            </li>
+            <li>分类: <a href="../../category/analysis/">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/58/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>《伊利亚特》的第一个词是"愤怒"（μῆνις）。整部一万五千行的史诗，从愤怒开始，到愤怒平息结束。读懂这个愤怒，就读懂了这部诗。</p><p class="more"><a href="../../archives/58/" title="阿喀琉斯的选择——愤怒史诗的核心">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/59/">神明何用？——奥林匹斯的叙事功能</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-06T01:35:43+00:00" itemprop="datePublished">2026-09-06</time>
+            </li>
+            <li>分类: <a href="../../category/analysis/">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/59/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>读荷马的人常有一个疑问：神怎么到处插手？打斗要请神助阵，选边要靠掷签，连人心的动摇都归给一位下凡的女神。这算不算是"迷信"？</p><p class="more"><a href="../../archives/59/" title="神明何用？——奥林匹斯的叙事功能">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/60/">荣耀的代价——英雄文化的运行逻辑</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-05T01:35:43+00:00" itemprop="datePublished">2026-09-05</time>
+            </li>
+            <li>分类: <a href="../../category/analysis/">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/60/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>英雄们为什么打十年仗不回家？答案藏在两个希腊词里：克罗斯（kleos）与提墨（timē）。</p><p class="more"><a href="../../archives/60/" title="荣耀的代价——英雄文化的运行逻辑">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/61/">客谊法则——宙斯看护的陌生人</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-04T01:35:43+00:00" itemprop="datePublished">2026-09-04</time>
+            </li>
+            <li>分类: <a href="../../category/analysis/">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/61/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>《奥德赛》里，一个陌生人可以走进陌生人的家门，吃住三日，临行获赠重礼，而主人分文不取。这不是奇风异俗，而是一整套神圣制度：客谊（xenia）。</p><p class="more"><a href="../../archives/61/" title="客谊法则——宙斯看护的陌生人">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/62/">智谋与归乡——《奥德赛》的另一条英雄标准</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-03T01:35:43+00:00" itemprop="datePublished">2026-09-03</time>
+            </li>
+            <li>分类: <a href="../../category/analysis/">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/62/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>如果说《伊利亚特》是一部"力量"的史诗，《奥德赛》就是一部"智谋"的史诗。它的第一行就给主角定了性：那个"辗转多谋"（polytropos）的人——走过许多城邦、见过许多人心、拐过无数弯路的人。</p><p class="more"><a href="../../archives/62/" title="智谋与归乡——《奥德赛》的另一条英雄标准">阅读剩余部分</a></p>            </div>
+        </article>
+        
+    <ol class="page-navigator"><li class="prev"><a href="../1/">&laquo; 前一页</a></li><li><a href="../1/">1</a></li><li class="current"><a href="./">2</a></li><li><a href="../3/">3</a></li><li class="next"><a href="../3/">后一页 &raquo;</a></li></ol></div><!-- end #main-->
+
+<div class="col-mb-12 col-offset-1 col-3 kit-hidden-tb" id="secondary" role="complementary">
+            <section class="widget">
+            <h3 class="widget-title">最新文章</h3>
+            <ul class="widget-list">
+                <li><a href="../../archives/3/">伊利亚特 · 导读</a></li><li><a href="../../archives/4/">序曲 · 金苹果之争</a></li><li><a href="../../archives/5/">卷一 · 瘟疫与争吵</a></li><li><a href="../../archives/6/">卷二 · 梦兆与全军检阅</a></li><li><a href="../../archives/7/">卷三 · 城头看海伦，阵前赌海伦</a></li><li><a href="../../archives/8/">卷四 · 盟誓破产，烽火重燃</a></li><li><a href="../../archives/9/">卷五 · 狄俄墨得斯的荣光</a></li><li><a href="../../archives/10/">卷六 · 赫克托耳与安德洛玛刻</a></li><li><a href="../../archives/11/">卷七 · 埃阿斯单挑赫克托耳</a></li><li><a href="../../archives/12/">卷八 · 宙斯掌秤，特洛伊反攻</a></li>            </ul>
+        </section>
+    
+    
+            <section class="widget">
+            <h3 class="widget-title">分类</h3>
+            <ul class="widget-list"><li class="category-level-0 category-parent"><a href="../../category/iliad/">伊利亚特</a></li><li class="category-level-0 category-parent"><a href="../../category/odyssey/">奥德赛</a></li><li class="category-level-0 category-parent"><a href="../../category/analysis/">解读</a></li><li class="category-level-0 category-parent"><a href="../../category/knowledge/">知识点</a></li><li class="category-level-0 category-parent"><a href="../../category/extended/">扩展阅读</a></li></ul>        </section>
+    
+            <section class="widget">
+            <h3 class="widget-title">归档</h3>
+            <ul class="widget-list">
+                <li><a href="../../2026/11/">2026年11月</a></li><li><a href="../../2026/10/">2026年10月</a></li><li><a href="../../2026/09/">2026年9月</a></li><li><a href="../../2026/08/">2026年8月</a></li>            </ul>
+        </section>
+    
+            <section class="widget">
+            <h3 class="widget-title">其它</h3>
+            <ul class="widget-list">
+                <li class="last"><a href="../../feed/">文章 RSS</a></li>
+                <li><a href="https://typecho.org">Typecho</a></li>
+            </ul>
+        </section>
+    
+</div><!-- end #sidebar -->
+
+        </div><!-- end .row -->
+    </div>
+</div><!-- end #body -->
+
+<footer id="footer" role="contentinfo">
+    &copy; 2026 <a href="https://0xaacodeislaw.github.io/homer-epics/">荷马史诗</a>.
+    由 <a href="https://typecho.org">Typecho</a> 强力驱动.
+</footer><!-- end #footer -->
+
+<script src="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/site.js" defer></script>
+<script src="/homer-epics/apps/tracker.js"></script></body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>航海地图 · 荷马史诗</title>
+<style>
+  body { background: #faf9f6; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+         max-width: 980px; margin: 0 auto; padding: 24px 14px 50px; color: #333; line-height: 1.65; }
+  h1 { font-size: 22px; margin: 0 0 4px; } .back { font-size: 13px; color: #999; margin-bottom: 12px; }
+  a { color: #2a5db0; text-decoration: none; } a:hover { text-decoration: underline; }
+  .note { font-size: 13px; color: #888; margin-bottom: 10px; }
+  .toggle { font-size: 13px; color: #555; margin-bottom: 10px; user-select: none; }
+  .toggle input { vertical-align: -2px; margin-right: 4px; }
+  svg { width: 100%; height: auto; display: block; }
+  svg a:hover circle { stroke: #fff; stroke-width: 3; }
+  svg a:hover text { fill: #000; }
+  svg.no-modern .md { display: none; }
+  .stops { font-size: 14px; }
+  .stops li { margin: 5px 0; }
+  .stops b { color: #555; }
+  table.compare { border-collapse: collapse; width: 100%; font-size: 13.5px; margin: 12px 0 4px; }
+  table.compare th, table.compare td { border: 1px solid #e2dccc; padding: 6px 10px; text-align: left; vertical-align: top; }
+  table.compare th { background: #f3efe4; color: #6b6150; font-weight: 600; white-space: nowrap; }
+  table.compare td:first-child { white-space: nowrap; color: #555; }
+  .foot { font-size: 12.5px; color: #999; margin-top: 10px; }
+</style>
+</head>
+<body>
+<h1>奥德修斯航海图</h1>
+<div class="back"><a href="/">← 返回首页</a> · 示意图（按真实地中海相对位置绘制，非精确海图），点击站点跳转对应卷</div>
+<div class="note">航线按《奥德赛》卷九至卷十三的自述顺序：特洛伊启航（右上）→ 十站历险 → 归抵伊萨卡（中部偏左）。卡吕普索之岛在时间线上居于中段，因全诗以倒叙展开。</div>
+<div class="toggle"><input type="checkbox" id="mod-toggle" checked><label for="mod-toggle">显示古今对照（今地 · 海域海峡 · 国家）</label></div>
+<svg id="voyage-map" viewBox="0 0 960 640" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, PingFang SC, sans-serif">
+  <rect width="960" height="640" fill="#eef5f8"/>
+
+  <!-- ====== 陆地（简化海岸线，相对位置取今地理） ====== -->
+  <!-- 巴尔干半岛 + 希腊 -->
+  <path d="M 430,0 L 878,0 L 878,148
+           C 862,128 769,126 682,142
+           C 707,172 700,190 682,206
+           C 700,240 725,255 725,271
+           C 710,300 695,315 688,320
+           C 676,335 660,345 651,345
+           C 625,330 600,310 589,295
+           C 605,275 618,265 620,256
+           C 590,235 565,230 546,221
+           C 520,200 480,175 459,157
+           C 445,120 435,60 430,0 Z"
+        fill="#efe9dd" stroke="#d8cdb4" stroke-width="1.5"/>
+  <!-- 土耳其 / 小亚细亚 -->
+  <path d="M 890,0 L 960,0 L 960,310
+           C 940,280 922,255 916,240
+           C 900,200 892,170 890,150 Z"
+        fill="#efe9dd" stroke="#d8cdb4" stroke-width="1.5"/>
+  <!-- 意大利 -->
+  <path d="M 0,0 L 93,0
+           C 250,70 330,110 403,167
+           C 370,180 330,195 310,215
+           C 290,240 268,268 252,282
+           C 242,292 230,284 226,266
+           C 205,215 175,162 140,131
+           C 95,95 55,72 0,55 Z"
+        fill="#efe9dd" stroke="#d8cdb4" stroke-width="1.5"/>
+  <!-- 西西里 -->
+  <path d="M 31,270 C 80,240 150,245 226,261
+           C 215,285 200,310 192,317
+           C 150,327 90,317 60,300
+           C 42,291 28,282 31,270 Z"
+        fill="#efe9dd" stroke="#d8cdb4" stroke-width="1.5"/>
+  <!-- 克里特 -->
+  <path d="M 744,400 C 780,386 830,388 880,400
+           C 890,410 878,422 848,424
+           C 800,430 762,422 744,412 Z"
+        fill="#efe9dd" stroke="#d8cdb4" stroke-width="1.5"/>
+  <text class="md" x="812" y="442" font-size="10.5" fill="#8a7f6a" text-anchor="middle">克里特岛（今·希腊）</text>
+  <!-- 北非海岸（突尼斯—利比亚—埃及） -->
+  <path d="M 0,470 C 40,480 60,500 74,521
+           C 130,545 180,548 250,570
+           C 300,585 340,592 380,588
+           C 440,575 470,548 502,552
+           C 540,556 570,580 620,590
+           C 690,600 760,604 820,608
+           L 960,612 L 960,640 L 0,640 Z"
+        fill="#efe9dd" stroke="#d8cdb4" stroke-width="1.5"/>
+  <!-- 伊奥尼亚群岛：凯法利尼亚+伊萨基 -->
+  <ellipse cx="521" cy="256" rx="24" ry="11" fill="#efe9dd" stroke="#d8cdb4"/>
+  <!-- 克基拉（科孚） -->
+  <ellipse cx="491" cy="191" rx="21" ry="9" fill="#efe9dd" stroke="#d8cdb4" transform="rotate(-32 491 191)"/>
+  <!-- 埃奥利群岛 -->
+  <circle cx="190" cy="238" r="4" fill="#efe9dd" stroke="#d8cdb4"/>
+  <circle cx="203" cy="246" r="3.4" fill="#efe9dd" stroke="#d8cdb4"/>
+  <circle cx="191" cy="254" r="3" fill="#efe9dd" stroke="#d8cdb4"/>
+  <!-- 马耳他·戈佐 -->
+  <circle cx="134" cy="366" r="4.5" fill="#efe9dd" stroke="#d8cdb4"/>
+  <circle cx="148" cy="369" r="3.5" fill="#efe9dd" stroke="#d8cdb4"/>
+  <!-- 基克拉泽斯（装饰） -->
+  <circle cx="748" cy="300" r="3.4" fill="#c6d8e2"/>
+  <circle cx="774" cy="285" r="3" fill="#c6d8e2"/>
+  <circle cx="744" cy="274" r="2.6" fill="#c6d8e2"/>
+  <!-- 墨西拿海峡：把西西里与意大利趾尖视觉上分开 -->
+  <path d="M 214,240 C 222,254 228,272 234,292" stroke="#eef5f8" stroke-width="7" fill="none" stroke-linecap="round"/>
+
+  <!-- ====== 今地参照（古今对照图层，可开关） ====== -->
+  <g class="md">
+    <text x="903" y="58" font-size="12.5" fill="#b0a488" letter-spacing="2" text-anchor="middle">今 · 土耳其</text>
+    <text x="640" y="110" font-size="13" fill="#b0a488" letter-spacing="3" text-anchor="middle">今 · 希 腊</text>
+    <text x="135" y="42" font-size="13" fill="#b0a488" letter-spacing="3" text-anchor="middle">今 · 意 大 利</text>
+    <text x="55" y="505" font-size="11.5" fill="#b0a488" letter-spacing="2" text-anchor="middle">今 · 突尼斯</text>
+    <text x="350" y="612" font-size="13" fill="#b0a488" letter-spacing="3" text-anchor="middle">今 · 利 比 亚</text>
+    <text x="880" y="600" font-size="11.5" fill="#b0a488" letter-spacing="2" text-anchor="middle">今 · 埃及</text>
+    <!-- 海域与海峡 -->
+    <text x="800" y="262" font-size="15" fill="#6d9cc0" font-style="italic" letter-spacing="4" text-anchor="middle">爱琴海</text>
+    <text x="430" y="345" font-size="14" fill="#6d9cc0" font-style="italic" letter-spacing="3" text-anchor="middle">伊奥尼亚海</text>
+    <text x="235" y="58" font-size="13" fill="#6d9cc0" font-style="italic" letter-spacing="2" text-anchor="middle">亚得里亚海</text>
+    <text x="520" y="472" font-size="18" fill="#8fb4cd" font-style="italic" letter-spacing="8" text-anchor="middle">地 中 海</text>
+    <text x="884" y="128" font-size="10" fill="#8a7f6a" text-anchor="middle" transform="rotate(-90 884 128)">达达尼尔海峡（今）</text>
+    <!-- 参照城市 -->
+    <circle cx="725" cy="271" r="2.5" fill="#b0a488"/>
+    <text x="725" y="290" font-size="10.5" fill="#8a7f6a" text-anchor="middle">今·雅典</text>
+  </g>
+
+  <!-- ====== 航线 ====== -->
+  <path d="M 878,174 C 870,160 858,142 846,128
+           C 820,150 780,220 700,330
+           C 620,440 420,560 229,521
+           C 210,480 190,380 180,295
+           C 186,272 192,258 198,246
+           C 180,210 130,152 99,113
+           C 86,112 72,112 59,112
+           C 58,220 66,330 70,430
+           C 90,380 122,210 149,143
+           C 168,180 172,240 190,280
+           C 210,304 244,306 252,288
+           C 256,278 244,266 233,264
+           C 226,278 200,296 168,303
+           C 160,305 158,305 155,305
+           C 150,322 143,344 140,366
+           C 250,372 380,270 491,191
+           C 508,196 518,226 524,253"
+        fill="none" stroke="#4a7fae" stroke-width="2.5" stroke-dasharray="1,7" stroke-linecap="round"/>
+
+  <!-- ====== 站点 ====== -->
+  <g font-size="12.5">
+    <!-- 启航：特洛伊 -->
+    <circle cx="878" cy="174" r="13" fill="#2a5db0"/>
+    <text x="878" y="178" fill="#fff" font-size="11" text-anchor="middle">始</text>
+    <text x="878" y="150" fill="#555" text-anchor="middle">特洛伊（启航）</text>
+    <text class="md" x="878" y="196" font-size="10.5" fill="#8a7f6a" text-anchor="middle">今·希萨利克（土耳其）</text>
+
+    <a href="/homer-epics/index.php/archives/39/"><circle cx="846" cy="128" r="14" fill="#2a5db0"/><text x="846" y="132" fill="#fff" font-size="11" text-anchor="middle">1</text>
+      <text x="826" y="124" fill="#555" text-anchor="end">伊斯马鲁斯</text>
+      <text class="md" x="826" y="140" font-size="10.5" fill="#8a7f6a" text-anchor="end">今·马罗内亚（希腊色雷斯）</text></a>
+
+    <a href="/homer-epics/index.php/archives/39/"><circle cx="229" cy="521" r="14" fill="#2a5db0"/><text x="229" y="525" fill="#fff" font-size="11" text-anchor="middle">2</text>
+      <text x="229" y="498" fill="#555" text-anchor="middle">忘忧果之地</text>
+      <text class="md" x="229" y="540" font-size="10.5" fill="#8a7f6a" text-anchor="middle">今·利比亚—突尼斯沿海（一说杰尔巴岛）</text></a>
+
+    <a href="/homer-epics/index.php/archives/39/"><circle cx="180" cy="295" r="14" fill="#c0392b"/><text x="180" y="299" fill="#fff" font-size="11" text-anchor="middle">3</text>
+      <text x="202" y="287" fill="#555">独眼巨人之岛</text>
+      <text class="md" x="202" y="303" font-size="10.5" fill="#8a7f6a">今·埃特纳火山一带（意大利西西里）</text></a>
+
+    <a href="/homer-epics/index.php/archives/40/"><circle cx="198" cy="246" r="14" fill="#2a5db0"/><text x="198" y="250" fill="#fff" font-size="11" text-anchor="middle">4</text>
+      <text x="198" y="222" fill="#555" text-anchor="middle">风神浮岛</text>
+      <text class="md" x="198" y="208" font-size="10.5" fill="#8a7f6a" text-anchor="middle">今·埃奥利群岛（意大利）</text></a>
+
+    <a href="/homer-epics/index.php/archives/40/"><circle cx="99" cy="113" r="14" fill="#c0392b"/><text x="99" y="117" fill="#fff" font-size="11" text-anchor="middle">5</text>
+      <text x="99" y="92" fill="#555" text-anchor="middle">食人国</text>
+      <text class="md" x="99" y="78" font-size="10.5" fill="#8a7f6a" text-anchor="middle">今·福尔米亚一带（意大利）</text></a>
+
+    <a href="/homer-epics/index.php/archives/40/"><circle cx="59" cy="112" r="14" fill="#2a5db0"/><text x="59" y="116" fill="#fff" font-size="11" text-anchor="middle">6</text>
+      <text x="59" y="136" fill="#555" text-anchor="middle">喀耳刻之岛</text>
+      <text class="md" x="72" y="150" font-size="10.5" fill="#8a7f6a" text-anchor="middle">今·奇尔切奥山（意大利）</text></a>
+
+    <a href="/homer-epics/index.php/archives/41/"><circle cx="70" cy="430" r="14" fill="#555"/><text x="70" y="434" fill="#fff" font-size="11" text-anchor="middle">7</text>
+      <text x="70" y="454" fill="#555" text-anchor="middle">冥府</text>
+      <text class="md" x="80" y="468" font-size="10.5" fill="#8a7f6a" text-anchor="middle">诗中位于环世大河彼岸（示意）</text></a>
+
+    <a href="/homer-epics/index.php/archives/42/"><circle cx="149" cy="143" r="14" fill="#c0392b"/><text x="149" y="147" fill="#fff" font-size="11" text-anchor="middle">8</text>
+      <text x="149" y="120" fill="#555" text-anchor="middle">塞壬</text>
+      <text class="md" x="149" y="163" font-size="10.5" fill="#8a7f6a" text-anchor="middle">今·苏莲托海岸（意大利）</text></a>
+
+    <!-- 窄峡：斯库拉与卡律布狄斯（随站点8同卷） -->
+    <a href="/homer-epics/index.php/archives/42/"><path d="M 226,254 L 234,266 L 226,278 L 218,266 Z" fill="#c0392b"/>
+      <text x="244" y="252" fill="#c0392b" font-size="11.5">斯库拉与卡律布狄斯</text>
+      <text class="md" x="244" y="266" font-size="10.5" fill="#8a7f6a">今·墨西拿海峡</text></a>
+
+    <a href="/homer-epics/index.php/archives/42/"><circle cx="155" cy="305" r="14" fill="#c0392b"/><text x="155" y="309" fill="#fff" font-size="11" text-anchor="middle">9</text>
+      <text x="120" y="292" fill="#555" text-anchor="middle">太阳神的岛</text>
+      <text class="md" x="155" y="330" font-size="10.5" fill="#8a7f6a" text-anchor="middle">今·西西里岛（意大利）</text></a>
+
+    <a href="/homer-epics/index.php/archives/35/"><circle cx="141" cy="366" r="14" fill="#2a5db0"/><text x="141" y="370" fill="#fff" font-size="11" text-anchor="middle">10</text>
+      <text x="141" y="345" fill="#555" text-anchor="middle">俄古癸亚</text>
+      <text class="md" x="141" y="390" font-size="10.5" fill="#8a7f6a" text-anchor="middle">今·马耳他戈佐岛（一说）</text></a>
+
+    <a href="/homer-epics/index.php/archives/36/"><circle cx="491" cy="191" r="14" fill="#2a5db0"/><text x="491" y="195" fill="#fff" font-size="11" text-anchor="middle">11</text>
+      <text x="491" y="168" fill="#555" text-anchor="middle">斯刻里亚</text>
+      <text class="md" x="491" y="213" font-size="10.5" fill="#8a7f6a" text-anchor="middle">今·克基拉岛·科孚（希腊）</text></a>
+
+    <a href="/homer-epics/index.php/archives/43/"><circle cx="521" cy="256" r="16" fill="#1f6b3a"/><text x="521" y="260" fill="#fff" font-size="11" text-anchor="middle">家</text>
+      <text x="521" y="231" fill="#1f6b3a" text-anchor="middle">伊萨卡</text>
+      <text class="md" x="521" y="282" font-size="10.5" fill="#8a7f6a" text-anchor="middle">今·伊萨基岛（希腊）</text></a>
+  </g>
+
+  <!-- 航程附注 -->
+  <g font-size="12" fill="#8a7f6a">
+    <text x="185" y="340">风暴漂泊九天</text>
+    <text x="600" y="178">费埃克斯人的神船，一夜送归</text>
+    <text x="310" y="362" fill="#c0392b">波塞冬在此击碎他的木筏</text>
+  </g>
+
+  <!-- 指北针 -->
+  <g class="md" stroke="#9aa7b0" fill="#9aa7b0">
+    <line x1="922" y1="360" x2="922" y2="338" stroke-width="1.5"/>
+    <path d="M 922,332 L 918,342 L 926,342 Z" stroke="none"/>
+    <text x="922" y="376" font-size="11" stroke="none" text-anchor="middle">北</text>
+  </g>
+</svg>
+<p class="foot">· 古今比定多为后世学者的主流推测，部分存争议：忘忧果之地一说突尼斯杰尔巴岛；食人国一说在科西嘉—撒丁之间；塞壬有苏莲托海岸与墨西拿海峡两说；俄古癸亚一说马耳他戈佐岛，一说在极西"世界之脐"；冥府在诗中位于俄刻阿诺斯大河彼岸的世界尽头，地图只能示意。特洛伊对应今土耳其希萨利克，考古已证实其青铜时代城址（见「特洛伊是真的吗？」一文）。</p>
+<ul class="stops">
+  <li><b>1-3</b>：劫掠伊斯马鲁斯失利、忘忧果的温柔陷阱、独眼巨人的洞穴（「无人」计）——见 <a href="/homer-epics/index.php/archives/39/">卷九</a></li>
+  <li><b>4-6</b>：风神逆风袋被打开、食人国折损十船、喀耳刻的魔法与挽留——见 <a href="/homer-epics/index.php/archives/40/">卷十</a></li>
+  <li><b>7</b>：冥府问路：先知的总纲、亡母与旧英雄——见 <a href="/homer-epics/index.php/archives/41/">卷十一</a></li>
+  <li><b>8-9</b>：缚桅过塞壬、窄峡失六人、圣牛与雷霆——见 <a href="/homer-epics/index.php/archives/42/">卷十二</a></li>
+  <li><b>10-11</b>：卡吕普索的七年与放行、斯刻里亚的救援——见 <a href="/homer-epics/index.php/archives/35/">卷五</a> 与 <a href="/homer-epics/index.php/archives/36/">卷六至八</a></li>
+  <li><b>家</b>：归抵伊萨卡，复仇与团圆开场——见 <a href="/homer-epics/index.php/archives/43/">卷十三</a> 起</li>
+</ul>
+
+<h1 style="font-size:17px; margin-top:26px;">古今对照速览</h1>
+<table class="compare">
+  <tr><th>图中站点</th><th>通行比定的今地</th></tr>
+  <tr><td>启航 · 特洛伊</td><td>土耳其希萨利克（Hisarlik），恰纳卡莱省，达达尼尔海峡南岸</td></tr>
+  <tr><td>1 伊斯马鲁斯</td><td>希腊东北部色雷斯海岸，马罗内亚（Maroneia）一带，爱琴海北岸</td></tr>
+  <tr><td>2 忘忧果之地</td><td>北非海岸：一说突尼斯杰尔巴岛（Djerba），一说利比亚沿海</td></tr>
+  <tr><td>3 独眼巨人之岛</td><td>意大利西西里岛，埃特纳火山一带</td></tr>
+  <tr><td>4 风神浮岛</td><td>意大利埃奥利群岛（利帕里群岛，Aeolian Islands），西西里东北</td></tr>
+  <tr><td>5 食人国</td><td>意大利福尔米亚（Formia）一带（一说科西嘉—撒丁之间的博尼法西奥）</td></tr>
+  <tr><td>6 喀耳刻之岛</td><td>意大利奇尔切奥山（Monte Circeo），第勒尼安海沿岸</td></tr>
+  <tr><td>7 冥府</td><td>诗中位于环世大河俄刻阿诺斯彼岸的世界尽头，图上仅示意</td></tr>
+  <tr><td>8 塞壬</td><td>意大利苏莲托（Sorrento）海岸（一说在墨西拿海峡）</td></tr>
+  <tr><td>窄峡 · 斯库拉与卡律布狄斯</td><td>今墨西拿海峡（Strait of Messina），西西里与意大利趾尖之间</td></tr>
+  <tr><td>9 太阳神的岛</td><td>意大利西西里岛（诗中 Trinacria，本义"三岬之岛"）</td></tr>
+  <tr><td>10 俄古癸亚</td><td>一说马耳他戈佐岛（Gozo）</td></tr>
+  <tr><td>11 斯刻里亚</td><td>希腊克基拉岛（Kerkyra，即科孚岛 Corfu），伊奥尼亚海</td></tr>
+  <tr><td>家 · 伊萨卡</td><td>希腊伊萨基岛（Ithaki），伊奥尼亚群岛</td></tr>
+</table>
+<p class="foot">涉及海域：爱琴海、伊奥尼亚海、亚得里亚海、第勒尼安海与地中海；涉及海峡：达达尼尔海峡（古称赫勒斯滂，特洛伊近旁）与墨西拿海峡。</p>
+<script>
+  var t = document.getElementById('mod-toggle');
+  var m = document.getElementById('voyage-map');
+  t.addEventListener('change', function (e) {
+    m.classList.toggle('no-modern', !e.target.checked);
+  });
+</script>
+</body>
+</html>

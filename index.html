@@ -1,0 +1,855 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>荷马史诗</title>
+
+    <!-- 使用url函数转换相关路径 -->
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/normalize.css">
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/grid.css">
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/style.css">
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/appearance.css">
+        <meta property="og:type" content="website">
+    <meta property="og:site_name" content="荷马史诗">
+    <meta property="og:title" content="荷马史诗">
+    <meta property="og:description" content="《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事">
+    <meta property="og:url" content="https://0xaacodeislaw.github.io/homer-epics/">
+    <meta property="og:image" content="https://0xaacodeislaw.github.io/homer-epics/usr/uploads/homer/iliad_07_trojan_horse.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="荷马史诗">
+    <meta name="twitter:description" content="《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事">
+    <meta name="twitter:image" content="https://0xaacodeislaw.github.io/homer-epics/usr/uploads/homer/iliad_07_trojan_horse.jpg">
+        <script>
+    (function () {
+        var KEY = 'homer-appearance', p;
+        try { p = localStorage.getItem(KEY); } catch (e) { p = null; }
+        if (p !== 'light' && p !== 'dark') {
+            p = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
+        if (p === 'dark') document.documentElement.setAttribute('data-appearance', 'dark');
+        /* 风格变体尽早注入，避免闪白（终端/代码/黑客帝国/霓虹） */
+        var t = null;
+        try { t = localStorage.getItem('homer-theme'); } catch (e) { t = null; }
+        var VARIANTS = { terminal: 'theme-terminal.css', code: 'theme-code.css',
+                         matrix: 'theme-matrix.css', cyber: 'theme-cyber.css' };
+        if (VARIANTS[t]) {
+            document.documentElement.setAttribute('data-style', t);
+            var bl = document.querySelector('link[href*="style.css"]');
+            if (bl) {
+                var vl = document.createElement('link');
+                vl.rel = 'stylesheet';
+                vl.href = bl.getAttribute('href').replace(/style\.css.*$/, '') + VARIANTS[t];
+                document.head.appendChild(vl);
+            }
+        }
+    })();
+    </script>
+
+    <!-- 通过自有函数输出HTML头部信息 -->
+    <link rel="pingback" href="index.php/action/xmlrpc" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="index.php/action/xmlrpc%3Frsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="index.php/action/xmlrpc%3Fwlw" />
+<link rel="alternate" type="application/rss+xml" title="荷马史诗 &raquo; RSS 2.0" href="index.php/feed/" />
+<link rel="alternate" type="application/rdf+xml" title="荷马史诗 &raquo; RSS 1.0" href="index.php/feed/rss/" />
+<link rel="alternate" type="application/atom+xml" title="荷马史诗 &raquo; ATOM 1.0" href="index.php/feed/atom/" />
+<meta name="description" content="《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事" />
+<meta name="keywords" content="荷马史诗,伊利亚特,奥德赛,希腊神话,特洛伊战争,连环画" />
+<meta name="generator" content="Typecho 1.3.0" />
+<meta name="template" content="default" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://0xaacodeislaw.github.io/homer-epics/" />
+<meta name="twitter:title" property="og:title" itemprop="name" content="荷马史诗" />
+<meta name="twitter:description" property="og:description" itemprop="description" content="《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事" />
+<meta property="og:site_name" content="荷马史诗" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:domain" content="0xaacodeislaw.github.io" />
+    <script src="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/appearance.js" defer></script>
+    <script src="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/styleswitch.js" defer></script>
+<link rel="canonical" href="https://homer-epics.pages.dev/">
+<body>
+
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="site-name col-mb-12 col-9">
+                                    <a id="logo" href="https://0xaacodeislaw.github.io/homer-epics/">荷马史诗</a>
+                    <p class="description">《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事</p>
+                            </div>
+            <div class="site-search col-3 kit-hidden-tb">
+                <form id="search" method="get" action="apps/search.html" role="search">
+                    <label for="s" class="sr-only">搜索关键字</label>
+                    <input type="text" id="s" name="q" class="text" placeholder="输入关键字搜索"/>
+                    <button type="submit" class="submit">搜索</button>
+                </form>
+            </div>
+            <div class="col-mb-12">
+                <nav id="nav-menu" class="clearfix" role="navigation">
+                    <a class="current"                        href="https://0xaacodeislaw.github.io/homer-epics/">首页</a>
+                                                                <a                            href="index.php/extended.html"
+                            title="扩展阅读">扩展阅读</a>
+                                            <a                            href="index.php/catalog.html"
+                            title="全站目录">全站目录</a>
+                                            <a                            href="index.php/about.html"
+                            title="关于本站">关于本站</a>
+                                            <select id="style-toggle" aria-label="选择风格"
+                                title="选择风格：典藏 → 终端 → 代码 → 黑客帝国 → 霓虹">
+                            <option value="classic">风格 · 典藏</option>
+                            <option value="terminal">风格 · 终端</option>
+                            <option value="code">风格 · 代码</option>
+                            <option value="matrix">风格 · 黑客帝国</option>
+                            <option value="cyber">风格 · 霓虹</option>
+                        </select>
+                        <select id="appearance-toggle" aria-label="选择外观"
+                                title="选择外观：跟随系统 / 浅色 / 深色">
+                            <option value="auto">外观 · 跟随系统</option>
+                            <option value="light">外观 · 浅色</option>
+                            <option value="dark">外观 · 深色</option>
+                        </select>
+                </nav>
+            </div>
+        </div><!-- end .row -->
+    </div>
+</header><!-- end #header -->
+<div id="body">
+    <div class="container">
+        <div class="row">
+
+    
+    
+
+<div class="col-mb-12 col-8" id="main" role="main">
+                    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/3/">伊利亚特 · 导读</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-11-01T01:35:43+00:00" itemprop="datePublished">2026-11-01</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/3/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="usr/uploads/homer/iliad_01_cover.webp" alt="" title=""></p><p class="more"><a href="index.php/archives/3/" title="伊利亚特 · 导读">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/4/">序曲 · 金苹果之争</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-31T01:35:43+00:00" itemprop="datePublished">2026-10-31</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/4/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="usr/uploads/homer/iliad_02_golden_apple.webp" alt="" title=""></p><p class="more"><a href="index.php/archives/4/" title="序曲 · 金苹果之争">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/5/">卷一 · 瘟疫与争吵</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-30T01:35:43+00:00" itemprop="datePublished">2026-10-30</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/5/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="usr/uploads/homer/iliad_03_achilles_rage.webp" alt="" title=""></p><p class="more"><a href="index.php/archives/5/" title="卷一 · 瘟疫与争吵">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/6/">卷二 · 梦兆与全军检阅</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-29T01:35:43+00:00" itemprop="datePublished">2026-10-29</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/6/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>宙斯没有忘记对忒提斯的承诺。当夜他遣一个"梦神"降到熟睡的阿伽门农枕边，假传神意：即刻出兵，明日便可攻陷特洛伊——因为诸神已经不再偏袒这座城。阿伽门农醒来深信不疑，全然不知这是个把他往深渊里引的假梦。</p><p class="more"><a href="index.php/archives/6/" title="卷二 · 梦兆与全军检阅">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/7/">卷三 · 城头看海伦，阵前赌海伦</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-28T01:35:43+00:00" itemprop="datePublished">2026-10-28</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/7/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>两军逼近，气氛肃杀。特洛伊一方突然提议：何必十年血战？让祸根自己了断——帕里斯与墨涅拉俄斯单挑，胜者带走海伦与全部财宝，两军盟誓休战。这提议得到应允，老年特洛伊王普里阿摩斯亲自出城主持盟誓。</p><p class="more"><a href="index.php/archives/7/" title="卷三 · 城头看海伦，阵前赌海伦">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/8/">卷四 · 盟誓破产，烽火重燃</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-27T01:35:43+00:00" itemprop="datePublished">2026-10-27</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/8/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>奥林匹斯山上，宙斯与赫拉斗起了嘴。宙斯说：干脆讲和，海伦归希腊，特洛伊城留给你——总行了吧？赫拉恼怒地拒绝：我才不要一座将亡之城的施舍！在她心里，特洛伊早就该毁灭。宙斯于是顺水推舟：那就打下去——只是别怪我的雅典娜上阵去激起战端。</p><p class="more"><a href="index.php/archives/8/" title="卷四 · 盟誓破产，烽火重燃">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/9/">卷五 · 狄俄墨得斯的荣光</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-26T01:35:43+00:00" itemprop="datePublished">2026-10-26</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/9/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>这一卷属于狄俄墨得斯——阿尔戈斯年轻的国王。雅典娜把勇气与力量灌进他的身体，又为他拨开眼前的迷雾，让他能认出下场的神祇：她叮嘱他，凡人的血肉尽管杀，不朽的神明则要避开，唯有一个例外。</p><p class="more"><a href="index.php/archives/9/" title="卷五 · 狄俄墨得斯的荣光">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/10/">卷六 · 赫克托耳与安德洛玛刻</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-25T01:35:43+00:00" itemprop="datePublished">2026-10-25</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/10/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>战局胶着。狄俄墨得斯与吕基亚名将格劳科斯阵前相遇，互通姓名后发现：两家祖上是世交——祖父曾在阿尔戈斯款待过对方的祖父。两人当场掷枪为誓，交换了铠甲（因此后人笑说"宙斯夺走了格劳科斯的理智"——金甲换铜甲，亏大了），各自退开，不与对方兵刃相向。</p><p class="more"><a href="index.php/archives/10/" title="卷六 · 赫克托耳与安德洛玛刻">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/11/">卷七 · 埃阿斯单挑赫克托耳</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-24T01:35:43+00:00" itemprop="datePublished">2026-10-24</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/11/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>特洛伊人重整旗鼓。先知赫勒诺斯灵光一现：何不让阵中最勇的赫克托耳向希腊人叫阵单挑？赫克托耳当即到两军阵前朗声喊话：我是普里阿摩斯之子赫克托耳！哪位希腊英雄敢与我单独对阵？胜者得尽战利，败者的遗体由本方安葬。全场寂静，无人应声——唯独墨涅拉俄斯挺身而起，被兄长阿伽门农按住：为一个帕里斯再赔上一个你？</p><p class="more"><a href="index.php/archives/11/" title="卷七 · 埃阿斯单挑赫克托耳">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/12/">卷八 · 宙斯掌秤，特洛伊反攻</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-23T01:35:43+00:00" itemprop="datePublished">2026-10-23</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/12/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>翌日拂晓，宙斯召集众神立下严令：谁也不许插手今日之战，违者打入地狱。他自己登上伊达山巅，黄金天平两端各放特洛伊与希腊的命运砝码——希腊的一端沉向大地。天平一倾，他的雷霆劈在希腊军阵中央，天地变色。</p><p class="more"><a href="index.php/archives/12/" title="卷八 · 宙斯掌秤，特洛伊反攻">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/13/">卷九 · 使团求和</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-22T01:35:43+00:00" itemprop="datePublished">2026-10-22</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/13/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>三位使者来到阿喀琉斯营中。他正在弹琴低唱英雄往事，见到老友起身相迎——哪怕在盛怒之中，他也以礼相待。宴罢，奥德修斯陈说军情：特洛伊人已逼到船边，希腊人的存亡系于英雄一身；随后他转述阿伽门农的道歉与厚礼——七城、女俘、金银，直至布里塞伊斯本人，还有战后共分战利、结为姻亲的许诺。</p><p class="more"><a href="index.php/archives/13/" title="卷九 · 使团求和">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/14/">卷十 · 夜袭敌营</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-21T01:35:43+00:00" itemprop="datePublished">2026-10-21</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/14/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>（研究者认为本卷为后人补入，但故事自成一体，且颇为精彩。）</p><p class="more"><a href="index.php/archives/14/" title="卷十 · 夜袭敌营">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/15/">卷十一 · 众将血战，英雄渐伤</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-20T01:35:43+00:00" itemprop="datePublished">2026-10-20</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/15/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>破晓，宙斯把"争斗"女神放到希腊人的战船上，自己登上伊达山观战。白日之战异常惨烈：阿伽门农一马当先，连斩特洛伊名将，杀得敌军直退到城墙下——凡人在盛怒之下的爆发，几乎赶上了神明。但他的巅峰注定短暂：长矛伤臂、箭镞中腿，又中了枪，他被迫退出战场。</p><p class="more"><a href="index.php/archives/15/" title="卷十一 · 众将血战，英雄渐伤">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/16/">卷十二 · 壁垒失守</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-19T01:35:43+00:00" itemprop="datePublished">2026-10-19</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/16/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>特洛伊人冲到壕沟前。这道壕沟既深且宽，沟上壁垒直插尖桩，战马难以跨越。天象也在帮特洛伊：波塞冬远在色萨利，宙斯亲手推波助澜——萨佩冬（宙斯与凡女之子，吕基亚王）对格劳科斯说出了全诗最豪迈的话：你我为何受人尊崇、坐拥良田美眷？因为我们必须站在最前列！人终有一死，不如在荣耀中战死。说罢两人率吕基亚人顶着箭雨扑向壁垒。</p><p class="more"><a href="index.php/archives/16/" title="卷十二 · 壁垒失守">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/17/">卷十三 · 船边的死斗</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-18T01:35:43+00:00" itemprop="datePublished">2026-10-18</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/17/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>宙斯的目光暂时转向了别处。海神波塞冬抓住这个空档，化作老先知卡尔卡斯的样子，出现在阵中——他是阿伽门农的兄长辈，海之君主，岂能眼睁睁看着弟弟们的船被烧？他重振两名埃阿斯的士气，又奔赴各处激励将领，希腊人的阵线奇迹般地稳住了。</p><p class="more"><a href="index.php/archives/17/" title="卷十三 · 船边的死斗">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/18/">卷十四 · 神后设局，战局逆转</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-17T01:35:43+00:00" itemprop="datePublished">2026-10-17</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/18/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>阿伽门农带伤来到船边，彻底灰心了：撤吧，把船拖下水，趁夜逃回希腊！这话让奥德修斯瞪圆了眼：让全军听听这话，他们立刻就造反——统帅说出这种丧气话，成何体统！老将涅斯托尔折中：船来不及下水，先退守船营死战。众人应允，各自回阵。</p><p class="more"><a href="index.php/archives/18/" title="卷十四 · 神后设局，战局逆转">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/19/">卷十五 · 火烧船尾</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-16T01:35:43+00:00" itemprop="datePublished">2026-10-16</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/19/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>宙斯一觉醒来，看穿了妻子的把戏。他把赫拉训斥一番，又强行让伊里斯传令：波塞冬立刻退出战场。海神不服，与侄子顶撞了几句"你管得着吗"，但终究不愿兄弟阋墙，怏怏离阵。他留下狠话：若城破之日我的庙宇被焚，你我新账旧账一起算。</p><p class="more"><a href="index.php/archives/19/" title="卷十五 · 火烧船尾">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/20/">卷十六 · 帕特洛克罗斯出战</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-15T01:35:43+00:00" itemprop="datePublished">2026-10-15</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/20/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="usr/uploads/homer/iliad_05_patroclus_death.webp" alt="" title=""></p><p class="more"><a href="index.php/archives/20/" title="卷十六 · 帕特洛克罗斯出战">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/21/">卷十七 · 尸体争夺战</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-14T01:35:43+00:00" itemprop="datePublished">2026-10-14</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/21/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>帕特洛克罗斯的遗体成了新的战场焦点。赫克托耳剥下那副阿喀琉斯的甲胄披挂上身——宙斯在云端摇头叹息：你穿上它，死期也不远了。墨涅拉俄斯在尸边挺矛死守，如一头护犊的母牛；埃阿斯赶到，两人背靠背立成一座铜墙铁壁。赫克托耳几次扑上来，都被顶了回去。</p><p class="more"><a href="index.php/archives/21/" title="卷十七 · 尸体争夺战">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/22/">卷十八 · 神匠铸甲</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-13T01:35:43+00:00" itemprop="datePublished">2026-10-13</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/22/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>噩耗传来，阿喀琉斯扑倒在地，抓起灰土撒向头脸，瘫在尘埃里，长长的悲鸣声穿过了壕沟，直震两军阵线。母亲忒提斯从海底赶来，抱住儿子的头。他说出了那句话：挚友死了，我杀死了他；我曾当众说过不再参战，如今我唯一想要的，是亲手杀死赫克托耳。忒提斯泪如雨下：儿啊，你杀他之后，自己的死期也到了。阿喀琉斯回答：那就让我立刻死去！</p><p class="more"><a href="index.php/archives/22/" title="卷十八 · 神匠铸甲">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/23/">卷十九 · 誓师出征</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-12T01:35:43+00:00" itemprop="datePublished">2026-10-12</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/23/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>黎明前，忒提斯把新甲送到，阿喀琉斯披挂上正。他召集全军，当众宣布：我放下怒气，重回战场——战争等不了人。阿伽门农起身"道歉"，却说了一句经典甩锅："是神让我一时发昏，宙斯和阿特丢失的怨火最难消退。"他抬出满车礼物，包括原样送回的布里塞伊斯，并指神起誓：自己从未染指她。</p><p class="more"><a href="index.php/archives/23/" title="卷十九 · 誓师出征">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/24/">卷二十 · 诸神参战</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-11T01:35:43+00:00" itemprop="datePublished">2026-10-11</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/24/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>宙斯终于解禁：众神随意下场，各自帮衬一方——免得阿喀琉斯违逆命运、提前攻陷特洛伊。奥林匹斯山顿时空了一半：雅典娜、赫拉、波塞冬、赫尔墨斯、赫菲斯托斯为希腊而战；阿瑞斯、阿波罗、阿佛洛狄忒、阿尔忒弥斯、勒托与河神珊托斯特洛伊而战。</p><p class="more"><a href="index.php/archives/24/" title="卷二十 · 诸神参战">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/25/">卷二十一 · 河神之战</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-10T01:35:43+00:00" itemprop="datePublished">2026-10-10</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/25/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>特洛伊人溃败，分成两路逃命。一路逃进城去，普里阿摩斯下令紧闭城门，任凭城外的人哭嚎，一条命换全城的命；另一路被赶进斯卡曼德河中。阿喀琉斯跳进水里，用长矛点名：抓住特洛伊人的儿子！他生擒十二名青年，留作帕特洛克罗斯葬礼上的祭品；又亲手杀死前来求饶的吕卡翁——王子赤身从河里爬出来抱住他的膝，他冷冷地回答：帕特洛克罗斯死了，你就别想活。河里漂满了尸体。</p><p class="more"><a href="index.php/archives/25/" title="卷二十一 · 河神之战">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/26/">卷二十二 · 赫克托耳之死</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-09T01:35:43+00:00" itemprop="datePublished">2026-10-09</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/26/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="usr/uploads/homer/iliad_04_achilles_hector_duel.webp" alt="" title=""></p><p class="more"><a href="index.php/archives/26/" title="卷二十二 · 赫克托耳之死">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/27/">卷二十三 · 葬礼竞技</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-08T01:35:43+00:00" itemprop="datePublished">2026-10-08</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/27/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>当晚，密尔弥多纳人护送帕特洛克罗斯的遗体回到营中。阿喀琉斯把杀人复仇的怒火按下，与全军一起哀悼挚友：灵床边供上剪下的鬃发、涂满蜂蜜与油脂的羊牛，又在火堆上杀马、杀犬、杀那十二名特洛伊青年——青铜时代的葬礼，残酷而虔诚。深夜，阿喀琉斯搂着遗体痛哭，恍惚间看见挚友的魂魄立在床头：快些火化我，让我渡过冥河；我们还要在同一场战事里再见——不，那不是重逢。</p><p class="more"><a href="index.php/archives/27/" title="卷二十三 · 葬礼竞技">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/28/">卷二十四 · 老王的赎金</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-07T01:35:43+00:00" itemprop="datePublished">2026-10-07</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/28/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="usr/uploads/homer/iliad_06_priam_ransom.webp" alt="" title=""></p><p class="more"><a href="index.php/archives/28/" title="卷二十四 · 老王的赎金">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/29/">尾声 · 木马计</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-06T01:35:43+00:00" itemprop="datePublished">2026-10-06</time>
+            </li>
+            <li>分类: <a href="index.php/category/iliad/">伊利亚特</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/29/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="usr/uploads/homer/iliad_07_trojan_horse.webp" alt="" title=""></p><p class="more"><a href="index.php/archives/29/" title="尾声 · 木马计">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/30/">奥德赛 · 导读</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-05T01:35:43+00:00" itemprop="datePublished">2026-10-05</time>
+            </li>
+            <li>分类: <a href="index.php/category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/30/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p><img loading="lazy" src="usr/uploads/homer/odyssey_01_cover.webp" alt="" title=""></p><p class="more"><a href="index.php/archives/30/" title="奥德赛 · 导读">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/31/">卷一 · 神明定计</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-04T01:35:43+00:00" itemprop="datePublished">2026-10-04</time>
+            </li>
+            <li>分类: <a href="index.php/category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/31/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>特洛伊陷落后第十年，一切都已尘埃落定，唯独奥德修斯杳无音信。此刻他正被扣在世界尽头的俄古癸亚岛上——女神卡吕普索许他长生不老，留他做丈夫，而故国伊萨卡的王宫里，一百多名求婚者正赖着不走：白吃他的牛羊，逼他妻子改嫁，吵闹声能传到天上。</p><p class="more"><a href="index.php/archives/31/" title="卷一 · 神明定计">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="index.php/archives/32/">卷二 · 出走寻父</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="index.php/author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-10-03T01:35:43+00:00" itemprop="datePublished">2026-10-03</time>
+            </li>
+            <li>分类: <a href="index.php/category/odyssey/">奥德赛</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="index.php/archives/32/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>次日，忒勒马科斯召集民众大会——自奥德修斯出海以来，伊萨卡二十年没有开过大会。他首次公开控诉：求婚者糟蹋家产，纠缠母亲，请你们主持公道！求婚者头目安提诺俄斯反唇相讥：错在你母亲！她用织寿衣的把戏拖了我们三年——白天织，夜里拆，直到被叛仆告发。要么让她回娘家，要么指给她嫁谁。老先知哈尔忒瑞斯则透露了一条不祥的消息：奥德修斯或许正被困在海岛上，回家难了。</p><p class="more"><a href="index.php/archives/32/" title="卷二 · 出走寻父">阅读剩余部分</a></p>            </div>
+        </article>
+        
+    <ol class="page-navigator"><li class="current"><a href="index.php/page/1/">1</a></li><li><a href="index.php/page/2/">2</a></li><li><a href="index.php/page/3/">3</a></li><li class="next"><a href="index.php/page/2/">后一页 &raquo;</a></li></ol></div><!-- end #main-->
+
+<div class="col-mb-12 col-offset-1 col-3 kit-hidden-tb" id="secondary" role="complementary">
+            <section class="widget">
+            <h3 class="widget-title">最新文章</h3>
+            <ul class="widget-list">
+                <li><a href="index.php/archives/3/">伊利亚特 · 导读</a></li><li><a href="index.php/archives/4/">序曲 · 金苹果之争</a></li><li><a href="index.php/archives/5/">卷一 · 瘟疫与争吵</a></li><li><a href="index.php/archives/6/">卷二 · 梦兆与全军检阅</a></li><li><a href="index.php/archives/7/">卷三 · 城头看海伦，阵前赌海伦</a></li><li><a href="index.php/archives/8/">卷四 · 盟誓破产，烽火重燃</a></li><li><a href="index.php/archives/9/">卷五 · 狄俄墨得斯的荣光</a></li><li><a href="index.php/archives/10/">卷六 · 赫克托耳与安德洛玛刻</a></li><li><a href="index.php/archives/11/">卷七 · 埃阿斯单挑赫克托耳</a></li><li><a href="index.php/archives/12/">卷八 · 宙斯掌秤，特洛伊反攻</a></li>            </ul>
+        </section>
+    
+    
+            <section class="widget">
+            <h3 class="widget-title">分类</h3>
+            <ul class="widget-list"><li class="category-level-0 category-parent"><a href="index.php/category/iliad/">伊利亚特</a></li><li class="category-level-0 category-parent"><a href="index.php/category/odyssey/">奥德赛</a></li><li class="category-level-0 category-parent"><a href="index.php/category/analysis/">解读</a></li><li class="category-level-0 category-parent"><a href="index.php/category/knowledge/">知识点</a></li><li class="category-level-0 category-parent"><a href="index.php/category/extended/">扩展阅读</a></li></ul>        </section>
+    
+            <section class="widget">
+            <h3 class="widget-title">归档</h3>
+            <ul class="widget-list">
+                <li><a href="index.php/2026/11/">2026年11月</a></li><li><a href="index.php/2026/10/">2026年10月</a></li><li><a href="index.php/2026/09/">2026年9月</a></li><li><a href="index.php/2026/08/">2026年8月</a></li>            </ul>
+        </section>
+    
+            <section class="widget">
+            <h3 class="widget-title">其它</h3>
+            <ul class="widget-list">
+                <li class="last"><a href="index.php/feed/">文章 RSS</a></li>
+                <li><a href="https://typecho.org">Typecho</a></li>
+            </ul>
+        </section>
+    
+</div><!-- end #sidebar -->
+
+        </div><!-- end .row -->
+    </div>
+</div><!-- end #body -->
+
+<footer id="footer" role="contentinfo">
+    &copy; 2026 <a href="https://0xaacodeislaw.github.io/homer-epics/">荷马史诗</a>.
+    由 <a href="https://typecho.org">Typecho</a> 强力驱动.
+</footer><!-- end #footer -->
+
+<script src="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/site.js" defer></script>
+<script src="/homer-epics/apps/tracker.js"></script></body>
+</html>

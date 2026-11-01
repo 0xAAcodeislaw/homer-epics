@@ -1,0 +1,442 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>分类 解读 下的文章 - 荷马史诗</title>
+
+    <!-- 使用url函数转换相关路径 -->
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/normalize.css">
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/grid.css">
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/style.css">
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/appearance.css">
+        <meta property="og:type" content="website">
+    <meta property="og:site_name" content="荷马史诗">
+    <meta property="og:title" content="荷马史诗">
+    <meta property="og:description" content="《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事">
+    <meta property="og:url" content="https://0xaacodeislaw.github.io/homer-epics/">
+    <meta property="og:image" content="https://0xaacodeislaw.github.io/homer-epics/usr/uploads/homer/iliad_07_trojan_horse.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="荷马史诗">
+    <meta name="twitter:description" content="《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事">
+    <meta name="twitter:image" content="https://0xaacodeislaw.github.io/homer-epics/usr/uploads/homer/iliad_07_trojan_horse.jpg">
+        <script>
+    (function () {
+        var KEY = 'homer-appearance', p;
+        try { p = localStorage.getItem(KEY); } catch (e) { p = null; }
+        if (p !== 'light' && p !== 'dark') {
+            p = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
+        if (p === 'dark') document.documentElement.setAttribute('data-appearance', 'dark');
+        /* 风格变体尽早注入，避免闪白（终端/代码/黑客帝国/霓虹） */
+        var t = null;
+        try { t = localStorage.getItem('homer-theme'); } catch (e) { t = null; }
+        var VARIANTS = { terminal: 'theme-terminal.css', code: 'theme-code.css',
+                         matrix: 'theme-matrix.css', cyber: 'theme-cyber.css' };
+        if (VARIANTS[t]) {
+            document.documentElement.setAttribute('data-style', t);
+            var bl = document.querySelector('link[href*="style.css"]');
+            if (bl) {
+                var vl = document.createElement('link');
+                vl.rel = 'stylesheet';
+                vl.href = bl.getAttribute('href').replace(/style\.css.*$/, '') + VARIANTS[t];
+                document.head.appendChild(vl);
+            }
+        }
+    })();
+    </script>
+
+    <!-- 通过自有函数输出HTML头部信息 -->
+    <link rel="pingback" href="../../action/xmlrpc" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../action/xmlrpc%3Frsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../action/xmlrpc%3Fwlw" />
+<link rel="alternate" type="application/rss+xml" title="解读 &raquo; 荷马史诗 &raquo; RSS 2.0" href="../../feed/category/analysis/" />
+<link rel="alternate" type="application/rdf+xml" title="解读 &raquo; 荷马史诗 &raquo; RSS 1.0" href="../../feed/rss/category/analysis/" />
+<link rel="alternate" type="application/atom+xml" title="解读 &raquo; 荷马史诗 &raquo; ATOM 1.0" href="../../feed/atom/category/analysis/" />
+<meta name="description" content="读懂史诗：主题、结构与两千年回声" />
+<meta name="keywords" content="解读" />
+<meta name="generator" content="Typecho 1.3.0" />
+<meta name="template" content="default" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://0xaacodeislaw.github.io/homer-epics/index.php/category/analysis/" />
+<meta name="twitter:title" property="og:title" itemprop="name" content="解读" />
+<meta name="twitter:description" property="og:description" itemprop="description" content="读懂史诗：主题、结构与两千年回声" />
+<meta property="og:site_name" content="荷马史诗" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:domain" content="0xaacodeislaw.github.io" />
+    <script src="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/appearance.js" defer></script>
+    <script src="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/styleswitch.js" defer></script>
+<link rel="canonical" href="https://homer-epics.pages.dev/index.php/category/analysis/">
+<body>
+
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="site-name col-mb-12 col-9">
+                                    <a id="logo" href="https://0xaacodeislaw.github.io/homer-epics/">荷马史诗</a>
+                    <p class="description">《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事</p>
+                            </div>
+            <div class="site-search col-3 kit-hidden-tb">
+                <form id="search" method="get" action="../../../apps/search.html" role="search">
+                    <label for="s" class="sr-only">搜索关键字</label>
+                    <input type="text" id="s" name="q" class="text" placeholder="输入关键字搜索"/>
+                    <button type="submit" class="submit">搜索</button>
+                </form>
+            </div>
+            <div class="col-mb-12">
+                <nav id="nav-menu" class="clearfix" role="navigation">
+                    <a                        href="https://0xaacodeislaw.github.io/homer-epics/">首页</a>
+                                                                <a                            href="../../extended.html"
+                            title="扩展阅读">扩展阅读</a>
+                                            <a                            href="../../catalog.html"
+                            title="全站目录">全站目录</a>
+                                            <a                            href="../../about.html"
+                            title="关于本站">关于本站</a>
+                                            <select id="style-toggle" aria-label="选择风格"
+                                title="选择风格：典藏 → 终端 → 代码 → 黑客帝国 → 霓虹">
+                            <option value="classic">风格 · 典藏</option>
+                            <option value="terminal">风格 · 终端</option>
+                            <option value="code">风格 · 代码</option>
+                            <option value="matrix">风格 · 黑客帝国</option>
+                            <option value="cyber">风格 · 霓虹</option>
+                        </select>
+                        <select id="appearance-toggle" aria-label="选择外观"
+                                title="选择外观：跟随系统 / 浅色 / 深色">
+                            <option value="auto">外观 · 跟随系统</option>
+                            <option value="light">外观 · 浅色</option>
+                            <option value="dark">外观 · 深色</option>
+                        </select>
+                </nav>
+            </div>
+        </div><!-- end .row -->
+    </div>
+</header><!-- end #header -->
+<div id="body">
+    <div class="container">
+        <div class="row">
+
+    
+    
+
+<div class="col-mb-12 col-8" id="main" role="main">
+        <h3 class="archive-title">分类 解读 下的文章</h3>
+                    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/55/">荷马是谁？——史诗的作者之谜</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-10T01:35:43+00:00" itemprop="datePublished">2026-09-10</time>
+            </li>
+            <li>分类: <a href="./">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/55/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>两部史诗庄严开篇，都唤着一个名字："女神啊，请歌唱珀琉斯之子阿喀琉斯的愤怒"——歌唱者悬请缪斯，而缪斯的代言人，传统上叫荷马。可这位奠定了整个西方文学起点的人物，我们几乎一无所知：他是谁？生活在什么时候？真的存在过吗？</p><p class="more"><a href="../../archives/55/" title="荷马是谁？——史诗的作者之谜">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/56/">特洛伊是真的吗？——神话背后的考古</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-09T01:35:43+00:00" itemprop="datePublished">2026-09-09</time>
+            </li>
+            <li>分类: <a href="./">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/56/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>两千年来，特洛伊被视为传说。直到十九世纪，一个相信荷马的德国商人真的挖出了一座城。</p><p class="more"><a href="../../archives/56/" title="特洛伊是真的吗？——神话背后的考古">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/57/">口传的机器——六音步、程式与歌者</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-08T01:35:43+00:00" itemprop="datePublished">2026-09-08</time>
+            </li>
+            <li>分类: <a href="./">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/57/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>《伊利亚特》一万五千多行，《奥德赛》一万两千多行——在没有文字的时代，这样的篇幅如何流传？答案是：不靠背诵，靠"生成"。</p><p class="more"><a href="../../archives/57/" title="口传的机器——六音步、程式与歌者">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/58/">阿喀琉斯的选择——愤怒史诗的核心</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-07T01:35:43+00:00" itemprop="datePublished">2026-09-07</time>
+            </li>
+            <li>分类: <a href="./">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/58/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>《伊利亚特》的第一个词是"愤怒"（μῆνις）。整部一万五千行的史诗，从愤怒开始，到愤怒平息结束。读懂这个愤怒，就读懂了这部诗。</p><p class="more"><a href="../../archives/58/" title="阿喀琉斯的选择——愤怒史诗的核心">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/59/">神明何用？——奥林匹斯的叙事功能</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-06T01:35:43+00:00" itemprop="datePublished">2026-09-06</time>
+            </li>
+            <li>分类: <a href="./">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/59/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>读荷马的人常有一个疑问：神怎么到处插手？打斗要请神助阵，选边要靠掷签，连人心的动摇都归给一位下凡的女神。这算不算是"迷信"？</p><p class="more"><a href="../../archives/59/" title="神明何用？——奥林匹斯的叙事功能">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/60/">荣耀的代价——英雄文化的运行逻辑</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-05T01:35:43+00:00" itemprop="datePublished">2026-09-05</time>
+            </li>
+            <li>分类: <a href="./">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/60/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>英雄们为什么打十年仗不回家？答案藏在两个希腊词里：克罗斯（kleos）与提墨（timē）。</p><p class="more"><a href="../../archives/60/" title="荣耀的代价——英雄文化的运行逻辑">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/61/">客谊法则——宙斯看护的陌生人</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-04T01:35:43+00:00" itemprop="datePublished">2026-09-04</time>
+            </li>
+            <li>分类: <a href="./">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/61/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>《奥德赛》里，一个陌生人可以走进陌生人的家门，吃住三日，临行获赠重礼，而主人分文不取。这不是奇风异俗，而是一整套神圣制度：客谊（xenia）。</p><p class="more"><a href="../../archives/61/" title="客谊法则——宙斯看护的陌生人">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/62/">智谋与归乡——《奥德赛》的另一条英雄标准</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-03T01:35:43+00:00" itemprop="datePublished">2026-09-03</time>
+            </li>
+            <li>分类: <a href="./">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/62/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>如果说《伊利亚特》是一部"力量"的史诗，《奥德赛》就是一部"智谋"的史诗。它的第一行就给主角定了性：那个"辗转多谋"（polytropos）的人——走过许多城邦、见过许多人心、拐过无数弯路的人。</p><p class="more"><a href="../../archives/62/" title="智谋与归乡——《奥德赛》的另一条英雄标准">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/63/">织机与长弓——史诗中的女性</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-02T01:35:43+00:00" itemprop="datePublished">2026-09-02</time>
+            </li>
+            <li>分类: <a href="./">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/63/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>荷马史诗是男人的战场，但撑起两部长诗骨架的，是一群女性：女神、王后、公主、女俘、老乳母。读她们，能读出史诗最柔软也最锋利的一面。</p><p class="more"><a href="../../archives/63/" title="织机与长弓——史诗中的女性">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/64/">一面盾上的世界——史诗的艺术与人间</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-01T01:35:43+00:00" itemprop="datePublished">2026-09-01</time>
+            </li>
+            <li>分类: <a href="./">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/64/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>《伊利亚特》第十八卷，战事正酣，诗人却按下了暂停键，用了约一百三十行，描写神匠赫菲斯托斯为阿喀琉斯锻造新盾。这段"盾之描写"是西方文学最早的器物诗，也是全诗的隐藏核心。</p><p class="more"><a href="../../archives/64/" title="一面盾上的世界——史诗的艺术与人间">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/65/">讲故事的艺术——荷马的叙事技巧</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-08-31T01:35:43+00:00" itemprop="datePublished">2026-08-31</time>
+            </li>
+            <li>分类: <a href="./">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/65/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>荷马是西方第一位"小说家"——尽管他写的是诗。两部史诗的叙事技巧，至今仍是写作课的范本。</p><p class="more"><a href="../../archives/65/" title="讲故事的艺术——荷马的叙事技巧">阅读剩余部分</a></p>            </div>
+        </article>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <h2 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="../../archives/66/">两千八百年的回声——荷马的接受史</a>
+    </h2>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-08-30T01:35:43+00:00" itemprop="datePublished">2026-08-30</time>
+            </li>
+            <li>分类: <a href="./">解读</a></li>
+                            <li itemprop="interactionCount">
+                    <a itemprop="discussionUrl"
+                       href="../../archives/66/index.html#comments">暂无评论</a>
+                </li>
+                    </ul>
+                <div class="post-content" itemprop="articleBody">
+                <p>荷马之后，几乎没有一位西方作家能绕开他。读懂他的接受史，等于拿到了半部西方文学史的地图。</p><p class="more"><a href="../../archives/66/" title="两千八百年的回声——荷马的接受史">阅读剩余部分</a></p>            </div>
+        </article>
+        
+    </div><!-- end #main-->
+
+<div class="col-mb-12 col-offset-1 col-3 kit-hidden-tb" id="secondary" role="complementary">
+            <section class="widget">
+            <h3 class="widget-title">最新文章</h3>
+            <ul class="widget-list">
+                <li><a href="../../archives/3/">伊利亚特 · 导读</a></li><li><a href="../../archives/4/">序曲 · 金苹果之争</a></li><li><a href="../../archives/5/">卷一 · 瘟疫与争吵</a></li><li><a href="../../archives/6/">卷二 · 梦兆与全军检阅</a></li><li><a href="../../archives/7/">卷三 · 城头看海伦，阵前赌海伦</a></li><li><a href="../../archives/8/">卷四 · 盟誓破产，烽火重燃</a></li><li><a href="../../archives/9/">卷五 · 狄俄墨得斯的荣光</a></li><li><a href="../../archives/10/">卷六 · 赫克托耳与安德洛玛刻</a></li><li><a href="../../archives/11/">卷七 · 埃阿斯单挑赫克托耳</a></li><li><a href="../../archives/12/">卷八 · 宙斯掌秤，特洛伊反攻</a></li>            </ul>
+        </section>
+    
+    
+            <section class="widget">
+            <h3 class="widget-title">分类</h3>
+            <ul class="widget-list"><li class="category-level-0 category-parent"><a href="../iliad/">伊利亚特</a></li><li class="category-level-0 category-parent"><a href="../odyssey/">奥德赛</a></li><li class="category-level-0 category-parent"><a href="./">解读</a></li><li class="category-level-0 category-parent"><a href="../knowledge/">知识点</a></li><li class="category-level-0 category-parent"><a href="../extended/">扩展阅读</a></li></ul>        </section>
+    
+            <section class="widget">
+            <h3 class="widget-title">归档</h3>
+            <ul class="widget-list">
+                <li><a href="../../2026/11/">2026年11月</a></li><li><a href="../../2026/10/">2026年10月</a></li><li><a href="../../2026/09/">2026年9月</a></li><li><a href="../../2026/08/">2026年8月</a></li>            </ul>
+        </section>
+    
+            <section class="widget">
+            <h3 class="widget-title">其它</h3>
+            <ul class="widget-list">
+                <li class="last"><a href="../../feed/">文章 RSS</a></li>
+                <li><a href="https://typecho.org">Typecho</a></li>
+            </ul>
+        </section>
+    
+</div><!-- end #sidebar -->
+
+        </div><!-- end .row -->
+    </div>
+</div><!-- end #body -->
+
+<footer id="footer" role="contentinfo">
+    &copy; 2026 <a href="https://0xaacodeislaw.github.io/homer-epics/">荷马史诗</a>.
+    由 <a href="https://typecho.org">Typecho</a> 强力驱动.
+</footer><!-- end #footer -->
+
+<script src="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/site.js" defer></script>
+<script src="/homer-epics/apps/tracker.js"></script></body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>名场面画廊 · 荷马史诗</title>
+<style>
+  body { background: #faf9f6; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+         max-width: 980px; margin: 0 auto; padding: 24px 14px 50px; color: #333; line-height: 1.6; }
+  a { color: #2a5db0; text-decoration: none; } a:hover { text-decoration: underline; }
+  h1 { font-size: 22px; margin: 0 0 4px; } .back { font-size: 13px; color: #999; margin-bottom: 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+  figure { margin: 0; border: 1px solid #e6e6e6; border-radius: 8px; overflow: hidden; background: #fff; }
+  img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+  figcaption { padding: 8px 10px 10px; }
+  figcaption a { font-weight: 600; font-size: 13px; }
+  figcaption span { display: block; font-size: 12px; color: #999; margin-top: 2px; }
+</style>
+</head>
+<body>
+<h1>名场面画廊</h1>
+<div class="back"><a href="/">← 返回首页</a> · 全站插图按阅读顺序排列，点击进入对应章节</div>
+<div class="grid" id="grid">正在载入…</div>
+<script>
+(function () {
+  fetch('/homer-epics/apps/gallery-data.json?v=1793554554').then(function (r) { return r.json(); }).then(function (d) {
+    var html = '';
+    d.forEach(function (it) {
+      var t = String(it.t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+      html += '<figure><a href="' + it.u + '"><img loading="lazy" src="' + it.img +
+              '" alt="' + t + '"></a><figcaption><a href="' + it.u + '">' + t +
+              '</a><span>点击进入章节阅读</span></figcaption></figure>';
+    });
+    document.getElementById('grid').innerHTML = html;
+  }).catch(function () {
+    document.getElementById('grid').textContent = '画廊数据载入失败，请刷新重试。';
+  });
+})();
+</script>
+</body>
+</html>

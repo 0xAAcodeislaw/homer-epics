@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>特洛伊是真的吗？——神话背后的考古 - 荷马史诗</title>
+
+    <!-- 使用url函数转换相关路径 -->
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/normalize.css">
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/grid.css">
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/style.css">
+    <link rel="stylesheet" href="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/appearance.css">
+        <meta property="og:type" content="article">
+    <meta property="og:site_name" content="荷马史诗">
+    <meta property="og:title" content="特洛伊是真的吗？——神话背后的考古">
+    <meta property="og:description" content="《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事">
+    <meta property="og:url" content="https://0xaacodeislaw.github.io/homer-epics/index.php/archives/56/">
+    <meta property="og:image" content="https://0xaacodeislaw.github.io/homer-epics/usr/uploads/homer/iliad_07_trojan_horse.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="特洛伊是真的吗？——神话背后的考古">
+    <meta name="twitter:description" content="《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事">
+    <meta name="twitter:image" content="https://0xaacodeislaw.github.io/homer-epics/usr/uploads/homer/iliad_07_trojan_horse.jpg">
+        <script>
+    (function () {
+        var KEY = 'homer-appearance', p;
+        try { p = localStorage.getItem(KEY); } catch (e) { p = null; }
+        if (p !== 'light' && p !== 'dark') {
+            p = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
+        if (p === 'dark') document.documentElement.setAttribute('data-appearance', 'dark');
+        /* 风格变体尽早注入，避免闪白（终端/代码/黑客帝国/霓虹） */
+        var t = null;
+        try { t = localStorage.getItem('homer-theme'); } catch (e) { t = null; }
+        var VARIANTS = { terminal: 'theme-terminal.css', code: 'theme-code.css',
+                         matrix: 'theme-matrix.css', cyber: 'theme-cyber.css' };
+        if (VARIANTS[t]) {
+            document.documentElement.setAttribute('data-style', t);
+            var bl = document.querySelector('link[href*="style.css"]');
+            if (bl) {
+                var vl = document.createElement('link');
+                vl.rel = 'stylesheet';
+                vl.href = bl.getAttribute('href').replace(/style\.css.*$/, '') + VARIANTS[t];
+                document.head.appendChild(vl);
+            }
+        }
+    })();
+    </script>
+
+    <!-- 通过自有函数输出HTML头部信息 -->
+    <link rel="canonical" href="https://homer-epics.pages.dev/index.php/archives/56/">
+<link rel="pingback" href="../../action/xmlrpc" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../action/xmlrpc%3Frsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../action/xmlrpc%3Fwlw" />
+<link rel="alternate" type="application/rss+xml" title="特洛伊是真的吗？——神话背后的考古 &raquo; 荷马史诗 &raquo; RSS 2.0" href="../../feed/archives/56/" />
+<link rel="alternate" type="application/rdf+xml" title="特洛伊是真的吗？——神话背后的考古 &raquo; 荷马史诗 &raquo; RSS 1.0" href="../../feed/rss/archives/56/" />
+<link rel="alternate" type="application/atom+xml" title="特洛伊是真的吗？——神话背后的考古 &raquo; 荷马史诗 &raquo; ATOM 1.0" href="../../feed/atom/archives/56/" />
+<meta name="description" content="两千年来，特洛伊被视为传说。直到十九世纪，一个相信荷马的德国商人真的挖出了一座城。" />
+<meta name="generator" content="Typecho 1.3.0" />
+<meta name="template" content="default" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xaacodeislaw.github.io/homer-epics/index.php/archives/56/" />
+<meta name="twitter:title" property="og:title" itemprop="name" content="特洛伊是真的吗？——神话背后的考古" />
+<meta name="twitter:description" property="og:description" itemprop="description" content="两千年来，特洛伊被视为传说。直到十九世纪，一个相信荷马的德国商人真的挖出了一座城。" />
+<meta property="og:site_name" content="荷马史诗" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:domain" content="0xaacodeislaw.github.io" />
+<script type="text/javascript">
+(function () {
+    window.TypechoComment = {
+        dom : function (sel) {
+            return document.querySelector(sel);
+        },
+        
+        visiable: function (el, show) {
+            el.style.display = show ? '' : 'none';
+        },
+    
+        create : function (tag, attr) {
+            const el = document.createElement(tag);
+        
+            for (const key in attr) {
+                el.setAttribute(key, attr[key]);
+            }
+        
+            return el;
+        },
+        
+        inputParent: function (response, coid) {
+            const form = 'form' === response.tagName ? response : response.querySelector('form');
+            let input = form.querySelector('input[name=parent]');
+            
+            if (null == input && coid) {
+                input = this.create('input', {
+                    'type' : 'hidden',
+                    'name' : 'parent'
+                });
+
+                form.appendChild(input);
+            }
+            
+            if (coid) {
+                input.setAttribute('value', coid);
+            } else if (input) {
+                input.parentNode.removeChild(input);
+            }
+        },
+        
+        getChild: function (root, node) {
+            const parentNode = node.parentNode;
+            
+            if (parentNode === null) {
+                return null;
+            } else if (parentNode === root) {
+                return node;
+            } else {
+                return this.getChild(root, parentNode);
+            }
+        },
+
+        reply : function (htmlId, coid, btn) {
+            const response = this.dom('#respond-post-56'),
+                textarea = response.querySelector('textarea[name=text]'),
+                comment = this.dom('#' + htmlId),
+                child = this.getChild(comment, btn);
+
+            this.inputParent(response, coid);
+
+            if (this.dom('#respond-post-56-holder') === null) {
+                const holder = this.create('div', {
+                    'id' : 'respond-post-56-holder'
+                });
+
+                response.parentNode.insertBefore(holder, response);
+            }
+            
+            if (child) {
+                comment.insertBefore(response, child.nextSibling);
+            } else {
+                comment.appendChild(response);
+            }
+
+            this.visiable(this.dom('#cancel-comment-reply-link'), true);
+
+            if (null != textarea) {
+                textarea.focus();
+            }
+
+            return false;
+        },
+
+        cancelReply : function () {
+            const response = this.dom('#respond-post-56'),
+                holder = this.dom('#respond-post-56-holder');
+
+            this.inputParent(response, false);
+
+            if (null === holder) {
+                return true;
+            }
+
+            this.visiable(this.dom('#cancel-comment-reply-link'), false);
+            holder.parentNode.insertBefore(response, holder);
+            return false;
+        }
+    };
+})();
+</script><script type="text/javascript">
+(function () {
+    const events = ['scroll', 'mousemove', 'keyup', 'touchstart'];
+    let added = false;
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const response = document.querySelector('#respond-post-56');
+
+        if (null != response) {
+            const form = 'form' === response.tagName ? response : response.querySelector('form');
+            const input = document.createElement('input');
+            
+            input.type = 'hidden';
+            input.name = '_';
+            input.value = (function () {
+    var _Wv8T = //'0d'
+'2a'+//'I'
+'5'+//'yk2'
+'f6'+'c'//'sa3'
++//'GL'
+'06'+'4'//'fa'
++//'DQJ'
+'caa'+//'A'
+'01'+'0be'//'OMp'
++//'GC'
+'289'+//'B'
+'8'+'a4'//'3i'
++//'vt'
+'615'+//'K'
+'K'+//'tln'
+'54d'+/* 'j'//'j' */''+'f'//'f'
++'z'//'z'
++'c'//'A'
++'6'//'ON'
+, _uNN = [[26,27],[30,31]];
+    
+    for (var i = 0; i < _uNN.length; i ++) {
+        _Wv8T = _Wv8T.substring(0, _uNN[i][0]) + _Wv8T.substring(_uNN[i][1]);
+    }
+
+    return _Wv8T;
+})();;
+ 
+            if (form) {
+                function append() {
+                    if (!added) {
+                        form.appendChild(input);
+                        added = true;
+                    }
+                }
+            
+                for (const event of events) {
+                    window.addEventListener(event, append);
+                }
+            }
+        }
+    });
+})();
+</script>    <script src="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/appearance.js" defer></script>
+    <script src="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/styleswitch.js" defer></script>
+</head>
+<body>
+
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="site-name col-mb-12 col-9">
+                                    <a id="logo" href="https://0xaacodeislaw.github.io/homer-epics/">荷马史诗</a>
+                    <p class="description">《伊利亚特》与《奥德赛》：以中国连环画风重现的荷马史诗经典故事</p>
+                            </div>
+            <div class="site-search col-3 kit-hidden-tb">
+                <form id="search" method="get" action="../../../apps/search.html" role="search">
+                    <label for="s" class="sr-only">搜索关键字</label>
+                    <input type="text" id="s" name="q" class="text" placeholder="输入关键字搜索"/>
+                    <button type="submit" class="submit">搜索</button>
+                </form>
+            </div>
+            <div class="col-mb-12">
+                <nav id="nav-menu" class="clearfix" role="navigation">
+                    <a                        href="https://0xaacodeislaw.github.io/homer-epics/">首页</a>
+                                                                <a                            href="../../extended.html"
+                            title="扩展阅读">扩展阅读</a>
+                                            <a                            href="../../catalog.html"
+                            title="全站目录">全站目录</a>
+                                            <a                            href="../../about.html"
+                            title="关于本站">关于本站</a>
+                                            <select id="style-toggle" aria-label="选择风格"
+                                title="选择风格：典藏 → 终端 → 代码 → 黑客帝国 → 霓虹">
+                            <option value="classic">风格 · 典藏</option>
+                            <option value="terminal">风格 · 终端</option>
+                            <option value="code">风格 · 代码</option>
+                            <option value="matrix">风格 · 黑客帝国</option>
+                            <option value="cyber">风格 · 霓虹</option>
+                        </select>
+                        <select id="appearance-toggle" aria-label="选择外观"
+                                title="选择外观：跟随系统 / 浅色 / 深色">
+                            <option value="auto">外观 · 跟随系统</option>
+                            <option value="light">外观 · 浅色</option>
+                            <option value="dark">外观 · 深色</option>
+                        </select>
+                </nav>
+            </div>
+        </div><!-- end .row -->
+    </div>
+</header><!-- end #header -->
+<div id="body">
+    <div class="container">
+        <div class="row">
+
+    
+    
+
+<div class="col-mb-12 col-8" id="main" role="main">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+            <h1 class="post-title" itemprop="name headline">
+        <a itemprop="url"
+           href="./">特洛伊是真的吗？——神话背后的考古</a>
+    </h1>
+            <ul class="post-meta">
+            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
+                作者: <a itemprop="name"
+                                       href="../../author/1/"
+                                       rel="author">admin</a>
+            </li>
+            <li>时间:
+                <time datetime="2026-09-09T01:35:43+00:00" itemprop="datePublished">2026-09-09</time>
+            </li>
+            <li>分类: <a href="../../category/analysis/">解读</a></li>
+                    </ul>
+            <div class="post-content" itemprop="articleBody">
+            <p>两千年来，特洛伊被视为传说。直到十九世纪，一个相信荷马的德国商人真的挖出了一座城。</p><!--more--><h3>谢里曼与九层土丘</h3><p>1871 年起，德国实业家海因里希·谢里曼（Heinrich Schliemann）在土耳其西北的希萨利克（Hisarlik）土丘动土。他自幼痴迷《伊利亚特》，认定普里阿摩斯的城就在脚下。他真挖出了层层叠叠的古城遗址——土丘上先后叠压着九个时期的聚落，从公元前三千纪直到罗马时代。谢里曼认定第二层是特洛伊（其实早了一千多年），后来的学者认定：第六、第七层（约公元前十三世纪）才最接近荷马笔下的城市——有宏伟的斜墙、高大的城门，第七层还留有战乱与火灾的痕迹。</p><p><img loading="lazy" src="../../../usr/uploads/homer/wiki_troy_hisarlik.webp" alt="特洛伊遗址" title="特洛伊遗址"></p><blockquote>希萨利克土丘上的特洛伊遗址，今土耳其恰纳卡莱省，残墙即"荷马笔下的城墙"所在的地层。摄影：Jorge Láscar，CC BY 2.0，经维基共享资源。</blockquote><h3>泥板里的"伊里奥斯"</h3><p>更惊人的佐证来自档案。小亚细亚哈图沙出土的赫梯帝国泥板中，出现了"Ahiyawa"（极似"阿卡亚人"，即荷马口中的希腊联军）、"Wilusa"（极似"伊里奥斯/伊利亚特"的城名）与 Tarwisa（近于"特洛伊"）等地名，还记载了这一带的战事。这些对音仍存争议，但许多学者认为：荷马史诗确实保存了青铜时代晚期的某些历史记忆——一场或数场围绕达达尼尔海峡贸易要道爆发的争夺，在口耳相传五百年后，凝结成了特洛伊战争。</p><h3>传说与历史的边界</h3><p>不过要清醒：荷马的世界是"记忆加想象"。诗中的骑兵战术、铁器、神庙与葬俗混杂了迈锡尼时代与诗人自己时代（"黑暗时代"之后）的元素——考古学家芬利称之为"拼合的世界"。特洛伊之战未必以诗中描绘的方式发生，阿伽门农与阿喀琉斯也未必确有其人。真正奇迹般的，是口头传统能把三千年前的海风，一直吹到我们耳边。</p>        </div>
+        <p itemprop="keywords" class="tags">标签: none</p>
+    </article>
+
+    <div id="comments">
+        
+            <h3>评论已关闭</h3>
+    </div>
+
+    <ul class="post-near">
+        <li>上一篇: <a href="../55/" title="荷马是谁？——史诗的作者之谜">荷马是谁？——史诗的作者之谜</a></li>
+        <li>下一篇: <a href="../57/" title="口传的机器——六音步、程式与歌者">口传的机器——六音步、程式与歌者</a></li>
+    </ul>
+</div><!-- end #main-->
+
+<div class="col-mb-12 col-offset-1 col-3 kit-hidden-tb" id="secondary" role="complementary">
+            <section class="widget">
+            <h3 class="widget-title">最新文章</h3>
+            <ul class="widget-list">
+                <li><a href="../3/">伊利亚特 · 导读</a></li><li><a href="../4/">序曲 · 金苹果之争</a></li><li><a href="../5/">卷一 · 瘟疫与争吵</a></li><li><a href="../6/">卷二 · 梦兆与全军检阅</a></li><li><a href="../7/">卷三 · 城头看海伦，阵前赌海伦</a></li><li><a href="../8/">卷四 · 盟誓破产，烽火重燃</a></li><li><a href="../9/">卷五 · 狄俄墨得斯的荣光</a></li><li><a href="../10/">卷六 · 赫克托耳与安德洛玛刻</a></li><li><a href="../11/">卷七 · 埃阿斯单挑赫克托耳</a></li><li><a href="../12/">卷八 · 宙斯掌秤，特洛伊反攻</a></li>            </ul>
+        </section>
+    
+    
+            <section class="widget">
+            <h3 class="widget-title">分类</h3>
+            <ul class="widget-list"><li class="category-level-0 category-parent"><a href="../../category/iliad/">伊利亚特</a></li><li class="category-level-0 category-parent"><a href="../../category/odyssey/">奥德赛</a></li><li class="category-level-0 category-parent"><a href="../../category/analysis/">解读</a></li><li class="category-level-0 category-parent"><a href="../../category/knowledge/">知识点</a></li><li class="category-level-0 category-parent"><a href="../../category/extended/">扩展阅读</a></li></ul>        </section>
+    
+            <section class="widget">
+            <h3 class="widget-title">归档</h3>
+            <ul class="widget-list">
+                <li><a href="../../2026/11/">2026年11月</a></li><li><a href="../../2026/10/">2026年10月</a></li><li><a href="../../2026/09/">2026年9月</a></li><li><a href="../../2026/08/">2026年8月</a></li>            </ul>
+        </section>
+    
+            <section class="widget">
+            <h3 class="widget-title">其它</h3>
+            <ul class="widget-list">
+                <li class="last"><a href="../../feed/">文章 RSS</a></li>
+                <li><a href="https://typecho.org">Typecho</a></li>
+            </ul>
+        </section>
+    
+</div><!-- end #sidebar -->
+
+        </div><!-- end .row -->
+    </div>
+</div><!-- end #body -->
+
+<footer id="footer" role="contentinfo">
+    &copy; 2026 <a href="https://0xaacodeislaw.github.io/homer-epics/">荷马史诗</a>.
+    由 <a href="https://typecho.org">Typecho</a> 强力驱动.
+</footer><!-- end #footer -->
+
+<script src="https://0xaacodeislaw.github.io/homer-epics/usr/themes/default/site.js" defer></script>
+<script src="/homer-epics/apps/tracker.js"></script><div style="max-width:680px;margin:30px auto 0;padding:0 14px;"><script src="https://giscus.app/client.js" data-repo="0xAAcodeislaw/homer-epics" data-repo-id="R_kgDOVdTxYg" data-category="General" data-category-id="DIC_kwDOVdTxYs4DKJX5" data-mapping="specific" data-term="/index.php/archives/56/" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="noborder_light" data-lang="zh-CN" crossorigin="anonymous" async></script></div></body>
+</html>

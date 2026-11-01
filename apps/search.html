@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>全文搜索 · 荷马史诗</title>
+<style>
+  body { background: #faf9f6; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+         max-width: 680px; margin: 0 auto; padding: 28px 18px 60px; color: #333; line-height: 1.7; }
+  a { color: #2a5db0; text-decoration: none; } a:hover { text-decoration: underline; }
+  h1 { font-size: 22px; margin: 0 0 4px; } .back { font-size: 13px; color: #999; }
+  input { width: 100%; box-sizing: border-box; font-size: 16px; padding: 10px 12px;
+          border: 1px solid #ddd; border-radius: 6px; margin: 14px 0 6px; }
+  .tip { color: #999; font-size: 13px; margin-bottom: 18px; }
+  .cat { margin: 22px 0 8px; font-size: 14px; border-bottom: 1px solid #eee; padding-bottom: 4px; }
+  .cat a { color: #888; }
+  .cat a:hover { color: #2a5db0; }
+  li { margin: 8px 0; } .snippet { color: #777; font-size: 13px; display: block; margin-top: 2px; }
+  mark { background: #ffe9a8; padding: 0 2px; }
+  .empty { color: #bbb; margin-top: 30px; text-align: center; }
+</style>
+</head>
+<body>
+<h1>全文搜索</h1>
+<div class="back"><a href="/">← 返回首页</a> · 检索范围：全站文章</div>
+<input id="q" type="search" placeholder="输入关键词，如：赫克托耳、木马、客谊…" autofocus>
+<div class="tip" id="tip">正在载入索引…</div>
+<div id="results"></div>
+<script>
+(function () {
+  var DATA = null, CATS = { iliad: '伊利亚特', odyssey: '奥德赛', analysis: '解读',
+                            knowledge: '知识点', extended: '扩展阅读' };
+  var CATURL = { iliad: '/homer-epics/index.php/category/iliad/', odyssey: '/homer-epics/index.php/category/odyssey/',
+                 analysis: '/homer-epics/index.php/category/analysis/', knowledge: '/homer-epics/index.php/category/knowledge/',
+                 extended: '/homer-epics/index.php/category/extended/' };
+  var box = document.getElementById('results'), tip = document.getElementById('tip'),
+      input = document.getElementById('q');
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  fetch('/homer-epics/apps/search-data.json?v=1793554554').then(function (r) {
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(function (d) {
+    DATA = d; tip.textContent = '索引就绪：' + DATA.length + ' 篇。输入即搜。';
+    var qp = new URLSearchParams(location.search).get('q');
+    if (qp) { input.value = qp; render(qp); }
+    input.focus();
+  }).catch(function () { tip.textContent = '索引载入失败，请刷新重试。'; });
+
+  function render(q) {
+    var terms = q.trim().split(/\s+/).filter(function (t) { return t.length > 0; });
+    if (terms.length < 1) { box.innerHTML = ''; return; }
+    var groups = {}, n = 0;
+    DATA.forEach(function (it) {
+      var hayT = it.t, hayX = it.x, hayC = CATS[it.c] || it.c;
+      var hay = hayT + '\n' + hayC + '\n' + hayX;
+      for (var k = 0; k < terms.length; k++) {
+        if (hay.indexOf(terms[k]) < 0) return; // 所有关键词都须命中
+      }
+      n++;
+      var q = terms[0];
+      var snip = '';
+      if (posX >= 0) {
+        var s = Math.max(0, posX - 28);
+        snip = '…' + esc(hayX.slice(s, posX)) + '<mark>' + esc(q) + '</mark>' +
+               esc(hayX.slice(posX + q.length, posX + q.length + 56)) + '…';
+      } else if (hayX) {
+        snip = '…' + esc(hayX.slice(0, 84)) + '…';
+      }
+      var cat = hayC;
+      (groups[cat] = groups[cat] || []).push(
+        '<li><a href="' + it.u + '">' + esc(it.t) + '</a>' +
+        (snip ? '<span class="snippet">…' + snip + '</span>' : '') + '</li>');
+      groups[cat]._c = it.c;
+    });
+    if (!n) { box.innerHTML = '<div class="empty">没有找到与「' + esc(q) + '」相关的内容</div>'; return; }
+    var html = '';
+    for (var c in groups) {
+      var cu = CATURL[groups[c]._c] || '#';
+      html += '<div class="cat"><a href="' + cu + '">' + c + '（' + groups[c].length + '）</a></div><ul>' +
+              groups[c].join('') + '</ul>';
+    }
+    box.innerHTML = html;
+  }
+  input.addEventListener('input', function () { render(input.value); });
+})();
+</script>
+</body>
+</html>
