@@ -7,6 +7,7 @@ set -e
 rm -f config.inc.php usr/homer.db usr/installed.lock
 PROD_URL="${PROD_URL:-https://homer-epics.pages.dev}"
 PORT="${PORT:-8088}"
+REPO_SRC="$(git rev-parse --show-toplevel)"
 
 echo "==> 1/5 构建站点镜像（构建期自动安装 Typecho + 灌入 content/ 全部内容）"
 docker build -q --build-arg SITE_URL="$PROD_URL" -t homer-final . >/dev/null
@@ -56,7 +57,7 @@ find . -name "*.html" -not -path "./apps/*" -exec sed -i '' \
   "s|</body>|<script src=\"/apps/tracker.js\"></script></body>|" {} +
 
 echo "==> 4c/5 共享后处理（WebP/懒加载/404/giscus）"
-MIRROR="$(pwd)" BASE="" CANONICAL="" REPO_SRC="$(git rev-parse --show-toplevel)" \
+MIRROR="$(pwd)" BASE="" CANONICAL="" \
 GISCUS_REPO="${GISCUS_REPO:-R_kgDOVdTxYg}" GISCUS_CAT_ID="${GISCUS_CAT_ID:-DIC_kwDOVdTxYs4DKJX5}" \
 "$REPO_SRC/scripts/mirror-fix.sh"
 
