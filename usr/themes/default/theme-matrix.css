@@ -1,0 +1,108 @@
+/* ============================================================
+   荷马史诗 · 风格变体「黑客帝国」——纯黑 + 磷绿，字母雨由 styleswitch.js 驱动
+   ============================================================ */
+html[data-style="matrix"] {
+  --m-green: #00ff41;
+  --m-dim: #1a7a2e;
+  --m-fg: #b8e6c0;
+  --m-accent: #ccffcc;
+  --m-border: rgba(0, 255, 65, .28);
+}
+
+html[data-style="matrix"] body {
+  background: transparent; /* 画布字母雨在底层 */
+  color: var(--m-fg);
+  font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 15px;
+}
+html[data-style="matrix"] body::after {
+  /* 半透明暗幕垫在画布与正文之间，保证可读性 */
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(0, 6, 1, .58);
+  z-index: -1;
+}
+
+html[data-style="matrix"] ::selection { background: var(--m-green); color: #001a05; }
+
+html[data-style="matrix"] a { color: var(--m-green); }
+html[data-style="matrix"] a:hover { color: var(--m-accent); text-shadow: 0 0 9px rgba(0, 255, 65, .7); }
+
+html[data-style="matrix"] #header {
+  background: rgba(0, 14, 3, .82);
+  border-bottom: 1px solid var(--m-border);
+}
+html[data-style="matrix"] #logo {
+  color: var(--m-green);
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(0, 255, 65, .8);
+}
+html[data-style="matrix"] #logo::before { content: "> "; }
+html[data-style="matrix"] .description { color: var(--m-dim); }
+
+html[data-style="matrix"] #nav-menu a { color: var(--m-dim); }
+html[data-style="matrix"] #nav-menu a:hover,
+html[data-style="matrix"] #nav-menu .current {
+  color: var(--m-accent);
+  text-shadow: 0 0 8px rgba(0, 255, 65, .6);
+}
+
+html[data-style="matrix"] .site-search input.text,
+html[data-style="matrix"] .site-search button.submit {
+  background: rgba(0, 10, 2, .85);
+  border: 1px solid var(--m-border);
+  color: var(--m-fg);
+  font-family: inherit;
+}
+html[data-style="matrix"] .site-search button.submit { color: var(--m-green); }
+
+html[data-style="matrix"] .post { border-bottom: 1px solid var(--m-border); }
+html[data-style="matrix"] .post-title,
+html[data-style="matrix"] .post-title a { color: var(--m-green); text-shadow: 0 0 10px rgba(0, 255, 65, .5); }
+html[data-style="matrix"] .post-title::before { content: "◤ "; }
+html[data-style="matrix"] .post-meta,
+html[data-style="matrix"] .post-meta a { color: var(--m-dim); }
+
+html[data-style="matrix"] .post-content { color: var(--m-fg); line-height: 1.85; }
+html[data-style="matrix"] .post-content h2,
+html[data-style="matrix"] .post-content h3 { color: var(--m-green); text-shadow: 0 0 8px rgba(0, 255, 65, .4); }
+html[data-style="matrix"] .post-content a { border-bottom: 1px solid var(--m-border); }
+html[data-style="matrix"] blockquote {
+  border-left: 3px solid var(--m-green);
+  background: rgba(0, 40, 10, .55);
+  color: var(--m-fg);
+}
+html[data-style="matrix"] code {
+  background: rgba(0, 30, 8, .8);
+  color: var(--m-accent);
+  border: 1px solid var(--m-border);
+}
+html[data-style="matrix"] pre { background: rgba(0, 20, 5, .85); border: 1px solid var(--m-border); }
+html[data-style="matrix"] img {
+  border: 1px solid var(--m-border);
+  filter: saturate(.7) brightness(.9) sepia(.2) hue-rotate(60deg);
+}
+
+html[data-style="matrix"] #secondary { border-left: 1px solid var(--m-border); }
+html[data-style="matrix"] .widget-title { color: var(--m-green); }
+html[data-style="matrix"] .widget-list li { border-bottom: 1px solid var(--m-border); }
+html[data-style="matrix"] .widget-list li a { color: var(--m-fg); }
+
+html[data-style="matrix"] #footer { border-top: 1px solid var(--m-border); color: var(--m-dim); }
+html[data-style="matrix"] .page-navigator a { color: var(--m-dim); border: 1px solid var(--m-border); }
+html[data-style="matrix"] .page-navigator .current a { color: var(--m-green); border-color: var(--m-green); }
+
+html[data-style="matrix"] #read-progress { background: var(--m-green) !important; }
+html[data-style="matrix"] #to-top {
+  background: rgba(0, 14, 3, .9) !important;
+  color: var(--m-green) !important;
+  border: 1px solid var(--m-border) !important;
+}
+
+html[data-style="matrix"] #nav-menu select {
+  background: rgba(0, 10, 2, .85);
+  color: var(--m-green);
+  border: 1px solid var(--m-border);
+}

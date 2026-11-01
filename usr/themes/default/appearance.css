@@ -86,3 +86,10 @@ html[data-appearance="dark"] #footer { border-top: 1px solid #2b2f36; color: #76
 /* 深色下的插图边框（纸面画在暗底上略降亮度边框） */
 html[data-appearance="dark"] .post-content img,
 html[data-appearance="dark"] img { border-color: #2b2f36; }
+
+/* 深色外观下的导航下拉 */
+html[data-appearance="dark"] #nav-menu select {
+  background: #1a1d23;
+  color: #c6cbd2;
+  border-color: #2b2f36;
+}

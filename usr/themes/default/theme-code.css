@@ -127,3 +127,9 @@ html[data-style="code"][data-appearance="dark"] body {
   background: var(--c-bg);
   color: var(--c-fg);
 }
+
+html[data-style="code"] #nav-menu select {
+  background: #010409;
+  color: var(--c-blue);
+  border: 1px solid var(--c-border);
+}

@@ -34,7 +34,7 @@
     <meta name="twitter:title" content="<?php echo $ogTitle; ?>">
     <meta name="twitter:description" content="<?php echo $ogDesc; ?>">
     <meta name="twitter:image" content="<?php echo $ogImg; ?>">
-    <script>
+        <script>
     (function () {
         var KEY = 'homer-appearance', p;
         try { p = localStorage.getItem(KEY); } catch (e) { p = null; }
@@ -42,17 +42,18 @@
             p = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
         }
         if (p === 'dark') document.documentElement.setAttribute('data-appearance', 'dark');
-        /* 风格变体（终端/代码）尽早注入，避免闪白 */
+        /* 风格变体尽早注入，避免闪白（终端/代码/黑客帝国/霓虹） */
         var t = null;
         try { t = localStorage.getItem('homer-theme'); } catch (e) { t = null; }
-        if (t === 'terminal' || t === 'code') {
+        var VARIANTS = { terminal: 'theme-terminal.css', code: 'theme-code.css',
+                         matrix: 'theme-matrix.css', cyber: 'theme-cyber.css' };
+        if (VARIANTS[t]) {
             document.documentElement.setAttribute('data-style', t);
             var bl = document.querySelector('link[href*="style.css"]');
             if (bl) {
                 var vl = document.createElement('link');
                 vl.rel = 'stylesheet';
-                vl.href = bl.getAttribute('href').replace(/style\.css.*$/, '') +
-                          (t === 'terminal' ? 'theme-terminal.css' : 'theme-code.css');
+                vl.href = bl.getAttribute('href').replace(/style\.css.*$/, '') + VARIANTS[t];
                 document.head.appendChild(vl);
             }
         }
@@ -96,10 +97,20 @@
                             href="<?php $pages->permalink(); ?>"
                             title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a>
                     <?php endwhile; ?>
-                        <a id="style-toggle" href="javascript:void(0)" role="button"
-                           title="点击切换：典藏 → 终端 → 代码">风格</a>
-                        <a id="appearance-toggle" href="javascript:void(0)" role="button"
-                           title="点击切换：跟随系统 → 浅色 → 深色">外观</a>
+                        <select id="style-toggle" aria-label="选择风格"
+                                title="选择风格：典藏 → 终端 → 代码 → 黑客帝国 → 霓虹">
+                            <option value="classic">风格 · 典藏</option>
+                            <option value="terminal">风格 · 终端</option>
+                            <option value="code">风格 · 代码</option>
+                            <option value="matrix">风格 · 黑客帝国</option>
+                            <option value="cyber">风格 · 霓虹</option>
+                        </select>
+                        <select id="appearance-toggle" aria-label="选择外观"
+                                title="选择外观：跟随系统 / 浅色 / 深色">
+                            <option value="auto">外观 · 跟随系统</option>
+                            <option value="light">外观 · 浅色</option>
+                            <option value="dark">外观 · 深色</option>
+                        </select>
                 </nav>
             </div>
         </div><!-- end .row -->

@@ -69,7 +69,7 @@
   function giscusTheme() {
     var st = document.documentElement.getAttribute('data-style');
     var dark = document.documentElement.getAttribute('data-appearance') === 'dark' ||
-               st === 'terminal' || st === 'code';
+               st === 'terminal' || st === 'code' || st === 'matrix' || st === 'cyber';
     var theme = dark ? (st === 'classic' ? 'dark' : 'noborder_dark') : 'noborder_light';
     var frame = document.querySelector('iframe.giscus-frame');
     if (frame) frame.contentWindow.postMessage({

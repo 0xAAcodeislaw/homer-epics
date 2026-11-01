@@ -143,3 +143,9 @@ html[data-style="terminal"][data-appearance="dark"] body {
   background: var(--t-bg);
   color: var(--t-fg);
 }
+
+html[data-style="terminal"] #nav-menu select {
+  background: var(--t-panel);
+  color: var(--t-accent);
+  border: 1px dashed var(--t-border);
+}

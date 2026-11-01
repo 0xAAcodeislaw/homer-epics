@@ -32,7 +32,7 @@ wget -q -r -np -N --convert-links --adjust-extension --page-requisites -e robots
 rm -rf admin action
 
 echo "==> 4/7 补齐主题/工具页并做子路径适配"
-for f in grid.css normalize.css style.css appearance.css appearance.js styleswitch.js theme-terminal.css theme-code.css; do
+for f in grid.css normalize.css style.css appearance.css appearance.js styleswitch.js theme-terminal.css theme-code.css theme-matrix.css theme-cyber.css; do
   mkdir -p usr/themes/default
   curl -s -o "usr/themes/default/$f" "http://localhost:$PORT/usr/themes/default/$f"
 done

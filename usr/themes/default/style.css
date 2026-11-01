@@ -498,3 +498,16 @@ img.alignright {
 */
 .invisible {
   visibility: hidden; }
+
+/* 导航下拉（风格/外观切换） */
+#nav-menu select {
+  margin: 0 4px;
+  padding: 3px 6px;
+  background: #f7f4ec;
+  color: #6b5f4b;
+  border: 1px solid #d8cdb4;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
