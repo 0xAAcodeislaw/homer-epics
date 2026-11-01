@@ -102,7 +102,13 @@ html[data-style="matrix"] #to-top {
 }
 
 html[data-style="matrix"] #nav-menu select {
-  background: rgba(0, 10, 2, .85);
+  background-color: rgba(0, 10, 2, .85);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2300ff41' stroke-width='1.6'/%3E%3C/svg%3E");
   color: var(--m-green);
   border: 1px solid var(--m-border);
+}
+html[data-style="matrix"] #nav-menu select:hover,
+html[data-style="matrix"] #nav-menu select:focus {
+  border-color: var(--m-green);
+  box-shadow: none;
 }

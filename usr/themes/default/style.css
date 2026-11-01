@@ -499,15 +499,37 @@ img.alignright {
 .invisible {
   visibility: hidden; }
 
-/* 导航下拉（风格/外观切换） */
+/* 导航下拉（风格/外观切换）：统一形状，箭头与配色由各风格覆盖 */
 #nav-menu select {
-  margin: 0 4px;
-  padding: 3px 6px;
-  background: #f7f4ec;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 138px;
+  height: 30px;
+  box-sizing: border-box;
+  margin: 0 3px;
+  padding: 0 26px 0 12px;
+  background-color: #f7f4ec;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238a7d64' stroke-width='1.6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 9px center;
   color: #6b5f4b;
   border: 1px solid #d8cdb4;
   border-radius: 4px;
   font-family: inherit;
   font-size: 14px;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-align: center;
+  text-align-last: center;
   cursor: pointer;
+  outline: none;
+  vertical-align: middle;
 }
+#nav-menu select:hover,
+#nav-menu select:focus {
+  border-color: #c9a24b;
+  box-shadow: 0 0 0 2px rgba(201, 162, 75, .22);
+}
+
+/* 导航行内元素与下拉垂直居中对齐 */
+#nav-menu a { vertical-align: middle; display: inline-block; }

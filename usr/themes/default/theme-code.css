@@ -129,7 +129,13 @@ html[data-style="code"][data-appearance="dark"] body {
 }
 
 html[data-style="code"] #nav-menu select {
-  background: #010409;
+  background-color: #010409;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2358a6ff' stroke-width='1.6'/%3E%3C/svg%3E");
   color: var(--c-blue);
   border: 1px solid var(--c-border);
+}
+html[data-style="code"] #nav-menu select:hover,
+html[data-style="code"] #nav-menu select:focus {
+  border-color: var(--c-green);
+  box-shadow: none;
 }

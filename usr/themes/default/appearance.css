@@ -89,7 +89,8 @@ html[data-appearance="dark"] img { border-color: #2b2f36; }
 
 /* 深色外观下的导航下拉 */
 html[data-appearance="dark"] #nav-menu select {
-  background: #1a1d23;
+  background-color: #1a1d23;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23c6cbd2' stroke-width='1.6'/%3E%3C/svg%3E");
   color: #c6cbd2;
   border-color: #2b2f36;
 }

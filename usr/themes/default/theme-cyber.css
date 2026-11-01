@@ -113,7 +113,13 @@ html[data-style="cyber"] #to-top {
 }
 
 html[data-style="cyber"] #nav-menu select {
-  background: rgba(10, 4, 22, .85);
+  background-color: rgba(10, 4, 22, .85);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2300e5ff' stroke-width='1.6'/%3E%3C/svg%3E");
   color: var(--y-cyan);
   border: 1px solid var(--y-border);
+}
+html[data-style="cyber"] #nav-menu select:hover,
+html[data-style="cyber"] #nav-menu select:focus {
+  border-color: var(--y-cyan);
+  box-shadow: 0 0 8px rgba(0, 229, 255, .35);
 }
