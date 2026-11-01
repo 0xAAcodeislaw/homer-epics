@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>史诗视频馆 · 荷马史诗</title>
+<style>
+  body { background: #faf9f6; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+         max-width: 1020px; margin: 0 auto; padding: 24px 14px 60px; color: #333; line-height: 1.6; }
+  a { color: #2a5db0; text-decoration: none; } a:hover { text-decoration: underline; }
+  h1 { font-size: 22px; margin: 0 0 4px; } .back { font-size: 13px; color: #999; margin-bottom: 14px; }
+  .note { font-size: 13px; color: #888; margin-bottom: 18px; }
+  h2.sec { font-size: 17px; margin: 26px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e8e2d2; }
+  h2.sec .cnt { color: #b0a488; font-size: 13px; font-weight: normal; margin-left: 8px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  figure { margin: 0; background: #fff; border: 1px solid #e6e2d4; border-radius: 8px; overflow: hidden; }
+  .vwrap { position: relative; aspect-ratio: 16/9; background: #000; cursor: pointer; }
+  .vwrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vwrap .play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .vwrap .play span { width: 54px; height: 38px; background: rgba(200, 20, 20, .92); border-radius: 10px;
+                       display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; }
+  .vwrap:hover .play span { background: #ff0000; }
+  .vwrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  figcaption { padding: 10px 12px 12px; }
+  .vtitle { font-weight: 600; font-size: 13.5px; line-height: 1.5; }
+  .vmeta { font-size: 12px; color: #999; margin-top: 4px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .badge { font-size: 11px; padding: 1px 7px; border-radius: 10px; }
+  .badge.zh { background: #e8f1fb; color: #2a5db0; }
+  .badge.en { background: #f0e8fb; color: #7a4fd0; }
+  .vmeta a { font-size: 12px; color: #2a5db0; margin-left: auto; }
+</style>
+</head>
+<body>
+<h1>史诗视频馆</h1>
+<div class="back"><a href="/">← 返回首页</a> · 精选 YouTube 二十讲：中文解说 12 部 + 国际经典 8 部</div>
+<div class="note">点击封面即在本页播放（YouTube 隐私增强嵌入，不跳转、不下载）。英文视频可在播放器设置里开启自动翻译字幕；片单与站内章节互为补充——看完视频，欢迎回到文字里细读。</div>
+<div id="list"></div>
+<script id="vdata" type="application/json">{"zh": [{"id": "Z5L6hwVWWFg", "lang": "zh", "title": "【最長影片】1小時講完《奧德賽》完整版 | 老高與小茉 Mr & Mrs Gao", "author": "老高與小茉 Mr & Mrs Gao", "views": "284.8 万次", "dur": "1:11:21"}, {"id": "S74C03MFunI", "lang": "zh", "title": "25分鐘講完荷馬史詩《奧德賽》，完整劇情一口氣看懂 | 這部西方文學的開山之作，到底有多精彩？", "author": "K同學", "views": "171.8 万次", "dur": "25:13"}, {"id": "Jzp7Ks3SioE", "lang": "zh", "title": "奧德賽看前必知 | 一次看懂撼動古希臘的「特洛伊戰爭」史詩 | 木馬屠城 | 超粒方 | The Trojan War", "author": "超粒方", "views": "87.7 万次", "dur": "38:41"}, {"id": "YUtz_g2gKpE", "lang": "zh", "title": "完整解析諾蘭的《奧德賽》一次看懂改編的所有差異、神話細節與真正意義! | 萬字解析 | 超粒方 | The Odyssey", "author": "超粒方", "views": "65.8 万次", "dur": "29:02"}, {"id": "rFcwIiPQ1yg", "lang": "zh", "title": "荷馬史詩《伊利亞特》《奧德賽》完整故事！希臘神話中最精彩的篇章！", "author": "小鸣说", "views": "61.3 万次", "dur": "18:17"}, {"id": "mwpse6b9XD0", "lang": "zh", "title": "【影評】「諾蘭版」奧德賽，讓3000年的經典史詩活過來了嗎? | 超粒方 | The Odyssey", "author": "超粒方", "views": "51.1 万次", "dur": "16:00"}, {"id": "kZfs77Fy2y8", "lang": "zh", "title": "因被戴綠帽引起的史詩級大戰 ▶ 特洛伊戰爭", "author": "cheap", "views": "37.8 万次", "dur": "9:11"}, {"id": "eDGe-13kA_I", "lang": "zh", "title": "《奧德賽》萬字解析！看懂所有隱喻和真相！为何10年不能(敢)回家！| 大聰看電影", "author": "大聪看电影", "views": "34.3 万次", "dur": "27:45"}, {"id": "QKU8M5AkCtg", "lang": "zh", "title": "歷史上真實的特洛伊 ▶ 西臺帝國對決希臘邁錫尼", "author": "cheap", "views": "29.0 万次", "dur": "17:12"}, {"id": "JB38wMoze60", "lang": "zh", "title": "🐴今年必看電影的必看前導！奧德賽無雷前導讓你無痛享受電影！詳細解析原作關卡｜The Odyssey", "author": "那些電影教我的事 Lessons from Movies", "views": "61.0 万次", "dur": "12:40"}, {"id": "K_9HPl6M120", "lang": "zh", "title": "🐴好看但太多角色？一次幫你看懂奧德賽裡誰是誰！竟然有他？一堆老班底？絕對認不出來？The Odyssey", "author": "那些電影教我的事 Lessons from Movies", "views": "28.5 万次", "dur": "12:41"}, {"id": "3ghpN-s2p80", "lang": "zh", "title": "一次看懂《奧德賽》選角出了什麼問題? 諾蘭要讓觀眾失望了嗎? | 超粒方 | The Odyssey", "author": "超粒方", "views": "40.6 万次", "dur": "23:28"}], "en": [{"id": "OuGeoq_uVts", "lang": "en", "title": "The Odyssey Explained In 25 Minutes | Best Greek Mythology Documentary", "author": "The Life Guide", "views": "977.3 万次", "dur": "29:45"}, {"id": "A-3rHQ70Pag", "lang": "en", "title": "Classics Summarized: The Odyssey", "author": "Overly Sarcastic Productions", "views": "679.8 万次", "dur": "13:36"}, {"id": "faSrRHw6eZ8", "lang": "en", "title": "Classics Summarized: The Iliad", "author": "Overly Sarcastic Productions", "views": "531.4 万次", "dur": "11:57"}, {"id": "MS4jk5kavy4", "lang": "en", "title": "A Long and Difficult Journey, or  The Odyssey: Crash Course Literature 201", "author": "CrashCourse", "views": "457.2 万次", "dur": "12:07"}, {"id": "T7iVwJb0BfE", "lang": "en", "title": "The ENTIRE Story of the Trojan War Explained | Best Iliad Documentary", "author": "The Life Guide", "views": "424.0 万次", "dur": "35:28"}, {"id": "8Z9FQxcCAZ0", "lang": "en", "title": "Everything you need to know to read Homer's \"Odyssey\" - Jill Dash", "author": "TED-Ed", "views": "389.8 万次", "dur": "4:57"}, {"id": "TLodQGpIpIs", "lang": "en", "title": "Legends Summarized: The Trojan War", "author": "Overly Sarcastic Productions", "views": "364.0 万次", "dur": "13:57"}, {"id": "BgSiijz-bKM", "lang": "en", "title": "1. THE ODYSSEY - The Entire Story", "author": "Deep Dive History", "views": "218.1 万次", "dur": "3:53:26"}]}</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('vdata').textContent);
+  var list = document.getElementById('list');
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+  function card(v) {
+    var fig = document.createElement('figure');
+    var wrap = document.createElement('div');
+    wrap.className = 'vwrap';
+    wrap.setAttribute('data-id', v.id);
+    var img = document.createElement('img');
+    img.loading = 'lazy';
+    img.src = 'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg';
+    img.alt = v.title;
+    var play = document.createElement('div');
+    play.className = 'play';
+    var span = document.createElement('span');
+    span.textContent = '▶';
+    play.appendChild(span);
+    wrap.appendChild(img);
+    wrap.appendChild(play);
+    var cap = document.createElement('figcaption');
+    cap.innerHTML = '<div class="vtitle">' + esc(v.title) + '</div>' +
+      '<div class="vmeta"><span class="badge ' + v.lang + '">' + (v.lang === 'zh' ? '中文' : 'EN') + '</span>' +
+      '<span>' + esc(v.author) + '</span>' +
+      (v.dur ? '<span>' + esc(v.dur) + '</span>' : '') +
+      (v.views ? '<span>' + esc(v.views) + '</span>' : '') +
+      '<a href="https://www.youtube.com/watch?v=' + v.id + '" target="_blank" rel="noopener">YouTube ↗</a></div>';
+    fig.appendChild(wrap);
+    fig.appendChild(cap);
+    var playing = false;
+    wrap.addEventListener('click', function () {
+      if (playing) return;
+      playing = true;
+      var f = document.createElement('iframe');
+      f.setAttribute('src', 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&rel=0');
+      f.setAttribute('title', v.title);
+      f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      f.setAttribute('allowfullscreen', '');
+      wrap.insertBefore(f, wrap.firstChild);
+    });
+    return fig;
+  }
+  var h1 = document.createElement('h2');
+  h1.className = 'sec';
+  h1.innerHTML = '中文解说 <span class="cnt">' + D.zh.length + ' 部</span>';
+  list.appendChild(h1);
+  var g1 = document.createElement('div'); g1.className = 'grid';
+  D.zh.forEach(function (v) { g1.appendChild(card(v)); });
+  list.appendChild(g1);
+  var h2 = document.createElement('h2');
+  h2.className = 'sec';
+  h2.innerHTML = '国际经典 <span class="cnt">' + D.en.length + ' 部 · 英文</span>';
+  list.appendChild(h2);
+  var g2 = document.createElement('div'); g2.className = 'grid';
+  D.en.forEach(function (v) { g2.appendChild(card(v)); });
+  list.appendChild(g2);
+})();
+</script>
+</body>
+</html>

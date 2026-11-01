@@ -46,7 +46,7 @@ curl -sf -o apps/gallery-data.json "http://localhost:$PORT/apps/gallery-data.jso
 curl -sf -o apps/tracker.js        "http://localhost:$PORT/apps/tracker.js"
 # apps 工具页用仓库原件覆盖：wget --convert-links 会把 JS 字符串拼接
 # （如 ' + it.u + '）误当链接改写，注入 &#32; 导致整页脚本解析失败
-for f in relations map search quiz reader gallery 404; do
+for f in relations map search quiz reader gallery 404 videos; do
   curl -sf -o "apps/$f.html" "http://localhost:$PORT/apps/$f.html"
 done
 # sitemap/robots 由 seed 生成

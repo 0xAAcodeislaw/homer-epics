@@ -76,7 +76,7 @@ jobs:
           curl -sf -o apps/search-data.json  http://127.0.0.1:8088/apps/search-data.json
           curl -sf -o apps/gallery-data.json http://127.0.0.1:8088/apps/gallery-data.json
           curl -sf -o apps/tracker.js        http://127.0.0.1:8088/apps/tracker.js
-          for f in relations map search quiz reader gallery 404; do
+          for f in relations map search quiz reader gallery 404 videos; do
             curl -sf -o "apps/$f.html" "http://127.0.0.1:8088/apps/$f.html"
           done
           for f in sitemap.xml robots.txt; do

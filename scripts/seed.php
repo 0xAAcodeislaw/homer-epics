@@ -220,7 +220,8 @@ foreach ($groups as [$prefix, $gTitle, $gDesc]) {
 $hub .= "\n### 工具箱\n\n"
     . "- [人物关系图](/apps/relations.html) —— 三大阵营一张图，点击人物直达词条\n"
     . "- [航海地图](/apps/map.html) —— 奥德修斯十年漂泊的十二站\n"
-    . "- [全文搜索](/apps/search.html) —— 站内 72+ 篇一键检索\n"
+    . "- [全文搜索](/apps/search.html) —— 站内 89 篇一键检索\n"
+    . "- [史诗视频馆](/apps/videos.html) —— 精选二十部 YouTube 讲解（中文 12 + 国际 8）\n"
     . "- [名场面画廊](/apps/gallery.html) —— 全部插图按卷排列\n"
     . "- [知识小测](/apps/quiz.html) —— 二十四道题，试试你像哪位英雄\n"
     . "- [朗读版](/apps/reader.html) —— 浏览器合成语音，把史诗念给你听\n\n";

@@ -40,7 +40,7 @@ mkdir -p apps
 curl -sf -o apps/search-data.json  "http://localhost:$PORT/apps/search-data.json"
 curl -sf -o apps/gallery-data.json "http://localhost:$PORT/apps/gallery-data.json"
 curl -sf -o apps/tracker.js        "http://localhost:$PORT/apps/tracker.js"
-for f in relations map search quiz reader gallery; do
+for f in relations map search quiz reader gallery 404 videos; do
   curl -sf -o "apps/$f.html" "http://localhost:$PORT/apps/$f.html"
 done
 # 画廊场景图等仅存在于数据文件、未嵌入任何页面的图片，从仓库直接补齐
