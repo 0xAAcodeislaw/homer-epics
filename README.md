@@ -40,7 +40,18 @@
 # GitHub Pages（镜像，发布到 0xaacodeislaw.github.io/homer-epics/）
 #   前提：仓库为 public（Pages 要求）；gh 已登录
 ./scripts/deploy-ghpages.sh
+
+# 或什么都不做：push 到 main 会自动触发 GitHub Actions 发布 GH Pages
+#   （.github/workflows/gh-pages.yml，php -S 渲染，无需 Docker）
 ```
+
+## 站点增强
+
+- SEO：sitemap.xml / robots.txt 自动生成；GH 镜像全站 canonical 指向 CF 主站；OG/Twitter 分享卡片
+- 性能：插图批量 WebP（og:image 保留 jpg）、正文图片懒加载、上传目录 immutable 长缓存、悬停预取
+- 阅读：←/→ 键盘翻页、返回顶部、顶部阅读进度条、图片灯箱、站内风格 404 页
+- 评论：文章页接入 giscus（GitHub Discussions，双镜像评论互通）
+  ——首次使用需在 github.com/apps/giscus 给本仓库安装一次 giscus App
 
 两套脚本都会：构建镜像（含自动装站灌库）→ wget 抓取静态镜像 → 修补主题/工具页与路径 → 发布。GH 版额外做子路径适配（根相对路径统一补 `/homer-epics` 前缀）并 `--force` 更新 gh-pages 分支。
 
