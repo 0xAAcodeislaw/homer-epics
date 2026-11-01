@@ -10,5 +10,6 @@
 </footer><!-- end #footer -->
 
 <?php $this->footer(); ?>
+<script src="<?php $this->options->themeUrl('site.js'); ?>" defer></script>
 </body>
 </html>

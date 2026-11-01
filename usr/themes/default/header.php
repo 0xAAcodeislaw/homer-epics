@@ -17,6 +17,23 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('grid.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('appearance.css'); ?>">
+    <?php
+    // 社交分享卡片：og:image 用固定主视觉（部署时该图保留 jpg 原件）
+    $ogTitle = $this->is('post') ? htmlspecialchars($this->title, ENT_QUOTES) : htmlspecialchars($this->options->title, ENT_QUOTES);
+    $ogUrl = $this->is('post') ? htmlspecialchars($this->permalink, ENT_QUOTES) : htmlspecialchars($this->options->siteUrl, ENT_QUOTES);
+    $ogDesc = htmlspecialchars($this->options->description, ENT_QUOTES);
+    $ogImg = rtrim($this->options->siteUrl, '/') . '/usr/uploads/homer/iliad_07_trojan_horse.jpg';
+    ?>
+    <meta property="og:type" content="<?php echo $this->is('post') ? 'article' : 'website'; ?>">
+    <meta property="og:site_name" content="<?php $this->options->title(); ?>">
+    <meta property="og:title" content="<?php echo $ogTitle; ?>">
+    <meta property="og:description" content="<?php echo $ogDesc; ?>">
+    <meta property="og:url" content="<?php echo $ogUrl; ?>">
+    <meta property="og:image" content="<?php echo $ogImg; ?>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo $ogTitle; ?>">
+    <meta name="twitter:description" content="<?php echo $ogDesc; ?>">
+    <meta name="twitter:image" content="<?php echo $ogImg; ?>">
     <script>
     (function () {
         var KEY = 'homer-appearance', p;

@@ -57,9 +57,20 @@ find . -type f -name "*.html" -path "./apps/*" -exec sed -i '' \
 find . -type f -name "*.json" -exec sed -i '' \
   -e 's@"/index.php/@"/homer-epics/index.php/@g' \
   -e 's@"/usr/uploads/@"/homer-epics/usr/uploads/@g' {} +
+# sitemap/robots 由 seed 生成（绝对地址已带子路径）
+for f in sitemap.xml robots.txt; do
+  curl -sf -o "$f" "http://localhost:$PORT/$f" || true
+done
 # 注入阅读追踪（子路径）
 find . -name "*.html" -not -path "./apps/*" -exec sed -i '' \
   "s@</body>@<script src=\"/homer-epics/apps/tracker.js\"></script></body>@" {} +
+
+echo "==> 4b/7 共享后处理（WebP/懒加载/404/canonical/giscus）"
+# canonical 指向 CF 主站，避免双站重复内容分摊搜索权重
+MIRROR="$(pwd)" BASE="/homer-epics" CANONICAL="https://homer-epics.pages.dev" REPO_SRC="$REPO" \
+GISCUS_REPO="${GISCUS_REPO:-R_kgDOVdTxYg}" GISCUS_CAT_ID="${GISCUS_CAT_ID:-DIC_kwDOVdTxYs4DKJX5}" \
+"$REPO/scripts/mirror-fix.sh"
+
 # GH Pages 资产缓存 max-age=600：数据请求加构建级缓存戳，发布后立即可见
 TS=$(date +%s)
 sed -i '' "s@apps/search-data.json@apps/search-data.json?v=$TS@g" apps/search.html

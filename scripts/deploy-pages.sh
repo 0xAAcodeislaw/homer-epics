@@ -35,7 +35,6 @@ echo "==> 4a/5 内链去 index.html 化（消除 308 永久重定向一跳，浏
 find . -type f -name "*.html" -not -path "./apps/*" -exec sed -i '' -E \
   -e 's|href="([^"]*)/index\.html"|href="\1/"|g' \
   -e 's|href="index\.html"|href="./"|g' {} +
-printf '/index.php/*\n  Cache-Control: no-cache\n' > _headers
 
 echo "==> 4b/5 拷贝工具页数据与阅读追踪脚本，并注入全站"
 mkdir -p apps
@@ -44,11 +43,32 @@ curl -sf -o apps/gallery-data.json "http://localhost:$PORT/apps/gallery-data.jso
 curl -sf -o apps/tracker.js        "http://localhost:$PORT/apps/tracker.js"
 # apps 工具页用仓库原件覆盖：wget --convert-links 会把 JS 字符串拼接
 # （如 ' + it.u + '）误当链接改写，注入 &#32; 导致整页脚本解析失败
-for f in relations map search quiz reader gallery; do
+for f in relations map search quiz reader gallery 404; do
   curl -sf -o "apps/$f.html" "http://localhost:$PORT/apps/$f.html"
+done
+# sitemap/robots 由 seed 生成
+for f in sitemap.xml robots.txt; do
+  curl -sf -o "$f" "http://localhost:$PORT/$f" || true
 done
 find . -name "*.html" -not -path "./apps/*" -exec sed -i '' \
   "s|</body>|<script src=\"/apps/tracker.js\"></script></body>|" {} +
+
+echo "==> 4c/5 共享后处理（WebP/懒加载/404/giscus）"
+MIRROR="$(pwd)" BASE="" CANONICAL="" REPO_SRC="$(git rev-parse --show-toplevel)" \
+GISCUS_REPO="${GISCUS_REPO:-R_kgDOVdTxYg}" GISCUS_CAT_ID="${GISCUS_CAT_ID:-DIC_kwDOVdTxYs4DKJX5}" \
+"$REPO_SRC/scripts/mirror-fix.sh"
+
+echo "==> 4d/5 缓存策略与 Analytics"
+cat > _headers <<'EOF'
+/index.php/*
+  Cache-Control: no-cache
+/usr/uploads/*
+  Cache-Control: public, max-age=31536000, immutable
+EOF
+if [ -n "$CF_ANALYTICS_TOKEN" ]; then
+  find . -name "*.html" -exec sed -i '' \
+    "s@</head>@<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{\"token\": \"$CF_ANALYTICS_TOKEN\"}'></script></head>@" {} +
+fi
 
 echo "==> 5/5 部署到 Cloudflare Pages"
 npx wrangler@4.156.0 pages deploy . --project-name homer-epics --branch main

@@ -1,0 +1,115 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'README.md'
+      - 'scripts/imggen/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: PHP 8.3 + SQLite + webp
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo_sqlite, sqlite3
+
+      - name: 安装 Typecho 并灌入内容（随机管理员密码）
+        working-directory: ${{ github.workspace }}
+        env:
+          TYPECHO_SITE_URL: https://0xaacodeislaw.github.io/homer-epics
+          TYPECHO_DB_ADAPTER: Pdo_SQLite
+          TYPECHO_DB_PREFIX: typecho_
+          TYPECHO_DB_FILE: ${{ github.workspace }}/usr/homer.db
+          TYPECHO_USER_NAME: admin
+          TYPECHO_USER_MAIL: admin@homer-epics.local
+        run: |
+          PASS=$(openssl rand -hex 10)
+          TYPECHO_USER_PASSWORD="$PASS" php install.php
+          SITE_URL="$TYPECHO_SITE_URL" php scripts/seed.php
+          rm -f install.php
+          touch usr/installed.lock
+
+      - name: 渲染静态镜像（php -S + wget）
+        run: |
+          php -S 127.0.0.1:8088 scripts/ci-router.php >/dev/null 2>&1 &
+          sleep 2
+          code=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8088/)
+          [ "$code" = "200" ] || { echo "HTTP $code"; exit 1; }
+          MIRROR=$(mktemp -d)/mirror
+          mkdir -p "$MIRROR"
+          cd "$MIRROR"
+          wget -q -r -np -N --convert-links --adjust-extension --page-requisites \
+            -e robots=off --no-host-directories http://127.0.0.1:8088/ || true
+          rm -rf admin action
+          echo "MIRROR=$MIRROR" >> "$GITHUB_ENV"
+
+      - name: 补齐主题/工具页并做子路径适配
+        env:
+          GH_BASE: https://0xaacodeislaw.github.io/homer-epics
+        run: |
+          REPO=$GITHUB_WORKSPACE
+          cd "$MIRROR"
+          for f in grid.css normalize.css style.css appearance.css appearance.js; do
+            mkdir -p usr/themes/default
+            curl -s -o "usr/themes/default/$f" "http://127.0.0.1:8088/usr/themes/default/$f"
+          done
+          mkdir -p apps
+          curl -sf -o apps/search-data.json  http://127.0.0.1:8088/apps/search-data.json
+          curl -sf -o apps/gallery-data.json http://127.0.0.1:8088/apps/gallery-data.json
+          curl -sf -o apps/tracker.js        http://127.0.0.1:8088/apps/tracker.js
+          for f in relations map search quiz reader gallery 404; do
+            curl -sf -o "apps/$f.html" "http://127.0.0.1:8088/apps/$f.html"
+          done
+          for f in sitemap.xml robots.txt; do
+            curl -sf -o "$f" "http://127.0.0.1:8088/$f" || true
+          done
+          find . -type f \( -name "*.html" -o -name "*.xml" \) -exec sed -i "s@http://127.0.0.1:8088@$GH_BASE@g" {} +
+          find . -type f \( -name "*.html" -o -name "*.xml" \) -exec sed -i -E 's@"/(usr\|apps\|index\.php\|feed)@"/homer-epics/\1@g' {} +
+          find . -type f -name "*.html" -path "./apps/*" -exec sed -i \
+            -e "s\@'/apps/\@'/homer-epics/apps/\@g" \
+            -e "s\@'/index.php/\@'/homer-epics/index.php/\@g" {} +
+          find . -type f -name "*.json" -exec sed -i \
+            -e 's\@"/index.php/\@"/homer-epics/index.php/\@g' \
+            -e 's\@"/usr/uploads/\@"/homer-epics/usr/uploads/\@g' {} +
+          find . -name "*.html" -not -path "./apps/*" -exec sed -i \
+            "s\@</body>\@<script src=\"/homer-epics/apps/tracker.js\"></script></body>\@" {} +
+          find . -name "*.html" -not -path "./apps/*" -exec sed -i -E \
+            -e 's@href="([^"]*)/index\.html"@href="\1/"@g' \
+            -e 's@href="index\.html"@href="./"@g' {} +
+          rsync -a "$REPO/usr/uploads/homer/" usr/uploads/homer/
+
+      - name: 共享后处理（WebP/懒加载/404/canonical/giscus）
+        env:
+          GISCUS_REPO: R_kgDOVdTxYg
+          GISCUS_CAT_ID: DIC_kwDOVdTxYs4DKJX5
+          CANONICAL: https://homer-epics.pages.dev
+        run: |
+          REPO=$GITHUB_WORKSPACE bash scripts/mirror-fix.sh
+
+      - name: 数据请求构建级缓存戳 + nojekyll
+        run: |
+          cd "$MIRROR"
+          TS=$(date +%s)
+          sed -i "s@apps/search-data.json@apps/search-data.json?v=$TS@g" apps/search.html
+          sed -i "s@apps/gallery-data.json@apps/gallery-data.json?v=$TS@g" apps/gallery.html
+          touch .nojekyll
+
+      - name: 发布到 gh-pages 分支
+        run: |
+          cd "$MIRROR"
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "GitHub Pages 镜像（CI 构建于 $(date -u '+%F %T')）"
+          git push -q --force "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages

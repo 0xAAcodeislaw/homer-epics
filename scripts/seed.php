@@ -4,7 +4,7 @@
  * 由 Dockerfile 在 `php install.php` 之后调用，需设置 SITE_URL 环境变量。
  */
 
-$root = '/var/www/html';
+$root = dirname(__DIR__); // 站点根 = scripts/ 的上级（容器 /var/www/html、CI checkout 目录通用）
 $siteUrl = getenv('SITE_URL') ?: 'https://homer-epics.0xaa-codeislaw.workers.dev';
 
 $dbFile = getenv('TYPECHO_DB_FILE');
@@ -308,5 +308,23 @@ foreach ($extraImgs as $e) {
 }
 file_put_contents(__DIR__ . '/../apps/search-data.json', json_encode($idx, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 file_put_contents(__DIR__ . '/../apps/gallery-data.json', json_encode($imgs, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+/* ---------- sitemap.xml 与 robots.txt（随内容自动生成） ---------- */
+$pages = $pdo->query("SELECT cid, slug, title, created FROM {$P}contents
+    WHERE type = 'page' AND status = 'publish' AND slug IN ('catalog', 'extended', 'about')")->fetchAll(PDO::FETCH_ASSOC);
+$sitemap = '<?xml version="1.0" encoding="UTF-8"?>' . "\n"
+    . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+$sitemap .= "  <url>\n    <loc>{$siteUrl}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n";
+foreach ($pages as $p) {
+    $sitemap .= "  <url>\n    <loc>{$siteUrl}/index.php/{$p['slug']}/</loc>\n    <lastmod>" . date('c', $p['created']) . "</lastmod>\n  </url>\n";
+}
+$postRows = $pdo->query("SELECT cid, created FROM {$P}contents
+    WHERE type = 'post' AND status = 'publish' ORDER BY created DESC")->fetchAll(PDO::FETCH_ASSOC);
+foreach ($postRows as $p) {
+    $sitemap .= "  <url>\n    <loc>{$siteUrl}/index.php/archives/{$p['cid']}/</loc>\n    <lastmod>" . date('c', $p['created']) . "</lastmod>\n  </url>\n";
+}
+$sitemap .= "</urlset>\n";
+file_put_contents(__DIR__ . '/../sitemap.xml', $sitemap);
+file_put_contents(__DIR__ . '/../robots.txt', "User-agent: *\nAllow: /\n\nSitemap: {$siteUrl}/sitemap.xml\n");
 
 echo "seed: 已写入 {$count} 章、目录与扩展聚合页、搜索索引 " . count($idx) . " 条、画廊 " . count($imgs) . " 图，站点 URL: {$siteUrl}\n";

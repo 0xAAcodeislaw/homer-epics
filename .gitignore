@@ -3,3 +3,5 @@ usr/*.log
 node_modules/
 .wrangler/
 admin-credentials.txt
+usr/homer.db
+usr/installed.lock
