@@ -76,15 +76,15 @@ jobs:
             curl -sf -o "$f" "http://127.0.0.1:8088/$f" || true
           done
           find . -type f \( -name "*.html" -o -name "*.xml" \) -exec sed -i "s@http://127.0.0.1:8088@$GH_BASE@g" {} +
-          find . -type f \( -name "*.html" -o -name "*.xml" \) -exec sed -i -E 's@"/(usr\|apps\|index\.php\|feed)@"/homer-epics/\1@g' {} +
+          find . -type f \( -name "*.html" -o -name "*.xml" \) -exec sed -i -E 's@"/(usr|apps|index\.php|feed)@"/homer-epics/\1@g' {} +
           find . -type f -name "*.html" -path "./apps/*" -exec sed -i \
-            -e "s\@'/apps/\@'/homer-epics/apps/\@g" \
-            -e "s\@'/index.php/\@'/homer-epics/index.php/\@g" {} +
+            -e "s@'/apps/@'/homer-epics/apps/@g" \
+            -e "s@'/index.php/@'/homer-epics/index.php/@g" {} +
           find . -type f -name "*.json" -exec sed -i \
-            -e 's\@"/index.php/\@"/homer-epics/index.php/\@g' \
-            -e 's\@"/usr/uploads/\@"/homer-epics/usr/uploads/\@g' {} +
+            -e 's@"/index.php/@"/homer-epics/index.php/@g' \
+            -e 's@"/usr/uploads/@"/homer-epics/usr/uploads/@g' {} +
           find . -name "*.html" -not -path "./apps/*" -exec sed -i \
-            "s\@</body>\@<script src=\"/homer-epics/apps/tracker.js\"></script></body>\@" {} +
+            "s@</body>@<script src=\"/homer-epics/apps/tracker.js\"></script></body>@" {} +
           find . -name "*.html" -not -path "./apps/*" -exec sed -i -E \
             -e 's@href="([^"]*)/index\.html"@href="\1/"@g' \
             -e 's@href="index\.html"@href="./"@g' {} +
