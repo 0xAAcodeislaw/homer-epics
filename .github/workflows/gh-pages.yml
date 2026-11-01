@@ -19,11 +19,14 @@ jobs:
       - name: 清理装站残留（防“已安装”误判）
         run: rm -f config.inc.php usr/homer.db usr/installed.lock
 
-      - name: PHP 8.3 + SQLite + webp
+      - name: PHP 8.3 + SQLite
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
           extensions: pdo_sqlite, sqlite3
+
+      - name: 安装 cwebp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq webp
 
       - name: 安装 Typecho 并灌入内容（随机管理员密码）
         working-directory: ${{ github.workspace }}

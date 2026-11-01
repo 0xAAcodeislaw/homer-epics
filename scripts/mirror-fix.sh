@@ -55,10 +55,11 @@ fi
 echo "    [fix] canonical 归一化"
 if [ -n "$CANONICAL" ]; then
   for f in $(find . -name '*.html' -not -path './apps/*'); do
-    case "$f" in
-      ./index.html) P="/" ;;
-      */index.html) P="/$(echo "$f" | sed -E 's@^\./@@; s@/index\.html$@/@')" ;;
-      *) P="/$(echo "$f" | sed -E 's@^\./@@; s@\.html$@/')" ;;
+    rel=${f#./}
+    case "$rel" in
+      index.html)   P="/" ;;
+      */index.html) P="/${rel%index.html}" ;;
+      *)            P="/${rel%.html}/" ;;
     esac
     grep -q 'rel="canonical"' "$f" || sed "${SI[@]}" "s@</head>@<link rel=\"canonical\" href=\"$CANONICAL$P\"></head>@" "$f"
   done
