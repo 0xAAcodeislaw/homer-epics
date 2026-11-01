@@ -306,7 +306,7 @@ foreach ($extraImgs as $e) {
     }
     $imgs[] = ['t' => $e[0], 'u' => $u, 'img' => '/usr/uploads/homer/' . $e[1]];
 }
-file_put_contents(__DIR__ . '/../apps/search-data.json', json_encode($idx, JSON_UNESCAPED_UNICODE));
-file_put_contents(__DIR__ . '/../apps/gallery-data.json', json_encode($imgs, JSON_UNESCAPED_UNICODE));
+file_put_contents(__DIR__ . '/../apps/search-data.json', json_encode($idx, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+file_put_contents(__DIR__ . '/../apps/gallery-data.json', json_encode($imgs, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 
 echo "seed: 已写入 {$count} 章、目录与扩展聚合页、搜索索引 " . count($idx) . " 条、画廊 " . count($imgs) . " 图，站点 URL: {$siteUrl}\n";

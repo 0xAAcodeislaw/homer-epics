@@ -41,6 +41,8 @@ curl -sf -o apps/tracker.js        "http://localhost:$PORT/apps/tracker.js"
 for f in relations map search quiz reader gallery; do
   curl -sf -o "apps/$f.html" "http://localhost:$PORT/apps/$f.html"
 done
+# 画廊场景图等仅存在于数据文件、未嵌入任何页面的图片，从仓库直接补齐
+rsync -a "$REPO/usr/uploads/homer/" usr/uploads/homer/
 # 域名改写（Typecho 绝对地址 meta/feed 已随 SITE_URL 带子路径）
 find . -type f \( -name "*.html" -o -name "*.xml" \) -exec sed -i '' \
   "s|http://localhost:$PORT|$GH_BASE|g" {} +
@@ -58,6 +60,10 @@ find . -type f -name "*.json" -exec sed -i '' \
 # 注入阅读追踪（子路径）
 find . -name "*.html" -not -path "./apps/*" -exec sed -i '' \
   "s@</body>@<script src=\"/homer-epics/apps/tracker.js\"></script></body>@" {} +
+# GH Pages 资产缓存 max-age=600：数据请求加构建级缓存戳，发布后立即可见
+TS=$(date +%s)
+sed -i '' "s@apps/search-data.json@apps/search-data.json?v=$TS@g" apps/search.html
+sed -i '' "s@apps/gallery-data.json@apps/gallery-data.json?v=$TS@g" apps/gallery.html
 touch .nojekyll
 
 echo "==> 5/7 写入 $BRANCH 分支"
@@ -69,7 +75,7 @@ rsync -a --delete --exclude='.git' "$MIRROR/" "$WT/"
 cd "$WT"
 git add -A
 git commit -q -m "GitHub Pages 镜像（构建于 $(date '+%F %T')）" || echo "（无变更）"
-git push -q origin "$BRANCH"
+git push -q --force origin "$BRANCH"
 cd "$REPO"
 git worktree remove "$WT" >/dev/null
 docker rm -f homer-gh >/dev/null
