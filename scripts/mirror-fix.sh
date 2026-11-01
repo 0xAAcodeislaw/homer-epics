@@ -61,7 +61,12 @@ if [ -n "$CANONICAL" ]; then
       */index.html) P="/${rel%index.html}" ;;
       *)            P="/${rel%.html}/" ;;
     esac
-    grep -q 'rel="canonical"' "$f" || sed "${SI[@]}" "s@</head>@<link rel=\"canonical\" href=\"$CANONICAL$P\"></head>@" "$f"
+    # 覆写而非跳过：wget 会把 Typecho 自带 canonical 转成相对路径（如 ./），必须替换
+    if grep -q 'rel="canonical"' "$f"; then
+      sed "${SI[@]}" "s@<link rel=\"canonical\"[^>]*>@<link rel=\"canonical\" href=\"$CANONICAL$P\">@" "$f"
+    else
+      sed "${SI[@]}" "s@</head>@<link rel=\"canonical\" href=\"$CANONICAL$P\">@" "$f"
+    fi
   done
 fi
 echo "    [fix] 完成"
