@@ -37,6 +37,10 @@ echo "    [fix] 图片懒加载"
 find . -type f -name '*.html' -exec sed "${SI[@]}" \
   -e 's@<img @<img loading="lazy" @g' \
   -e 's@<img loading="lazy" loading="lazy" @<img loading="lazy" @g' {} +
+# 文章首图（题图）在首屏，取消懒加载以免首屏空白；仅处理带 <!--more--> 的文章页
+for f in $(grep -rl '<!--more-->' index.php/archives --include='*.html' 2>/dev/null); do
+  sed "${SI[@]}" '0,/<img loading="lazy"/s@<img loading="lazy" @<img @' "$f"
+done
 
 echo "    [fix] 404 页面"
 cp "$SELF_DIR/../apps/404.html" 404.html
