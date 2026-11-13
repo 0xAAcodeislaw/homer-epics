@@ -56,6 +56,10 @@ done
 find . -name "*.html" -not -path "./apps/*" -exec sed -i '' \
   "s|</body>|<script src=\"/apps/tracker.js\"></script></body>|" {} +
 
+# 仅存于画廊数据、未嵌入任何页面的图片（含「希腊众神」造像）从仓库补齐
+mkdir -p usr/uploads/homer
+rsync -a "$REPO_SRC/usr/uploads/homer/" usr/uploads/homer/
+
 echo "==> 4c/5 共享后处理（WebP/懒加载/404/giscus）"
 MIRROR="$(pwd)" BASE="" CANONICAL="" \
 GISCUS_REPO="${GISCUS_REPO:-R_kgDOVdTxYg}" GISCUS_CAT_ID="${GISCUS_CAT_ID:-DIC_kwDOVdTxYs4DKJX5}" \
