@@ -59,17 +59,22 @@ echo "    [fix] CSS 合并（4 请求 → 1）"
 # （styleswitch.js 靠 link[href*="style.css"] 推导主题目录基址），
 # 再删掉另外三个 link 标签。追加顺序按原加载顺序。
 if [ -f usr/themes/default/style.css ]; then
+  BUNDLE=$(mktemp)
   cat usr/themes/default/normalize.css usr/themes/default/grid.css \
       usr/themes/default/style.css usr/themes/default/appearance.css \
-      > /tmp/homer-bundle.css 2>/dev/null || true
-  [ -s /tmp/homer-bundle.css ] && cp /tmp/homer-bundle.css usr/themes/default/style.css
-  rm -f /tmp/homer-bundle.css
+      > "$BUNDLE" 2>/dev/null || true
+  [ -s "$BUNDLE" ] && cp "$BUNDLE" usr/themes/default/style.css
+  rm -f "$BUNDLE"
 fi
 find . -type f -name '*.html' -exec sed "${SI[@]}" -E \
   -e 's@<link[^>]*href="[^"]*normalize\.css"[^>]*>@@g' \
   -e 's@<link[^>]*href="[^"]*grid\.css"[^>]*>@@g' \
   -e 's@<link[^>]*href="[^"]*appearance\.css"[^>]*>@@g' {} +
-rm -f usr/themes/default/normalize.css usr/themes/default/grid.css usr/themes/default/appearance.css
+# CF Pages 增量上传不会删除旧资产：把被合并的三个 CSS 写成 0 字节占位，
+# 避免历史部署残留的旧内容继续被抓取（GH Pages 无此问题）
+for css in normalize.css grid.css appearance.css; do
+  : > "usr/themes/default/$css"
+done
 
 echo "    [fix] 静态资源构建戳（配合长缓存）"
 TS=$(date +%s)

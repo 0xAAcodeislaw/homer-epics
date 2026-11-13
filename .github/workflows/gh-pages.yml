@@ -102,6 +102,7 @@ jobs:
           GISCUS_REPO: R_kgDOVdTxYg
           GISCUS_CAT_ID: DIC_kwDOVdTxYs4DKJX5
           CANONICAL: https://homer-epics.pages.dev
+          BASE: /homer-epics
         run: |
           REPO=$GITHUB_WORKSPACE bash scripts/mirror-fix.sh
 
