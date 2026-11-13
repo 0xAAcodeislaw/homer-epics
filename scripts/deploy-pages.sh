@@ -27,7 +27,7 @@ wget -q -r -np -N --convert-links --adjust-extension --page-requisites -e robots
 rm -rf admin action
 
 echo "==> 4/5 补齐主题 CSS 并重写绝对链接"
-for f in grid.css normalize.css style.css appearance.css appearance.js styleswitch.js theme-terminal.css theme-code.css theme-matrix.css theme-cyber.css; do
+for f in grid.css normalize.css style.css appearance.css appearance.js styleswitch.js site.js theme-terminal.css theme-code.css theme-matrix.css theme-cyber.css; do
   mkdir -p usr/themes/default
   curl -s -o "usr/themes/default/$f" "http://localhost:$PORT/usr/themes/default/$f"
 done
@@ -61,7 +61,7 @@ mkdir -p usr/uploads/homer
 rsync -a "$REPO_SRC/usr/uploads/homer/" usr/uploads/homer/
 
 echo "==> 4c/5 共享后处理（WebP/懒加载/404/giscus）"
-MIRROR="$(pwd)" BASE="" CANONICAL="" \
+MIRROR="$(pwd)" BASE="" CANONICAL="$PROD_URL" \
 GISCUS_REPO="${GISCUS_REPO:-R_kgDOVdTxYg}" GISCUS_CAT_ID="${GISCUS_CAT_ID:-DIC_kwDOVdTxYs4DKJX5}" \
 "$REPO_SRC/scripts/mirror-fix.sh"
 

@@ -23,7 +23,7 @@
 
   /* ---- 键盘翻页：文章页 ← → 切换上下篇 ---- */
   var pagerLinks = {};
-  document.querySelectorAll('.page-navigator li, .post ul li').forEach(function (li) {
+  document.querySelectorAll('.page-navigator li, .post-near li').forEach(function (li) {
     var a = li.querySelector('a');
     if (!a) return;
     var t = li.textContent;
@@ -95,10 +95,10 @@
         bImg.style.cssText = 'max-width:94vw;max-height:92vh;border:2px solid #fff2;';
         box.appendChild(bImg);
         box.addEventListener('click', close);
-        document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') close(); });
         function close() { box.style.display = 'none'; }
         box._close = close;
         document.body.appendChild(box);
+        document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') close(); });
       }
       var b = box.querySelector('img');
       b.src = img.currentSrc || img.src;

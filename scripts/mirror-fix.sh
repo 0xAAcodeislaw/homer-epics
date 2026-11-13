@@ -54,7 +54,12 @@ if [ -n "$GISCUS_REPO" ] && [ -d index.php/archives ]; then
     cid=$(echo "$f" | sed -E 's@index.php/archives/([0-9]+)/index.html@\1@')
     grep -q 'giscus.app' "$f" && continue
     GISCUS_HTML='<div style="max-width:680px;margin:30px auto 0;padding:0 14px;"><script src="https://giscus.app/client.js" data-repo="0xAAcodeislaw/homer-epics" data-repo-id="'$GISCUS_REPO'" data-category="General" data-category-id="'$GISCUS_CAT_ID'" data-mapping="specific" data-term="/index.php/archives/'$cid'/" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="noborder_light" data-lang="zh-CN" crossorigin="anonymous" async></script></div>'
-    sed "${SI[@]}" "s@</body>@$GISCUS_HTML</body>@" "$f"
+    # 优先插到评论区块之前（保持在主栏内）；否则退回 </body> 前
+    if grep -q '<div id="comments">' "$f"; then
+      sed "${SI[@]}" "s@<div id="comments">@$GISCUS_HTML<div id="comments">@" "$f"
+    else
+      sed "${SI[@]}" "s@</body>@$GISCUS_HTML</body>@" "$f"
+    fi
   done
 fi
 

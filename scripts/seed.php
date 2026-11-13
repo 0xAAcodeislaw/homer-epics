@@ -115,6 +115,14 @@ foreach (['content/iliad' => 'iliad', 'content/odyssey' => 'odyssey', 'content/a
 }
 usort($chapters, fn($a, $b) => (int)$a['order'] <=> (int)$b['order']);
 
+/* 内部互链：正文里形如 [文字](slug) 的引用改成占位符，
+   待全部文章入库后用真实 cid 回填（避免手写 cid 或相对链接 404） */
+foreach ($chapters as &$ch) {
+    $ch['_body'] = preg_replace_callback('/\[([^\]]+)\]\(([a-z0-9][a-z0-9-]*)\)/',
+        function ($m) { return '[' . $m[1] . '](__SLUG__' . $m[2] . '__)'; }, $ch['_body']);
+}
+unset($ch);
+
 $base = time();
 $insert = $pdo->prepare(
     "INSERT INTO {$P}contents (title, slug, created, modified, text, authorId, type, status,
@@ -145,6 +153,19 @@ foreach ($chapters as $ch) {
         1, 'post', 'publish', 0, 0, 1, 1, 0,
     ]);
     $relate->execute([(int)$pdo->lastInsertId(), $midMap[$ch['_category']]]);
+}
+
+/* 回填 slug 互链：按 slug 查真实 cid（seed 按阅读顺序插入，cid 由 SQLite 分配） */
+$slugCid = $pdo->prepare("SELECT cid FROM {$P}contents WHERE slug = ? AND type = 'post' AND status = 'publish'");
+$fixText = $pdo->prepare("UPDATE {$P}contents SET text = ? WHERE cid = ?");
+$rows = $pdo->query("SELECT cid, text FROM {$P}contents WHERE type = 'post' AND text LIKE '%__SLUG__%'");
+foreach ($rows as $row) {
+    $t = preg_replace_callback('/__SLUG__([a-z0-9-]+)__/', function ($m) use ($slugCid) {
+        $slugCid->execute([$m[1]]);
+        $r = $slugCid->fetch(PDO::FETCH_ASSOC);
+        return $r ? '/index.php/archives/' . $r['cid'] . '/' : '/index.php/catalog/';
+    }, $row['text']);
+    $fixText->execute([$t, $row['cid']]);
 }
 
 /* ---------- 分类计数 ---------- */
