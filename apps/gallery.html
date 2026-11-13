@@ -23,7 +23,7 @@
 <div class="grid" id="grid">正在载入…</div>
 <script>
 (function () {
-  fetch('/apps/gallery-data.json').then(function (r) { return r.json(); }).then(function (d) {
+  fetch('/apps/gallery-data.json').then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
     var html = '';
     d.forEach(function (it) {
       var t = String(it.t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');

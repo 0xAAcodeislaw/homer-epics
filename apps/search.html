@@ -48,7 +48,9 @@
   }).catch(function () { tip.textContent = '索引载入失败，请刷新重试。'; });
 
   function render(q) {
-    var terms = q.trim().split(/\s+/).filter(function (t) { return t.length > 0; });
+    q = q.trim();
+    if (!DATA) { tip.textContent = '索引载入中，请稍候…'; return; } // 载入完成前输入的兜底
+    var terms = q.split(/\s+/).filter(function (t) { return t.length > 0; });
     if (terms.length < 1) { box.innerHTML = ''; return; }
     var groups = {}, n = 0;
     DATA.forEach(function (it) {
@@ -58,7 +60,8 @@
         if (hay.indexOf(terms[k]) < 0) return; // 所有关键词都须命中
       }
       n++;
-      var q = terms[0];
+      var first = terms[0];
+      var posX = hayX.indexOf(first);
       var snip = '';
       if (posX >= 0) {
         var s = Math.max(0, posX - 28);
