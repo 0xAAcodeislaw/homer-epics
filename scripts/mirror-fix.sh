@@ -38,8 +38,9 @@ find . -type f -name '*.html' -exec sed "${SI[@]}" \
   -e 's@<img @<img loading="lazy" @g' \
   -e 's@<img loading="lazy" loading="lazy" @<img loading="lazy" @g' {} +
 # 文章首图（题图）在首屏，取消懒加载以免首屏空白；仅处理带 <!--more--> 的文章页
+# BSD/GNU sed 都支持：对含 more 标记的文件，用 perl 精确去掉第一个 img 的 loading
 for f in $(grep -rl '<!--more-->' index.php/archives --include='*.html' 2>/dev/null); do
-  sed "${SI[@]}" '0,/<img loading="lazy"/s@<img loading="lazy" @<img @' "$f"
+  perl -0pi -e 's@<img loading="lazy" @<img @' "$f"
 done
 
 echo "    [fix] 404 页面"
