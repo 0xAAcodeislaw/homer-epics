@@ -52,6 +52,7 @@
             var bl = document.querySelector('link[href*="style.css"]');
             if (bl) {
                 var vl = document.createElement('link');
+                vl.id = 'theme-variant-css';
                 vl.rel = 'stylesheet';
                 vl.href = bl.getAttribute('href').replace(/style\.css.*$/, '') + VARIANTS[t];
                 document.head.appendChild(vl);
