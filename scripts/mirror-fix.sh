@@ -19,11 +19,32 @@ cd "$MIRROR"
 # BSD 与 GNU 的 sed -i 语义不同：数组方式传参，双平台通吃
 if sed --version >/dev/null 2>&1; then SI=(-i); else SI=(-i ''); fi
 
+echo "    [fix] 清理无用派生页（feed 派生 / action / author / 评论翻页）"
+# wget 会顺着每页的 feed 链接爬出 348 个静态垃圾页（每篇文章的 rss/atom
+# 评论 feed、分类 feed、作者页、xmlrpc/rsd 等）。静态站无动态 feed，
+# 这些页面无人访问却占 72% 文件数，还可能被搜索引擎当重复内容。
+# 保留主 feed（index.php/feed/index.html，侧栏「文章 RSS」在用）。
+BEFORE=$(find . -type f | wc -l | tr -d ' ')
+# 主 feed（index.php/feed/index.html）保留：侧栏「文章 RSS」在用
+find index.php/feed -mindepth 1 -type d -exec rm -rf {} + 2>/dev/null || true
+find index.php/feed -mindepth 1 -maxdepth 1 -type f ! -name 'index.html' -delete 2>/dev/null || true
+rm -rf index.php/action index.php/author 2>/dev/null || true
+find . -type d -empty -delete 2>/dev/null || true
+# 每篇文章的评论翻页（评论已全站关闭）
+find index.php/archives -type f \( -name 'comment-page-*' -o -name '*respond*' \) -delete 2>/dev/null || true
+# 去掉指向已删除页面的 <link rel="alternate"> feed 元标签，避免死链
+find . -type f -name '*.html' -exec sed "${SI[@]}" -E \
+  -e 's@<link[^>]*rel="alternate"[^>]*type="application/(rss|atom)\+xml"[^>]*>@@g' {} +
+AFTER=$(find . -type f | wc -l | tr -d ' ')
+echo "    文件数 ${BEFORE} -> ${AFTER} [删除 $((BEFORE - AFTER)) 个]"
+
 echo "    [fix] WebP 转换"
 if command -v cwebp >/dev/null 2>&1; then
   find usr/uploads/homer -name '*.jpg' | while read -r f; do
-    [ -f "${f%.jpg}.webp" ] || cwebp -quiet "$f" -o "${f%.jpg}.webp" >/dev/null 2>&1 || true
+    [ -f "${f%.jpg}.webp" ] || \
+      cwebp -quiet -q 70 -resize 1400 0 "$f" -o "${f%.jpg}.webp" >/dev/null 2>&1 || true
   done
+  # -resize 1400 0：宽度上限 1400、等比缩高；竖长神像不再以 3400px 高度部署
   # 仅重写 <img> 引用与数据 JSON；og:image/twitter:image 保留 jpg 原件
   find . -type f -name '*.html' -exec sed "${SI[@]}" -E \
     -e 's@(<img[^>]*src="[^"]*usr/uploads/homer/[A-Za-z0-9_]+)\.jpg@\1.webp@g' {} +
@@ -32,6 +53,55 @@ if command -v cwebp >/dev/null 2>&1; then
 else
   echo "    [fix] 跳过 WebP（未安装 cwebp）"
 fi
+
+echo "    [fix] CSS 合并（4 请求 → 1）"
+# 把 normalize/grid/appearance 追加进 style.css，保留 style.css 文件名
+# （styleswitch.js 靠 link[href*="style.css"] 推导主题目录基址），
+# 再删掉另外三个 link 标签。追加顺序按原加载顺序。
+if [ -f usr/themes/default/style.css ]; then
+  cat usr/themes/default/normalize.css usr/themes/default/grid.css \
+      usr/themes/default/style.css usr/themes/default/appearance.css \
+      > /tmp/homer-bundle.css 2>/dev/null || true
+  [ -s /tmp/homer-bundle.css ] && cp /tmp/homer-bundle.css usr/themes/default/style.css
+  rm -f /tmp/homer-bundle.css
+fi
+find . -type f -name '*.html' -exec sed "${SI[@]}" -E \
+  -e 's@<link[^>]*href="[^"]*normalize\.css"[^>]*>@@g' \
+  -e 's@<link[^>]*href="[^"]*grid\.css"[^>]*>@@g' \
+  -e 's@<link[^>]*href="[^"]*appearance\.css"[^>]*>@@g' {} +
+rm -f usr/themes/default/normalize.css usr/themes/default/grid.css usr/themes/default/appearance.css
+
+echo "    [fix] 静态资源构建戳（配合长缓存）"
+TS=$(date +%s)
+python3 - "$TS" <<'PYEOF'
+import glob, re, sys, os
+ts = sys.argv[1]
+n = 0
+for f in glob.glob('**/*.html', recursive=True):
+    s = open(f, encoding='utf-8', errors='ignore').read()
+    s2 = re.sub(r'(href="[^"]*style\.css)(?:\?v=\d+)?(")', r'\1?v=' + ts + r'\2', s)
+    if s2 != s:
+        open(f, 'w', encoding='utf-8').write(s2)
+        n += 1
+print('    CSS 戳 ?v=%s（%d 页）' % (ts, n))
+PYEOF
+
+echo "    [fix] 可访问性：空 alt 回填"
+python3 - "$PWD" <<'PYALT'
+import glob, re, sys
+os_dir = sys.argv[1]
+n = 0
+for f in glob.glob('**/*.html', recursive=True):
+    s = open(f, encoding='utf-8', errors='ignore').read()
+    m = re.search(r'<h1[^>]*>(.*?)</h1>', s, re.S) or re.search(r'<title>(.*?)</title>', s, re.S)
+    title = re.sub(r'<[^>]*>', '', m.group(1)).strip().split(' - ')[0] if m else '荷马史诗'
+    alt = title.replace('"', '').replace('<', '').replace('>', '') + ' 的插图'
+    s2 = re.sub(r'<img([^>]*)\s+alt=""([^>]*)>', lambda mm: '<img' + mm.group(1) + ' alt="' + alt + '"' + mm.group(2) + '>', s)
+    if s2 != s:
+        open(f, 'w', encoding='utf-8').write(s2)
+        n += 1
+print('    回填 %d 页的空 alt' % n)
+PYALT
 
 echo "    [fix] 图片懒加载"
 find . -type f -name '*.html' -exec sed "${SI[@]}" \

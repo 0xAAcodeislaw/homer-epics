@@ -71,6 +71,8 @@ cat > _headers <<'EOF'
   Cache-Control: no-cache
 /usr/uploads/*
   Cache-Control: public, max-age=31536000, immutable
+/usr/themes/*
+  Cache-Control: public, max-age=31536000, immutable
 EOF
 if [ -n "$CF_ANALYTICS_TOKEN" ]; then
   find . -name "*.html" -exec sed -i '' \

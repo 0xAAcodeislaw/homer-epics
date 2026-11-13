@@ -136,7 +136,7 @@ foreach ($chapters as $ch) {
     $created = $base - (int)$ch['order'] * 86400; // 越靠前章节时间越新，首页即阅读顺序
     $text = "<!--markdown-->\n\n";
     if (!empty($ch['image'])) {
-        $text .= "![](/usr/uploads/homer/{$ch['image']})\n\n<!--more-->\n\n";
+        $text .= '![' . $ch['title'] . "](/usr/uploads/homer/{$ch['image']})\n\n<!--more-->\n\n";
         $text .= $ch['_body'];
     } else {
         // 无图章节：摘要切在第一段之后，保证首页可读
@@ -335,18 +335,34 @@ file_put_contents(__DIR__ . '/../apps/search-data.json', json_encode($idx, JSON_
 file_put_contents(__DIR__ . '/../apps/gallery-data.json', json_encode($imgs, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 
 /* ---------- sitemap.xml 与 robots.txt（随内容自动生成） ---------- */
-$pages = $pdo->query("SELECT cid, slug, title, created FROM {$P}contents
+$now = date('c');
+$pages = $pdo->query("SELECT cid, slug FROM {$P}contents
     WHERE type = 'page' AND status = 'publish' AND slug IN ('catalog', 'extended', 'about')")->fetchAll(PDO::FETCH_ASSOC);
 $sitemap = '<?xml version="1.0" encoding="UTF-8"?>' . "\n"
-    . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-$sitemap .= "  <url>\n    <loc>{$siteUrl}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n";
+    . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
+    . ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' . "\n";
+$sitemap .= "  <url>\n    <loc>{$siteUrl}/</loc>\n    <lastmod>{$now}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n";
 foreach ($pages as $p) {
-    $sitemap .= "  <url>\n    <loc>{$siteUrl}/index.php/{$p['slug']}/</loc>\n    <lastmod>" . date('c', $p['created']) . "</lastmod>\n  </url>\n";
+    $sitemap .= "  <url>\n    <loc>{$siteUrl}/index.php/{$p['slug']}/</loc>\n    <lastmod>{$now}</lastmod>\n  </url>\n";
 }
-$postRows = $pdo->query("SELECT cid, created FROM {$P}contents
+/* 每篇文章的题图进入图片 sitemap（仅带 image 字段的章节） */
+$imgOf = [];
+foreach ($chapters as $ch) {
+    if (!empty($ch['image'])) {
+        $imgOf[$ch['slug']] = '/usr/uploads/homer/' . $ch['image'];
+    }
+}
+$postRows = $pdo->query("SELECT cid, slug FROM {$P}contents
     WHERE type = 'post' AND status = 'publish' ORDER BY created DESC")->fetchAll(PDO::FETCH_ASSOC);
 foreach ($postRows as $p) {
-    $sitemap .= "  <url>\n    <loc>{$siteUrl}/index.php/archives/{$p['cid']}/</loc>\n    <lastmod>" . date('c', $p['created']) . "</lastmod>\n  </url>\n";
+    $loc = "{$siteUrl}/index.php/archives/{$p['cid']}/";
+    $sitemap .= "  <url>\n    <loc>{$loc}</loc>\n    <lastmod>{$now}</lastmod>\n";
+    if (isset($imgOf[$p['slug']])) {
+        $sitemap .= "    <image:image>\n      <image:loc>{$siteUrl}{$imgOf[$p['slug']]}</image:loc>\n"
+                  . "      <image:title>" . htmlspecialchars($p['slug'], ENT_XML1) . "</image:title>\n"
+                  . "    </image:image>\n";
+    }
+    $sitemap .= "  </url>\n";
 }
 $sitemap .= "</urlset>\n";
 file_put_contents(__DIR__ . '/../sitemap.xml', $sitemap);
