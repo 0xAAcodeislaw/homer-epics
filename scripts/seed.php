@@ -292,20 +292,8 @@ $extraImgs = [
     ['油画 · 普里阿摩斯求尸', 'wiki_priam_hamilton.jpg', 'art-of-homer'],
     ['油画 · 阿喀琉斯的愤怒', 'wiki_anger_david.jpg', 'art-of-homer'],
     ['油画 · 尤利西斯与塞壬', 'wiki_sirens_waterhouse.jpg', 'art-of-homer'],
-    ['宙斯 · 奥克里库姆胸像', 'gods_zeus.jpg', 'gods-zeus'],
-    ['赫拉 · 卢多维西的朱诺', 'gods_hera.jpg', 'gods-hera'],
-    ['波塞冬 · 阿尔忒弥西昂青铜像', 'gods_poseidon.jpg', 'gods-poseidon'],
-    ['雅典娜 · 帕特农', 'gods_athena.jpg', 'gods-athena'],
-    ['阿波罗 · 观景殿', 'gods_apollo.jpg', 'gods-apollo'],
-    ['阿尔忒弥斯 · 凡尔赛的狄安娜', 'gods_artemis.jpg', 'gods-artemis'],
-    ['阿瑞斯 · 博尔盖塞', 'gods_ares.jpg', 'gods-ares'],
-    ['阿佛洛狄忒 · 米洛的维纳斯', 'gods_aphrodite.jpg', 'gods-aphrodite'],
-    ['赫菲斯托斯 · 伏尔甘', 'gods_hephaestus.jpg', 'gods-hephaestus'],
-    ['赫尔墨斯 · 普拉克西特列斯', 'gods_hermes.jpg', 'gods-hermes'],
-    ['忒提斯 · 珀琉斯婚宴陶瓶', 'gods_thetis.jpg', 'gods-thetis'],
-    ['喀耳刻 · 沃特豪斯', 'gods_circe.jpg', 'gods-sorceresses'],
+    /* 希腊众神题图已由正文自动收录；此处只补一章双图里非题图的第二张 */
     ['卡吕普索 · 贝克曼', 'gods_calypso.jpg', 'gods-sorceresses'],
-    ['赫利俄斯 · 特洛伊神庙浮雕', 'gods_helios.jpg', 'gods-fringe'],
 ];
 $slugCid = $pdo->prepare("SELECT cid FROM {$P}contents WHERE slug = ? AND type = 'post' AND status = 'publish'");
 foreach ($extraImgs as $e) {
