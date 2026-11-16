@@ -76,6 +76,22 @@ for css in normalize.css grid.css appearance.css; do
   : > "usr/themes/default/$css"
 done
 
+echo "    [fix] CSS 压缩"
+python3 - <<'PYCSS'
+import re
+f = 'usr/themes/default/style.css'
+s = open(f, encoding='utf-8').read()
+n0 = len(s)
+# 去注释（保留 /*! 许可注释）、压缩空白、去掉规则内多余空格
+s = re.sub(r'/\*(?!!)[\s\S]*?\*/', '', s)
+s = re.sub(r'\s+', ' ', s)
+s = re.sub(r'\s*([{};:,>])\s*', r'\1', s)
+s = s.replace(';}', '}')
+s = s.replace('@media (', '@media(') if False else s
+open(f, 'w', encoding='utf-8').write(s)
+print('    style.css %d -> %d 字节 (-%.0f%%)' % (n0, len(s), (1 - len(s)/n0)*100))
+PYCSS
+
 echo "    [fix] 静态资源构建戳（配合长缓存）"
 TS=$(date +%s)
 python3 - "$TS" <<'PYEOF'
@@ -107,6 +123,31 @@ for f in glob.glob('**/*.html', recursive=True):
         n += 1
 print('    回填 %d 页的空 alt' % n)
 PYALT
+
+echo "    [fix] 清理未被引用的 jpg（WebP 已接管正文，仅留 og:image）"
+python3 - <<'PYJPG'
+import glob, os, re
+# 只收集 html 与 apps 数据 JSON 的引用；credits 元数据里的文件名不算引用
+refs = set()
+for pat in ('**/*.html', 'apps/*.json'):
+    for f in glob.glob(pat, recursive=True):
+        try:
+            t = open(f, encoding='utf-8', errors='ignore').read()
+        except Exception:
+            continue
+        refs |= set(re.findall(r'([A-Za-z0-9_]+\.jpg)', t))
+removed = kept = 0
+bytes_freed = 0
+for f in glob.glob('usr/uploads/homer/*.jpg'):
+    base = os.path.basename(f)
+    if base in refs:
+        kept += 1
+        continue
+    bytes_freed += os.path.getsize(f)
+    os.remove(f)
+    removed += 1
+print('    保留 %d 张（被引用），删除 %d 张未引用，释放 %.1f MB' % (kept, removed, bytes_freed/1048576))
+PYJPG
 
 echo "    [fix] 图片懒加载"
 find . -type f -name '*.html' -exec sed "${SI[@]}" \

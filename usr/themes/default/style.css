@@ -440,6 +440,14 @@ img.alignright {
     display: inline-block;
     margin: 0 -2px;
   }
+  /* 窄屏下拉：等分两列、缩字号，避免溢出换行 */
+  #nav-menu select {
+    width: calc(50% - 8px);
+    max-width: 158px;
+    font-size: 12.5px;
+    padding: 0 20px 0 8px;
+    background-position: right 6px center;
+  }
 }
 
 @media (max-width: 768px) {

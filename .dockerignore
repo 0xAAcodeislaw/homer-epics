@@ -1,0 +1,11 @@
+# 构建上下文瘦身（注意：content/*.md 是文章源，绝不能排除）
+.git
+.gitignore
+.github
+.wrangler
+node_modules
+scripts/imggen
+/*.md
+!README.md
+.dockerignore
+admin-credentials.txt

@@ -47,11 +47,16 @@
 
 ## 站点增强
 
-- SEO：sitemap.xml / robots.txt 自动生成；GH 镜像全站 canonical 指向 CF 主站；OG/Twitter 分享卡片
-- 性能：插图批量 WebP（og:image 保留 jpg）、正文图片懒加载、上传目录 immutable 长缓存、悬停预取
-- 阅读：←/→ 键盘翻页、返回顶部、顶部阅读进度条、图片灯箱、站内风格 404 页
-- 评论：文章页接入 giscus（GitHub Discussions，双镜像评论互通）
+- **五套风格**：典藏 / 终端 / 代码 / 黑客帝国（字母雨 canvas）/ 霓虹，下拉切换、本机记忆、双站自适应子路径
+- **外观**：跟随系统 / 浅色 / 深色三态（与风格正交，极客皮常暗）
+- **SEO**：sitemap（含 image:image 图片标注）、robots.txt、canonical 归一、OG/Twitter 卡片、
+  JSON-LD（WebSite + BlogPosting + BreadcrumbList）、theme-color、404 noindex
+- **性能**：插图批量 WebP（q70、宽上限 1400）、CSS 四合一并压缩（-38%）、正文懒加载、
+  主题与上传目录 immutable 长缓存 + 构建级 ?v= 戳、悬停预取（仅文章页、上限 8）
+- **阅读**：←/→ 键盘翻页、返回顶部、顶部阅读进度条、图片灯箱、站内风格 404 页
+- **评论**：文章页接入 giscus（GitHub Discussions，双镜像评论互通）
   ——首次使用需在 github.com/apps/giscus 给本仓库安装一次 giscus App
+- **产物规模**：部署 214 文件 / 9.6 MB（清理 355 个 feed 派生页、58 张冗余 jpg 后）
 
 两套脚本都会：构建镜像（含自动装站灌库）→ wget 抓取静态镜像 → 修补主题/工具页与路径 → 发布。GH 版额外做子路径适配（根相对路径统一补 `/homer-epics` 前缀）并 `--force` 更新 gh-pages 分支。
 

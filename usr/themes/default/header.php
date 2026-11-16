@@ -34,6 +34,57 @@
     <meta name="twitter:title" content="<?php echo $ogTitle; ?>">
     <meta name="twitter:description" content="<?php echo $ogDesc; ?>">
     <meta name="twitter:image" content="<?php echo $ogImg; ?>">
+    <meta name="theme-color" content="#f7f4ec" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#17191d" media="(prefers-color-scheme: dark)">
+    <?php
+    /* 结构化数据：全站 WebSite + 文章页 BlogPosting + 面包屑 */
+    $siteName = $this->options->title;
+    $siteUrl  = rtrim($this->options->siteUrl, '/');
+    $ld = [
+        '@context' => 'https://schema.org',
+        '@type'    => 'WebSite',
+        'name'     => $siteName,
+        'url'      => $siteUrl . '/',
+        'description' => $this->options->description,
+        'potentialAction' => [
+            '@type'  => 'SearchAction',
+            'target' => $siteUrl . '/apps/search?q={search_term_string}',
+            'query-input' => 'required name=search_term_string',
+        ],
+    ];
+    echo '<script type="application/ld+json">' . json_encode($ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+    if ($this->is('post')) {
+        $article = [
+            '@context' => 'https://schema.org',
+            '@type'    => 'BlogPosting',
+            'headline' => $this->title,
+            'url'      => $this->permalink,
+            'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => $this->permalink],
+            'datePublished' => date('c', $this->created),
+            'dateModified'  => date('c', $this->modified ?: $this->created),
+            'author'   => ['@type' => 'Person', 'name' => $this->author->screenName ?? 'admin'],
+            'publisher' => ['@type' => 'Organization', 'name' => $siteName,
+                            'logo' => ['@type' => 'ImageObject', 'url' => $ogImg]],
+            'image'    => $ogImg,
+            'inLanguage' => 'zh-CN',
+        ];
+        $cats = $this->categories;
+        $catName = !empty($cats) ? $cats[0]['name'] : '';
+        $crumbs = ['@context' => 'https://schema.org', '@type' => 'BreadcrumbList',
+                   'itemListElement' => [
+                       ['@type' => 'ListItem', 'position' => 1, 'name' => '首页', 'item' => $siteUrl . '/'],
+                   ]];
+        $pos = 2;
+        if ($catName) {
+            $crumbs['itemListElement'][] = ['@type' => 'ListItem', 'position' => $pos++,
+                'name' => $catName, 'item' => $siteUrl . '/index.php/category/' . $cats[0]['slug'] . '/'];
+        }
+        $crumbs['itemListElement'][] = ['@type' => 'ListItem', 'position' => $pos,
+            'name' => $this->title, 'item' => $this->permalink];
+        echo '<script type="application/ld+json">' . json_encode($article, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+        echo '<script type="application/ld+json">' . json_encode($crumbs, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+    }
+    ?>
         <script>
     (function () {
         var KEY = 'homer-appearance', p;

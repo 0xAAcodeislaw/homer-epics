@@ -3,16 +3,20 @@
   'use strict';
 
   /* ---- 悬停预取：鼠标停 60ms 即预载目标页，翻章零等待 ---- */
-  var prefetched = {};
+  var prefetched = {}, prefetchCount = 0, PREFETCH_MAX = 8;
   document.addEventListener('mouseover', function (e) {
+    if (prefetchCount >= PREFETCH_MAX) return;
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a) return;
     var href = a.getAttribute('href');
     if (!href || href.charAt(0) === '#' || prefetched[href]) return;
     if (a.origin && a.origin !== location.origin) return;
+    // 只预取章节页（/archives/），侧栏/归档等不预取，避免无效请求
+    if (!/archives\/\d+/.test(href)) return;
     prefetched[href] = 1;
+    prefetchCount++;
     setTimeout(function () {
-      if (a.isConnected) {
+      if (a.isConnected && prefetchCount <= PREFETCH_MAX) {
         var l = document.createElement('link');
         l.rel = 'prefetch';
         l.href = href;
