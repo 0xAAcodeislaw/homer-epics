@@ -1,0 +1,141 @@
+/* ============================================================
+   荷马史诗 · 风格变体「代码」——暗色 IDE / 代码编辑器
+   叠加在 style.css 之上，html[data-style="code"] 时由 styleswitch.js 注入
+   ============================================================ */
+html[data-style="code"] {
+  --c-bg: #0d1117;
+  --c-panel: #161b22;
+  --c-fg: #c9d1d9;
+  --c-dim: #8b949e;
+  --c-blue: #58a6ff;
+  --c-green: #7ee787;
+  --c-red: #ff7b72;
+  --c-purple: #d2a8ff;
+  --c-border: #30363d;
+}
+
+html[data-style="code"] body {
+  background: var(--c-bg);
+  color: var(--c-fg);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 15px;
+}
+
+html[data-style="code"] ::selection { background: #264f78; color: #e6edf3; }
+
+html[data-style="code"] a { color: var(--c-blue); }
+html[data-style="code"] a:hover { color: var(--c-green); text-decoration: underline; }
+
+html[data-style="code"] #header {
+  background: var(--c-panel);
+  border-bottom: 1px solid var(--c-border);
+}
+html[data-style="code"] #logo { color: #e6edf3; font-weight: 700; }
+html[data-style="code"] #logo::before { content: "// "; color: var(--c-dim); }
+html[data-style="code"] .description { color: var(--c-dim); }
+
+/* 导航 = 编辑器标签页 */
+html[data-style="code"] #nav-menu a {
+  color: var(--c-dim);
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  padding: 5px 12px 4px;
+}
+html[data-style="code"] #nav-menu a:hover { color: var(--c-fg); background: #1c2128; }
+html[data-style="code"] #nav-menu .current {
+  color: var(--c-green);
+  background: var(--c-bg);
+  border-color: var(--c-border);
+  border-top: 2px solid var(--c-green);
+}
+
+html[data-style="code"] .site-search input.text,
+html[data-style="code"] .site-search button.submit {
+  background: #010409;
+  border: 1px solid var(--c-border);
+  color: var(--c-fg);
+  font-family: inherit;
+  border-radius: 6px;
+}
+html[data-style="code"] .site-search button.submit { color: var(--c-blue); border-color: var(--c-blue); }
+
+html[data-style="code"] .post {
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin-bottom: 22px;
+}
+html[data-style="code"] .post-title,
+html[data-style="code"] .post-title a { color: var(--c-blue); }
+html[data-style="code"] .post-title::before { content: "■ "; color: var(--c-purple); font-size: .7em; vertical-align: .15em; }
+html[data-style="code"] .post-meta,
+html[data-style="code"] .post-meta a { color: var(--c-dim); }
+html[data-style="code"] .post-meta::before { content: "# "; color: var(--c-green); }
+
+html[data-style="code"] .post-content { color: var(--c-fg); line-height: 1.85; }
+html[data-style="code"] .post-content h2,
+html[data-style="code"] .post-content h3 { color: var(--c-purple); }
+html[data-style="code"] .post-content h2::before { content: "{ "; color: var(--c-dim); }
+html[data-style="code"] .post-content h2::after  { content: " }"; color: var(--c-dim); }
+html[data-style="code"] .post-content a { border-bottom: 1px dotted var(--c-blue); }
+html[data-style="code"] blockquote {
+  border-left: 3px solid var(--c-purple);
+  background: #1c2128;
+  color: var(--c-dim);
+}
+html[data-style="code"] code {
+  background: #010409;
+  color: #79c0ff;
+  border: 1px solid var(--c-border);
+}
+html[data-style="code"] pre {
+  background: #010409;
+  border: 1px solid var(--c-border);
+}
+html[data-style="code"] img { border: 1px solid var(--c-border); border-radius: 6px; }
+
+html[data-style="code"] #secondary { border-left: 1px solid var(--c-border); }
+html[data-style="code"] .widget-title { color: var(--c-blue); }
+html[data-style="code"] .widget-title::before { content: "// "; color: var(--c-dim); }
+html[data-style="code"] .widget-list li { border-bottom: 1px solid var(--c-border); }
+html[data-style="code"] .widget-list li a { color: var(--c-fg); }
+
+html[data-style="code"] #footer {
+  border-top: 1px solid var(--c-border);
+  color: var(--c-dim);
+}
+html[data-style="code"] .page-navigator a {
+  color: var(--c-dim);
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+}
+html[data-style="code"] .page-navigator .current a { color: var(--c-green); border-color: var(--c-green); }
+
+html[data-style="code"] #read-progress { background: #58a6ff !important; }
+html[data-style="code"] #to-top {
+  background: var(--c-panel) !important;
+  color: var(--c-blue) !important;
+  border: 1px solid var(--c-border) !important;
+}
+
+/* 深浅色外观设置对代码风格不生效：常暗 */
+html[data-style="code"][data-appearance="light"] body,
+html[data-style="code"][data-appearance="dark"] body {
+  background: var(--c-bg);
+  color: var(--c-fg);
+}
+
+html[data-style="code"] #nav-menu select {
+  background-color: #010409;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2358a6ff' stroke-width='1.6'/%3E%3C/svg%3E");
+  color: var(--c-blue);
+  border: 1px solid var(--c-border);
+}
+html[data-style="code"] #nav-menu select:hover,
+html[data-style="code"] #nav-menu select:focus {
+  border-color: var(--c-green);
+  box-shadow: none;
+}

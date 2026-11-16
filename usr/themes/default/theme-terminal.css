@@ -1,0 +1,157 @@
+/* ============================================================
+   荷马史诗 · 风格变体「终端」——磷光 CRT 终端
+   叠加在 style.css 之上，html[data-style="terminal"] 时由 styleswitch.js 注入
+   ============================================================ */
+html[data-style="terminal"] {
+  --t-bg: #060a06;
+  --t-panel: #0b120b;
+  --t-fg: #9fd88b;
+  --t-dim: #5e8a52;
+  --t-accent: #ffb000;
+  --t-link: #7fff7f;
+  --t-border: #234d23;
+}
+
+html[data-style="terminal"] body {
+  background: var(--t-bg);
+  color: var(--t-fg);
+  font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 15px;
+}
+/* 扫描线 */
+html[data-style="terminal"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 90;
+  background: repeating-linear-gradient(0deg,
+    rgba(0, 0, 0, .22) 0px, rgba(0, 0, 0, .22) 1px,
+    transparent 1px, transparent 3px);
+}
+
+html[data-style="terminal"] ::selection { background: #2e7d32; color: #eaffea; }
+
+html[data-style="terminal"] a { color: var(--t-link); }
+html[data-style="terminal"] a:hover { color: var(--t-accent); text-shadow: 0 0 8px rgba(127, 255, 127, .45); }
+
+html[data-style="terminal"] #header {
+  background: var(--t-panel);
+  border-bottom: 1px dashed var(--t-border);
+}
+html[data-style="terminal"] #logo {
+  color: var(--t-link);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(127, 255, 127, .5);
+}
+html[data-style="terminal"] #logo::before { content: "~/"; color: var(--t-dim); }
+html[data-style="terminal"] .description { color: var(--t-dim); }
+html[data-style="terminal"] .description::before { content: "$ "; }
+
+html[data-style="terminal"] #nav-menu a {
+  color: var(--t-dim);
+  border: 1px dashed transparent;
+  border-radius: 3px;
+  padding: 3px 8px;
+}
+html[data-style="terminal"] #nav-menu a::before { content: "["; color: var(--t-border); }
+html[data-style="terminal"] #nav-menu a::after  { content: "]"; color: var(--t-border); }
+html[data-style="terminal"] #nav-menu a:hover,
+html[data-style="terminal"] #nav-menu .current {
+  color: var(--t-accent);
+  border-color: var(--t-border);
+  background: rgba(255, 176, 0, .06);
+}
+
+html[data-style="terminal"] .site-search input.text,
+html[data-style="terminal"] .site-search button.submit {
+  background: var(--t-panel);
+  border: 1px dashed var(--t-border);
+  color: var(--t-fg);
+  font-family: inherit;
+  border-radius: 3px;
+}
+html[data-style="terminal"] .site-search button.submit { color: var(--t-accent); }
+
+html[data-style="terminal"] .post {
+  border-bottom: 1px dashed var(--t-border);
+}
+html[data-style="terminal"] .post-title,
+html[data-style="terminal"] .post-title a {
+  color: var(--t-link);
+  text-shadow: 0 0 8px rgba(127, 255, 127, .3);
+}
+html[data-style="terminal"] .post-title::before { content: "## "; color: var(--t-accent); }
+html[data-style="terminal"] .post-meta,
+html[data-style="terminal"] .post-meta a { color: var(--t-dim); }
+html[data-style="terminal"] .post-meta li::before { content: "> "; }
+
+html[data-style="terminal"] .post-content {
+  color: var(--t-fg);
+  line-height: 1.85;
+}
+html[data-style="terminal"] .post-content h2,
+html[data-style="terminal"] .post-content h3 { color: var(--t-accent); }
+html[data-style="terminal"] .post-content h2::before { content: ">> "; color: var(--t-dim); }
+html[data-style="terminal"] .post-content a { border-bottom: 1px dashed var(--t-border); }
+html[data-style="terminal"] blockquote {
+  border-left: 3px solid var(--t-accent);
+  background: rgba(255, 176, 0, .05);
+  color: var(--t-dim);
+  font-style: normal;
+}
+html[data-style="terminal"] code {
+  background: var(--t-panel);
+  color: var(--t-link);
+  border: 1px dashed var(--t-border);
+}
+html[data-style="terminal"] pre {
+  background: var(--t-panel);
+  border: 1px dashed var(--t-border);
+}
+html[data-style="terminal"] img {
+  border: 1px dashed var(--t-border);
+  filter: saturate(.85) contrast(1.06) brightness(.94);
+}
+
+html[data-style="terminal"] #secondary { border-left: 1px dashed var(--t-border); }
+html[data-style="terminal"] .widget-title { color: var(--t-accent); }
+html[data-style="terminal"] .widget-title::before { content: "$ cat "; color: var(--t-dim); }
+html[data-style="terminal"] .widget-list li { border-bottom: 1px dashed var(--t-border); }
+html[data-style="terminal"] .widget-list li a { color: var(--t-fg); }
+
+html[data-style="terminal"] #footer {
+  border-top: 1px dashed var(--t-border);
+  color: var(--t-dim);
+}
+html[data-style="terminal"] .page-navigator a {
+  color: var(--t-dim);
+  border: 1px dashed var(--t-border);
+}
+html[data-style="terminal"] .page-navigator .current a { color: var(--t-accent); border-color: var(--t-accent); }
+
+html[data-style="terminal"] #read-progress { background: #57d957 !important; }
+html[data-style="terminal"] #to-top {
+  background: var(--t-panel) !important;
+  color: var(--t-link) !important;
+  border: 1px dashed var(--t-border) !important;
+}
+
+/* 深浅色外观设置对终端风格不生效：常暗 */
+html[data-style="terminal"][data-appearance="light"] body,
+html[data-style="terminal"][data-appearance="dark"] body {
+  background: var(--t-bg);
+  color: var(--t-fg);
+}
+
+html[data-style="terminal"] #nav-menu select {
+  background-color: var(--t-panel);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2357d957' stroke-width='1.6'/%3E%3C/svg%3E");
+  color: var(--t-accent);
+  border: 1px dashed var(--t-border);
+}
+html[data-style="terminal"] #nav-menu select:hover,
+html[data-style="terminal"] #nav-menu select:focus {
+  border-color: var(--t-accent);
+  box-shadow: none;
+}

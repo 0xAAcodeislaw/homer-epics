@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人物关系图 · 荷马史诗</title>
+<style>
+  body { background: #faf9f6; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+         max-width: 980px; margin: 0 auto; padding: 24px 14px 50px; color: #333; line-height: 1.65; }
+  h1 { font-size: 22px; margin: 0 0 4px; } .back { font-size: 13px; color: #999; margin-bottom: 14px; }
+  a { color: #2a5db0; text-decoration: none; } a:hover { text-decoration: underline; }
+  .legend { font-size: 13px; color: #888; margin-bottom: 10px; }
+  .legend span { display: inline-block; margin-right: 14px; }
+  .sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+  svg { width: 100%; height: auto; display: block; }
+  svg a:hover rect { stroke: #2a5db0; stroke-width: 2; }
+  svg text { pointer-events: none; }
+</style>
+</head>
+<body>
+<h1>人物关系图</h1>
+<div class="back"><a href="/">← 返回首页</a> · 点击人物框可跳转到人物谱与相关卷</div>
+<div class="legend">
+  <span><span class="sw" style="background:#d8e6f7"></span>希腊联军</span>
+  <span><span class="sw" style="background:#f7ddd8"></span>特洛伊</span>
+  <span><span class="sw" style="background:#eae2f5"></span>神明</span>
+  <span><span class="sw" style="background:#e8f2e4"></span>《奥德赛》核心</span>
+  <span style="color:#aaa">实线＝血缘/婚姻　虚线＝庇护或恩怨　红字＝冲突</span>
+</div>
+<svg viewBox="0 0 960 680" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, PingFang SC, sans-serif">
+  <rect x="0" y="0" width="960" height="680" fill="#faf9f6"/>
+  <text x="20" y="28" font-size="15" fill="#666">荷马史诗 · 人物关系一览（上：神明　中：特洛伊战争　下：《奥德赛》）</text>
+
+  <!-- 连线 -->
+  <g stroke="#bbb" stroke-width="1.2" fill="none">
+    <line x1="380" y1="77"  x2="430" y2="77"/>            <!-- 宙斯-赫拉 -->
+    <line x1="60" y1="164" x2="150" y2="360"/>           <!-- 忒提斯-阿喀琉斯 -->
+    <line x1="630" y1="94"  x2="840" y2="283"/>           <!-- 阿佛洛狄忒-帕里斯 -->
+    <line x1="795" y1="94"  x2="848" y2="283"/>           <!-- 阿波罗-帕里斯 -->
+    <path d="M 150 198 C 118 260, 128 380, 160 453" fill="none" stroke="#bbb" stroke-width="1.2" stroke-dasharray="4,3"/>           <!-- 雅典娜-奥德修斯(庇护) -->
+    <line x1="250" y1="317" x2="310" y2="317"/>           <!-- 阿伽门农-墨涅拉俄斯 -->
+    <line x1="200" y1="317" x2="200" y2="353"/>           <!-- 阿伽门农-阿喀琉斯 -->
+    <line x1="250" y1="387" x2="310" y2="387"/>           <!-- 阿喀琉斯-帕特洛克罗斯 -->
+    <line x1="105" y1="387" x2="150" y2="387" stroke-dasharray="2,4"/> <!-- 涅斯托尔-阿喀琉斯 -->
+    <line x1="630" y1="317" x2="610" y2="317"/>           <!-- 普里阿摩斯-卡珊德拉 -->
+    <line x1="730" y1="317" x2="790" y2="317"/>           <!-- 普里阿摩斯-帕里斯 -->
+    <line x1="680" y1="317" x2="730" y2="353"/>           <!-- 普里阿摩斯-赫克托耳 -->
+    <line x1="810" y1="387" x2="850" y2="387"/>           <!-- 赫克托耳-安德洛玛刻 -->
+    <line x1="865" y1="334" x2="865" y2="423"/>           <!-- 帕里斯-海伦 -->
+    <line x1="160" y1="487" x2="140" y2="583"/>           <!-- 奥德修斯-忒勒马科斯 -->
+    <line x1="172" y1="487" x2="290" y2="583"/>           <!-- 奥德修斯-珀涅罗珀 -->
+    <line x1="492" y1="164" x2="565" y2="583"/>           <!-- 波塞冬-波吕斐摩斯 -->
+    <path d="M 360 285 C 550 230, 770 230, 845 283" stroke-dasharray="6,4"/> <!-- 墨涅拉俄斯-帕里斯 -->
+    <path d="M 252 395 C 420 452, 640 452, 708 400" stroke-dasharray="6,4"/> <!-- 阿喀琉斯-赫克托耳 -->
+  </g>
+  <g stroke="#d99" stroke-width="1.4" fill="none" stroke-dasharray="4,3">
+    <line x1="480" y1="164" x2="172" y2="460"/>           <!-- 波塞冬-奥德修斯 结仇 -->
+  </g>
+  <g font-size="11" fill="#999">
+    <text x="388" y="70">夫妻</text><text x="66" y="250">母子</text>
+    <text x="700" y="180">许诺</text><text x="842" y="196">引箭</text>
+    <text x="88"  y="320">庇护</text><text x="262" y="308">兄弟</text>
+    <text x="206" y="340" fill="#c0392b">夺功决裂</text><text x="255" y="403">挚友</text>
+    <text x="636" y="308">父女</text><text x="742" y="308">父子</text>
+    <text x="688" y="340">父子</text><text x="812" y="404">夫妻</text>
+    <text x="872" y="382" fill="#c0392b">拐走</text>
+    <text x="120" y="540">父子</text><text x="240" y="540">夫妻</text>
+    <text x="540" y="380">父子</text><text x="316" y="300" fill="#c0392b">结仇</text>
+    <text x="540" y="248" fill="#c0392b">情敌</text><text x="452" y="430" fill="#c0392b">宿敌</text>
+  </g>
+
+  <!-- 神明层 -->
+  <g font-size="13" text-anchor="middle">
+    <a href="/homer-epics/index.php/archives/69/"><rect x="330" y="60" width="100" height="34" rx="6" fill="#eae2f5"/><text x="380" y="82">宙斯</text></a>
+    <a href="/homer-epics/index.php/archives/69/"><rect x="430" y="60" width="100" height="34" rx="6" fill="#eae2f5"/><text x="480" y="82">赫拉</text></a>
+    <a href="/homer-epics/index.php/archives/69/"><rect x="580" y="60" width="110" height="34" rx="6" fill="#eae2f5"/><text x="635" y="82">阿佛洛狄忒</text></a>
+    <a href="/homer-epics/index.php/archives/69/"><rect x="745" y="60" width="100" height="34" rx="6" fill="#eae2f5"/><text x="795" y="82">阿波罗</text></a>
+    <a href="/homer-epics/index.php/archives/69/"><rect x="10"  y="130" width="100" height="34" rx="6" fill="#eae2f5"/><text x="60" y="152">忒提斯</text></a>
+    <a href="/homer-epics/index.php/archives/69/"><rect x="442" y="130" width="100" height="34" rx="6" fill="#eae2f5"/><text x="492" y="152">波塞冬</text></a>
+    <a href="/homer-epics/index.php/archives/69/"><rect x="130" y="130" width="100" height="34" rx="6" fill="#eae2f5"/><text x="180" y="152">雅典娜</text></a>
+  </g>
+
+  <!-- 希腊联军 -->
+  <g font-size="13" text-anchor="middle">
+    <a href="/homer-epics/index.php/archives/67/"><rect x="150" y="300" width="100" height="34" rx="6" fill="#d8e6f7"/><text x="200" y="322">阿伽门农</text></a>
+    <a href="/homer-epics/index.php/archives/67/"><rect x="310" y="300" width="110" height="34" rx="6" fill="#d8e6f7"/><text x="365" y="322">墨涅拉俄斯</text></a>
+    <a href="/homer-epics/index.php/archives/67/"><rect x="150" y="353" width="100" height="34" rx="6" fill="#d8e6f7"/><text x="200" y="375">阿喀琉斯</text></a>
+    <a href="/homer-epics/index.php/archives/67/"><rect x="310" y="353" width="120" height="34" rx="6" fill="#d8e6f7"/><text x="370" y="375">帕特洛克罗斯</text></a>
+    <a href="/homer-epics/index.php/archives/67/"><rect x="55"  y="370" width="100" height="34" rx="6" fill="#d8e6f7"/><text x="105" y="392">涅斯托尔</text></a>
+    <a href="/homer-epics/index.php/archives/68/"><rect x="110" y="453" width="110" height="34" rx="6" fill="#e8f2e4"/><text x="165" y="475">奥德修斯</text></a>
+  </g>
+
+  <!-- 特洛伊 -->
+  <g font-size="13" text-anchor="middle">
+    <a href="/homer-epics/index.php/archives/67/"><rect x="630" y="300" width="100" height="34" rx="6" fill="#f7ddd8"/><text x="680" y="322">普里阿摩斯</text></a>
+    <a href="/homer-epics/index.php/archives/67/"><rect x="510" y="300" width="100" height="34" rx="6" fill="#f7ddd8"/><text x="560" y="322">卡珊德拉</text></a>
+    <a href="/homer-epics/index.php/archives/67/"><rect x="795" y="283" width="100" height="34" rx="6" fill="#f7ddd8"/><text x="845" y="305">帕里斯</text></a>
+    <a href="/homer-epics/index.php/archives/67/"><rect x="710" y="353" width="100" height="34" rx="6" fill="#f7ddd8"/><text x="760" y="375">赫克托耳</text></a>
+    <a href="/homer-epics/index.php/archives/68/"><rect x="850" y="370" width="110" height="34" rx="6" fill="#f7ddd8"/><text x="905" y="392">安德洛玛刻</text></a>
+    <a href="/homer-epics/index.php/archives/68/"><rect x="815" y="423" width="100" height="34" rx="6" fill="#f7ddd8"/><text x="865" y="445">海伦</text></a>
+  </g>
+
+  <!-- 奥德赛下层 -->
+  <g font-size="13" text-anchor="middle">
+    <a href="/homer-epics/index.php/archives/68/"><rect x="90"  y="583" width="100" height="34" rx="6" fill="#e8f2e4"/><text x="140" y="605">忒勒马科斯</text></a>
+    <a href="/homer-epics/index.php/archives/68/"><rect x="240" y="583" width="110" height="34" rx="6" fill="#e8f2e4"/><text x="295" y="605">珀涅罗珀</text></a>
+    <a href="/homer-epics/index.php/archives/69/"><rect x="515" y="583" width="110" height="34" rx="6" fill="#eae2f5"/><text x="570" y="605">波吕斐摩斯</text></a>
+  </g>
+  <text x="705" y="640" font-size="12" fill="#999">波吕斐摩斯乃波塞冬之子——</text>
+  <text x="705" y="658" font-size="12" fill="#999">刺瞎独眼，奥德修斯因此结仇于海神</text>
+</svg>
+<p style="font-size:13px;color:#999;margin-top:14px">
+  想读某位人物的完整故事？请到 <a href="/homer-epics/index.php/category/knowledge/">知识点 · 人物谱</a>，
+  或按 <a href="/homer-epics/index.php/catalog.html">全站目录</a> 逐卷阅读。
+</p>
+</body>
+</html>

@@ -1,0 +1,125 @@
+/* ============================================================
+   荷马史诗 · 风格变体「霓虹」——赛博朋克：深紫夜空 + 青粉霓虹
+   ============================================================ */
+html[data-style="cyber"] {
+  --y-bg: #0b0514;
+  --y-panel: rgba(24, 10, 44, .72);
+  --y-fg: #d9d0e8;
+  --y-dim: #8a7fa8;
+  --y-cyan: #00e5ff;
+  --y-pink: #ff2ea6;
+  --y-purple: #a26bff;
+  --y-border: rgba(162, 107, 255, .35);
+}
+
+html[data-style="cyber"] body {
+  background:
+    linear-gradient(180deg, #0b0514 0%, #150a26 60%, #1d0f33 100%);
+  color: var(--y-fg);
+  font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 15px;
+}
+/* 地平线网格 */
+html[data-style="cyber"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 46px, rgba(162, 107, 255, .07) 46px 47px),
+    repeating-linear-gradient(90deg, transparent 0 46px, rgba(0, 229, 255, .05) 46px 47px);
+}
+
+html[data-style="cyber"] ::selection { background: var(--y-pink); color: #14041f; }
+
+html[data-style="cyber"] a { color: var(--y-cyan); }
+html[data-style="cyber"] a:hover { color: var(--y-pink); text-shadow: 0 0 10px rgba(255, 46, 166, .6); }
+
+html[data-style="cyber"] #header {
+  background: var(--y-panel);
+  border-bottom: 1px solid var(--y-border);
+  box-shadow: 0 0 24px rgba(162, 107, 255, .25);
+}
+html[data-style="cyber"] #logo {
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 0 14px rgba(0, 229, 255, .8), 0 0 30px rgba(255, 46, 166, .4);
+}
+html[data-style="cyber"] .description { color: var(--y-dim); }
+
+html[data-style="cyber"] #nav-menu a { color: var(--y-dim); }
+html[data-style="cyber"] #nav-menu a:hover,
+html[data-style="cyber"] #nav-menu .current {
+  color: #fff;
+  text-shadow: 0 0 10px var(--y-cyan), 0 0 20px rgba(0, 229, 255, .5);
+  border-bottom: 1px solid var(--y-cyan);
+}
+
+html[data-style="cyber"] .site-search input.text,
+html[data-style="cyber"] .site-search button.submit {
+  background: rgba(10, 4, 22, .85);
+  border: 1px solid var(--y-border);
+  color: var(--y-fg);
+  font-family: inherit;
+}
+html[data-style="cyber"] .site-search button.submit { color: var(--y-cyan); border-color: var(--y-cyan); }
+
+html[data-style="cyber"] .post { border-bottom: 1px solid var(--y-border); }
+html[data-style="cyber"] .post-title,
+html[data-style="cyber"] .post-title a {
+  color: #fff;
+  text-shadow: 0 0 12px var(--y-cyan);
+}
+html[data-style="cyber"] .post-title::before { content: "◈ "; color: var(--y-pink); }
+html[data-style="cyber"] .post-meta,
+html[data-style="cyber"] .post-meta a { color: var(--y-dim); }
+
+html[data-style="cyber"] .post-content { color: var(--y-fg); line-height: 1.85; }
+html[data-style="cyber"] .post-content h2,
+html[data-style="cyber"] .post-content h3 { color: var(--y-pink); text-shadow: 0 0 10px rgba(255, 46, 166, .45); }
+html[data-style="cyber"] .post-content a { border-bottom: 1px dashed var(--y-cyan); }
+html[data-style="cyber"] blockquote {
+  border-left: 3px solid var(--y-cyan);
+  background: rgba(0, 229, 255, .05);
+  color: var(--y-fg);
+}
+html[data-style="cyber"] code {
+  background: rgba(0, 229, 255, .08);
+  color: var(--y-cyan);
+  border: 1px solid var(--y-border);
+}
+html[data-style="cyber"] pre { background: rgba(5, 2, 12, .85); border: 1px solid var(--y-border); }
+html[data-style="cyber"] img {
+  border: 1px solid var(--y-border);
+  filter: saturate(1.1) contrast(1.04);
+  box-shadow: 0 0 18px rgba(162, 107, 255, .22);
+}
+
+html[data-style="cyber"] #secondary { border-left: 1px solid var(--y-border); }
+html[data-style="cyber"] .widget-title { color: var(--y-cyan); text-shadow: 0 0 8px rgba(0, 229, 255, .5); }
+html[data-style="cyber"] .widget-list li { border-bottom: 1px solid var(--y-border); }
+html[data-style="cyber"] .widget-list li a { color: var(--y-fg); }
+
+html[data-style="cyber"] #footer { border-top: 1px solid var(--y-border); color: var(--y-dim); }
+html[data-style="cyber"] .page-navigator a { color: var(--y-dim); border: 1px solid var(--y-border); }
+html[data-style="cyber"] .page-navigator .current a { color: var(--y-pink); border-color: var(--y-pink); }
+
+html[data-style="cyber"] #read-progress { background: linear-gradient(90deg, var(--y-cyan), var(--y-pink)) !important; }
+html[data-style="cyber"] #to-top {
+  background: rgba(24, 10, 44, .9) !important;
+  color: var(--y-cyan) !important;
+  border: 1px solid var(--y-border) !important;
+}
+
+html[data-style="cyber"] #nav-menu select {
+  background-color: rgba(10, 4, 22, .85);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2300e5ff' stroke-width='1.6'/%3E%3C/svg%3E");
+  color: var(--y-cyan);
+  border: 1px solid var(--y-border);
+}
+html[data-style="cyber"] #nav-menu select:hover,
+html[data-style="cyber"] #nav-menu select:focus {
+  border-color: var(--y-cyan);
+  box-shadow: 0 0 8px rgba(0, 229, 255, .35);
+}
